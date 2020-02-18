@@ -1,6 +1,6 @@
 # Fair Housing Pledge
 
-[![JavaScript Style Guide][standard-badge)][standard]
+[![JavaScript Style Guide][standard-badge][standard]]
 
 ## Quick Start
 
