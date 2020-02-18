@@ -1,3 +1,3 @@
 module.exports = {
-  key: 'value'
+  api: '/api/agents'
 }
