@@ -5,7 +5,7 @@ form {
   	margin: 0 0 $space;
   }
 
-  div + div {
+  > div + div {
   	margin: $space 0;
   }
 }

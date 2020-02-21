@@ -1,9 +1,52 @@
 .form {
+  border: 0.5em solid $black;
+  padding: $space;
+
+  &__row {
+
+    &_double {
+      @include mq-600 {
+        display: flex;
+
+        div {
+          max-width: 30ch;
+          width: 50%;
+
+          + div {
+            margin-left: $space;
+          }
+        }
+      }
+    }
+
+    &_cta {
+      margin-top: 2em;
+      text-align: center;
+    }
+  }
 
   &__input {
     border: $border-thinner solid $light-medium-gray;
     border-radius: 0.25em;
     background: $lightest-gray;
+    max-width: 30ch;
     padding: 0.25rem;
+    width: 100%;
+  }
+
+  &__checkbox {
+    display: flex;
+  }
+
+  &__label_checkbox {
+    margin-left: calc($space * 0.5);
+  }
+
+  &__button {
+    background: blue;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0.75em 1em 0.5em;
   }
 }
