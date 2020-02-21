@@ -43,10 +43,15 @@
   }
 
   &__button {
-    background: blue;
+    background: hsl(238.2, 51.8%, 37.5%);
     color: white;
     cursor: pointer;
     font-weight: 700;
     padding: 0.75em 1em 0.5em;
+
+    &:hover,
+    &:focus {
+      background: hsl(238.2, 51.8%, 55%);
+    }
   }
 }

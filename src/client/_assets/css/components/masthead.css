@@ -3,14 +3,19 @@
   text-align: center;
 
   &__title {
-    font-size: 1rem;
+    color: hsl(238.2, 51.8%, 37.5%);
+    font-family: $font-stack-script;
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1.1;
     margin: 0;
-    text-transform: uppercase;
   }
 
   &__description {
+    color: hsl(238.2, 51.8%, 37.5%);
+    font-size: 2rem;
+    font-weight: 700;
     margin: 1em 0 0;
+    text-transform: uppercase;
   }
 }

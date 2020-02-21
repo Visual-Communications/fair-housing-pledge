@@ -1,9 +1,9 @@
 const site = {
-  title: 'Fair Housing Pledge',
-  description: 'Take the pledge to stand up for Fair Housing',
+  title: 'Take the Pledge',
+  description: 'Stand Up for Fair Housing',
   year: new Date().getFullYear()
 }
 
-site.copyright = `&copy; ${site.year} ${site.title}. All rights reserved.`
+site.copyright = `&copy; ${site.year} Realogy Holdings Corp. All rights reserved.`
 
 module.exports = site
