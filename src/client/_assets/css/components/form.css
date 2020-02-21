@@ -1,0 +1,9 @@
+.form {
+
+  &__input {
+    border: $border-thinner solid $light-medium-gray;
+    border-radius: 0.25em;
+    background: $lightest-gray;
+    padding: 0.25rem;
+  }
+}
