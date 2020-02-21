@@ -39,8 +39,11 @@
     }
 
     &_cta {
-      margin-top: 2em;
       text-align: center;
+
+      @include mq-600 {
+        grid-column: span 2;
+      }
     }
   }
 
@@ -55,9 +58,11 @@
 
   &__checkbox {
     display: flex;
+    margin: $space 0;
 
     @include mq-600 {
       justify-content: center;
+      grid-column: span 2;
     }
   }
 
