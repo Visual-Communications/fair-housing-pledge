@@ -1,6 +1,5 @@
 function init() {
-
-  const form = document.forms[0]
+  const form = document.forms.pledge
 
   form.addEventListener('submit', handleSubmit)
 }
@@ -8,11 +7,12 @@ function init() {
 async function handleSubmit(e) {
   e.preventDefault()
 
-  const firstName = document.getElementById('firstName').value
-  const lastName = document.getElementById('lastName').value
-  const email = document.getElementById('email').value
-  const state = document.getElementById('state').value
-  const agreeToTerms = document.getElementById('agreeToTerms').checked
+  const form = document.forms.pledge
+  const firstName = form.elements.firstName.value
+  const lastName = form.elements.lastName.value
+  const email = form.elements.email.value
+  const state = form.elements.state[form.elements.state.selectedIndex].value
+  const agreeToTerms = form.elements.agreeToTerms.checked
 
   const agent = {
     name: {
@@ -20,40 +20,25 @@ async function handleSubmit(e) {
       last: lastName
     },
     email: email,
-    state: state,
-    agreeToTerms: agreeToTerms
+    state: state
   }
 
-  const response = await fetch('/api/agents', { method: 'post' }, agent)
-    .then(function(response) { console.log(response) })
+  console.log('agent: ', agent)
 
-  console.log(response)
+  fetch('/api/agents', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(agent),
+  })
+  // .then((response) => response.json())
+  .then((data) => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
 }
 
 init()
-
-
-
-// Example POST method implementation:
-async function postData(url = '', data = {}) {
-  // Default options are marked with *
-  const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrerPolicy: 'no-referrer', // no-referrer, *client
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  });
-  return await response.json(); // parses JSON response into native JavaScript objects
-}
-
-postData('https://example.com/answer', { answer: 42 })
-  .then((data) => {
-    console.log(data); // JSON data parsed by `response.json()` call
-  });

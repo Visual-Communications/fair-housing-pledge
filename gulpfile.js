@@ -152,7 +152,14 @@ function js () {
           use: {
             loader: 'babel-loader', // Babel
             options: {
-              presets: ['@babel/preset-env']
+              "presets": [
+                [
+                  "@babel/preset-env",
+                  {
+                    "useBuiltIns": "entry"
+                  }
+                ]
+              ]
             }
           }
         }
