@@ -7,13 +7,14 @@ package-lock.json
 
 # Temp files
 _logs/
+public/
 build/
 dist/
 temp/
-public/
 
 # OS files
 .DS_Store
 
-# Local Netlify folder
+# Local server config folders
 .netlify
+.now

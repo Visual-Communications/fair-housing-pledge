@@ -1,4 +1,12 @@
 {
+  "db": {
+    "username": "FHP_DB_USERNAME",
+    "password": "FHP_DB_PASSWORD",
+    "host": "FHP_DB_HOST",
+    "port": "FHP_DB_PORT",
+    "database": "FHP_DB_DATABASE"
+  },
+  "jwtPrivateKey": "FHP_JWT_PRIVATE_KEY",
   "node": {
     "environment": "NODE_ENV"
   }

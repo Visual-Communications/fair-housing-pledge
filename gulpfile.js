@@ -19,42 +19,44 @@ const rename = require('gulp-rename')
 const connect = require('gulp-connect')
 
 const isProduction = config.get('node.environment') === 'production'
+const SRC = config.get('paths.src.client')
+const BUILD = config.get('paths.build.client')
 
 const paths = {
   liquid: {
-    src: './src/**/*.liquid'
+    src: `./${SRC}/**/*.liquid`
   },
   markdown: {
-    src: './src/**/*.md'
+    src: `./${SRC}/**/*.md`
   },
   html: {
-    dest: './build',
-    output: './build/**/*.html'
+    dest: `./${BUILD}`,
+    output: `./${BUILD}/**/*.html`
   },
   css: {
-    all: './src/_assets/css/**/*.css',
-    src: './src/_assets/css/style.css',
-    dest: './build/css',
-    output: './build/css/bundle.css'
+    all: `./${SRC}/_assets/css/**/*.css`,
+    src: `./${SRC}/_assets/css/style.css`,
+    dest: `./${BUILD}/css`,
+    output: `./${BUILD}/css/bundle.css`
   },
   js: {
     root: './*.js',
-    src: './src/_assets/js/**/*.js',
-    data: './src/_data/**/*.js',
+    src: `./${SRC}/_assets/js/**/*.js`,
+    data: `./${SRC}/_data/**/*.js`,
     entry: {
-      all: './src/_assets/js/*.js',
-      index: './src/_assets/js/index.js'
+      all: `./${SRC}/_assets/js/*.js`,
+      index: `./${SRC}/_assets/js/index.js`
     },
-    dest: './build/js',
-    output: './build/js/**.js'
+    dest: `./${BUILD}/js`,
+    output: `./${BUILD}/js/**.js`
   },
   fonts: {
-    src: './src/_assets/fonts/**/*',
-    dest: './build/fonts'
+    src: `./${SRC}/_assets/fonts/**/*`,
+    dest: `./${BUILD}/fonts`
   },
   images: {
-    src: './src/_assets/img/**/*',
-    dest: './build/img'
+    src: `./${SRC}/_assets/img/**/*`,
+    dest: `./${BUILD}/img`
   }
 }
 

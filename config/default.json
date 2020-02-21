@@ -1,5 +1,24 @@
 {
+  "app": {
+    "title": "Fair Housing Pledge"
+  },
+  "db": {
+    "username": "",
+    "password": "",
+    "host": "",
+    "port": "",
+    "database": ""
+  },
+  "jwtPrivateKey": "",
   "node": {
     "environment": ""
+  },
+  "paths": {
+    "src": {
+      "client": "src/client"
+    },
+    "build": {
+      "client": "build/client"
+    }
   }
 }
