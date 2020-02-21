@@ -2,11 +2,30 @@
   border: 0.5em solid $black;
   padding: $space;
 
+  &__fieldset {
+
+    @include mq-600 {
+      display: grid;
+      grid-gap: $space;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  div {
+
+    @include mq-600 {
+      @supports(display: grid) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   &__row {
 
     &_double {
       @include mq-600 {
         display: flex;
+        grid-column: span 2;
 
         div {
           max-width: 30ch;
@@ -36,7 +55,7 @@
 
   &__checkbox {
     display: flex;
-    
+
     @include mq-600 {
       justify-content: center;
     }
