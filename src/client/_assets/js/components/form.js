@@ -41,4 +41,4 @@ async function handleSubmit(e) {
   });
 }
 
-init()
+// init()
