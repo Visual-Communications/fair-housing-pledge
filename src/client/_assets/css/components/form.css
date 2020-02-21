@@ -36,6 +36,10 @@
 
   &__checkbox {
     display: flex;
+    
+    @include mq-600 {
+      justify-content: center;
+    }
   }
 
   &__label_checkbox {

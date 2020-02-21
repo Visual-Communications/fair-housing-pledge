@@ -1,12 +1,12 @@
 /**
   * Import web fonts
   */
-/*@import './fonts/*.css';*/
+@import './fonts/*.css';
 
 /**
   * Declare font stacks
   */
 $font-stack-primary: sans-serif;
-$font-stack-secondary: serif;
+$font-stack-secondary: 'Barlow Condensed', sans-serif;
 $font-stack-code: monospace;
 $font-stack-script: script;
