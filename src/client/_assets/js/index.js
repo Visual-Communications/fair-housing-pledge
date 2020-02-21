@@ -7,4 +7,4 @@ require('./globals/dark-mode.js')
 /**
  * Components
  */
-// require('./components/component.js')
+require('./components/form.js')

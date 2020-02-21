@@ -32,7 +32,7 @@ module.exports = {
     if (error) return res.status(400).send(error.details[0].message)
 
     // Create agent
-    let agent = new Agent(_.pick(req.body, ['name', 'email', 'brand', 'state', 'company', 'date', 'event']))
+    let agent = new Agent(_.pick(req.body, ['name.first', 'name.last', 'email', 'brand', 'state', 'company', 'date', 'event']))
 
     // Add agent to the database
     agent = await agent.save()

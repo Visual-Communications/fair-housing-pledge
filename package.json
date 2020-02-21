@@ -18,8 +18,7 @@
     "start": "npm run build && node -r dotenv/config ./src/server/bin/www",
     "develop": "NODE_ENV='development' gulp develop",
     "serve": "NODE_ENV='development' gulp serve & nodemon -r dotenv/config ./src/server/bin/www",
-    "build": "NODE_ENV='production' gulp",
-    "production": "NODE_ENV='production' gulp production"
+    "build": "NODE_ENV='production' gulp"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
