@@ -1,44 +1,46 @@
 function init() {
-  const form = document.forms.pledge
+  const form = document.querySelector('#pledge')
 
-  form.addEventListener('submit', handleSubmit)
+  if (form) {
+    form.addEventListener('submit', handleSubmit)
+  }
 }
 
-async function handleSubmit(e) {
-  e.preventDefault()
-
-  const form = document.forms.pledge
+function formIsValidated() {
+  const form = document.querySelector('#pledge')
   const firstName = form.elements.firstName.value
   const lastName = form.elements.lastName.value
   const email = form.elements.email.value
-  const state = form.elements.state[form.elements.state.selectedIndex].value
+  const brand = form.elements.brand.value
+  const state = form.elements.state.value
+  const company = form.elements.company.value
+  const event = form.elements.event.value
   const agreeToTerms = form.elements.agreeToTerms.checked
 
-  const agent = {
-    name: {
-      first: firstName,
-      last: lastName
-    },
-    email: email,
-    state: state
-  }
+  console.log('firstName', firstName)
+  console.log('lastName', lastName)
+  console.log('email', email)
+  console.log('brand', brand)
+  console.log('state', state)
+  console.log('company', company)
+  console.log('event', event)
+  console.log('agreeToTerms', agreeToTerms)
 
-  console.log('agent: ', agent)
+  // TODO: Validate form fields, return false if invalid, else true
 
-  fetch('/api/agents', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(agent),
-  })
-  // .then((response) => response.json())
-  .then((data) => {
-    console.log('Success:', data);
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
+  return true
+  
 }
 
-// init()
+function handleSubmit(e) {
+  e.preventDefault()
+  const form = e.target
+
+  console.log('formIsValidated()', formIsValidated())
+
+  setTimeout(() => {
+    form.submit()
+  }, 3000)
+}
+
+init()
