@@ -14,7 +14,9 @@
       <label for="email" class="form__label">Email</label>
       <input type="email" name="email" id="email" autocapitalize="none" autocorrect="off" class="form__input" required />
     </div>
-    <input type="hidden" name="brand" value="CENTURY 21">
+    <div class="visually-hidden">
+      <input type="hidden" name="brand" value="CENTURY 21">
+    </div>
     <div class="form__row">
       <label class="form__label" for="state">State</label>
       <div class="form__select">
@@ -78,7 +80,9 @@
       <label for="company" class="form__label">Company Name</label>
       <input type="text" name="company" id="company" class="form__input" value="" autocorrect="off">
     </div>
-    <input type="hidden" name="event" value="ONE21">
+    <div class="visually-hidden">
+      <input type="hidden" name="event" value="ONE21">
+    </div>
     <div class="form__row form__checkbox">
       <input type="checkbox" name="agreeToTerms" id="agreeToTerms" class="form__input_checkbox" required />
       <label for="agreeToTerms" class="form__label_decor" aria-hidden="true" role="presentation"></label>
