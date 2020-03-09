@@ -2,20 +2,17 @@
   <fieldset class="form__fieldset">
     <div class="form__row form__row_double">
       <div>
-        <label for="firstName" class="form__label">First Name</label>
+        <label for="firstName" class="form__label">First Name <em>(Required)</em></label>
         <input type="text" name="firstName" id="firstName" class="form__input" value="" autocorrect="off" required />
       </div>
       <div>
-        <label for="lastName" class="form__label">Last Name</label>
+        <label for="lastName" class="form__label">Last Name <em>(Required)</em></label>
         <input type="text" name="lastName" id="lastName" class="form__input" value="" autocorrect="off" required />
       </div>
     </div>
     <div class="form__row">
-      <label for="email" class="form__label">Email</label>
+      <label for="email" class="form__label">Email <em>(Required)</em></label>
       <input type="email" name="email" id="email" autocapitalize="none" autocorrect="off" class="form__input" required />
-    </div>
-    <div class="visually-hidden">
-      <input type="hidden" name="brand" value="CENTURY 21">
     </div>
     <div class="form__row">
       <label class="form__label" for="state">State</label>
@@ -77,11 +74,25 @@
       </div>
     </div>
     <div class="form__row">
+      <label class="form__label" for="brand">Brand</label>
+      <div class="form__select">
+        <input type="text" name="brand" id="brand" class="form__input" list="brands">
+        <datalist name="brands" id="brands" class="c-select-field__menu">
+          <option>Better Homes and Gardens Real Estate</option>
+          <option>CENTURY 21</option>
+          <option>Coldwell Banker</option>
+          <option>Corcoran</option>
+          <option>ERA</option>
+          <option>Sotheby's International Realty</option>
+        </datalist>
+      </div>
+    </div>
+    <div class="form__row">
       <label for="company" class="form__label">Company Name</label>
       <input type="text" name="company" id="company" class="form__input" value="" autocorrect="off">
     </div>
     <div class="visually-hidden">
-      <input type="hidden" name="event" value="ONE21">
+      <input type="hidden" name="event" value="">
     </div>
     <div class="form__row form__checkbox">
       <input type="checkbox" name="agreeToTerms" id="agreeToTerms" class="form__input_checkbox" required />
