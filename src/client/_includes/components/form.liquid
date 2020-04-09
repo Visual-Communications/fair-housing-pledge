@@ -1,23 +1,24 @@
 <form class="form" id="pledge" name="pledge" netlify netlify-honeypot="turtle-home" action="/thank-you">
+  <p class="em text-align-center">All fields are required.</p>
   <fieldset class="form__fieldset">
     <div class="form__row form__row_double">
       <div>
-        <label for="firstName" class="form__label">First Name <em>(Required)</em></label>
+        <label for="firstName" class="form__label">First Name</label>
         <input type="text" name="firstName" id="firstName" class="form__input" value="" autocorrect="off" required />
       </div>
       <div>
-        <label for="lastName" class="form__label">Last Name <em>(Required)</em></label>
+        <label for="lastName" class="form__label">Last Name</label>
         <input type="text" name="lastName" id="lastName" class="form__input" value="" autocorrect="off" required />
       </div>
     </div>
     <div class="form__row">
-      <label for="email" class="form__label">Email <em>(Required)</em></label>
+      <label for="email" class="form__label">Email</label>
       <input type="email" name="email" id="email" autocapitalize="none" autocorrect="off" class="form__input" required />
     </div>
     <div class="form__row">
       <label class="form__label" for="state">State</label>
       <div class="form__select">
-        <input type="text" name="state" id="state" class="form__input" list="states">
+        <input type="text" name="state" id="state" class="form__input" list="states" required />
         <datalist name="states" id="states" class="c-select-field__menu">
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
@@ -76,7 +77,7 @@
     <div class="form__row">
       <label class="form__label" for="brand">Brand</label>
       <div class="form__select">
-        <input type="text" name="brand" id="brand" class="form__input" list="brands">
+        <input type="text" name="brand" id="brand" class="form__input" required />
         <datalist name="brands" id="brands" class="c-select-field__menu">
           <option>Better Homes and Gardens Real Estate</option>
           <option>CENTURY 21</option>
@@ -89,10 +90,10 @@
     </div>
     <div class="form__row">
       <label for="company" class="form__label">Company Name</label>
-      <input type="text" name="company" id="company" class="form__input" value="" autocorrect="off">
+      <input type="text" name="company" id="company" class="form__input" value="" autocorrect="off" required />
     </div>
     <div class="visually-hidden">
-      <input type="hidden" name="event" value="">
+      <input type="hidden" name="event" value="N/A">
     </div>
     <div class="form__row form__checkbox">
       <input type="checkbox" name="agreeToTerms" id="agreeToTerms" class="form__input_checkbox" required />
