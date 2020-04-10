@@ -6,7 +6,9 @@
   &__fieldset {
 
     @include mq-600 {
+      display: flex;
       display: grid;
+      flex-wrap: wrap;
       grid-gap: $space;
       grid-template-columns: repeat(2, 1fr);
     }
@@ -16,12 +18,23 @@
     margin-bottom: $space;
 
     @include mq-600 {
+      flex: 1 0 calc(50% - $space);
+
       @supports(display: grid) {
         margin-bottom: 0;
       }
     }
 
+    & + & {
+      margin-top: $space;
+
+      @supports (display: grid) {
+        margin-top: 0;
+      }
+    }
+
     &_double {
+      flex: 1 0 100%;
       
       @include mq-600 {
         display: flex;
@@ -47,6 +60,7 @@
     }
 
     &_cta {
+      flex: 1 0 100%;
       text-align: center;
 
       @include mq-600 {
@@ -70,6 +84,7 @@
 
   &__checkbox {
     display: flex;
+    flex: 1 0 100%;
     margin: $space 0;
 
     @include mq-600 {
