@@ -1,23 +1,32 @@
 <form class="form" id="pledge" name="pledge" netlify netlify-honeypot="turtle-home" action="/thank-you">
-  <fieldset class="form__fieldset">
+  <p>As an independent real estate sales professional, I commit to the following:</p>
+  <ul>
+    <li class="small">Providing equal professional service to all, without regard to race, color, religion, gender (sex), disability (handicap), familial status, national origin, or other state and local protections, such as sexual orientation, gender identity, military status, and source of income, of any prospective consumer or resident of any community;</li>
+    <li class="small">Staying informed of current fair housing and anti-discrimination laws and practices, to educate our consumers on their rights and our responsibilities;</li>
+    <li class="small">Demonstrating through advertising that everyone is welcome and no one is excluded;</li>
+    <li class="small">Respecting the diversity and differences within the consumer base and remaining informed of those differences in order to provide truly remarkable service;</li>
+    <li class="small">Refusing to tolerate non-compliance in accordance with my broker’s leadership role in the real estate profession; and</li>
+    <li class="small">Fostering inclusion in our industry and in the communities we serve.</li>
+  </ul>
+  <fieldset class="form__fieldset pad-top-2">
     <div class="form__row form__row_double">
       <div>
-        <label for="firstName" class="form__label">First Name <em>(Required)</em></label>
+        <label for="firstName" class="form__label">First Name</label>
         <input type="text" name="firstName" id="firstName" class="form__input" value="" autocorrect="off" required />
       </div>
       <div>
-        <label for="lastName" class="form__label">Last Name <em>(Required)</em></label>
+        <label for="lastName" class="form__label">Last Name</label>
         <input type="text" name="lastName" id="lastName" class="form__input" value="" autocorrect="off" required />
       </div>
     </div>
     <div class="form__row">
-      <label for="email" class="form__label">Email <em>(Required)</em></label>
+      <label for="email" class="form__label">Email</label>
       <input type="email" name="email" id="email" autocapitalize="none" autocorrect="off" class="form__input" required />
     </div>
     <div class="form__row">
       <label class="form__label" for="state">State</label>
       <div class="form__select">
-        <input type="text" name="state" id="state" class="form__input" list="states">
+        <input type="text" name="state" id="state" class="form__input" list="states" required />
         <datalist name="states" id="states" class="c-select-field__menu">
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
@@ -76,7 +85,7 @@
     <div class="form__row">
       <label class="form__label" for="brand">Brand</label>
       <div class="form__select">
-        <input type="text" name="brand" id="brand" class="form__input" list="brands">
+        <input type="text" name="brand" id="brand" class="form__input" required />
         <datalist name="brands" id="brands" class="c-select-field__menu">
           <option>Better Homes and Gardens Real Estate</option>
           <option>CENTURY 21</option>
@@ -89,10 +98,10 @@
     </div>
     <div class="form__row">
       <label for="company" class="form__label">Company Name</label>
-      <input type="text" name="company" id="company" class="form__input" value="" autocorrect="off">
+      <input type="text" name="company" id="company" class="form__input" value="" autocorrect="off" required />
     </div>
     <div class="visually-hidden">
-      <input type="hidden" name="event" value="">
+      <input type="hidden" name="event" value="N/A">
     </div>
     <div class="form__row form__checkbox">
       <input type="checkbox" name="agreeToTerms" id="agreeToTerms" class="form__input_checkbox" required />
@@ -106,4 +115,5 @@
       <button class="form__button" type="submit">Submit</button>    
     </div>
   </fieldset>
+  <p class="small em pad-top-2">Nothing herein is intended to create an employment relationship. Any affiliation by you with your broker is intended to be that of an independent contractor licensee.</p>
 </form>
