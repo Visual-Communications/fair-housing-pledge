@@ -16,6 +16,7 @@
 [[redirects]]
   from = "/courses/realogy"
   to = "/courses/realogy/story.html"
+  status = 302
 
 [[redirects]]
   from = "/*"
