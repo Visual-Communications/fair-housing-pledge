@@ -1,3 +1,63 @@
 [build]
-  command = "npm run build"
-  publish = "build/client"
+  base = "/"
+  publish = "build/client/"
+  command = "npm start"
+
+# ---------------
+# Redirects
+# ---------------
+
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/img/favicon/favicon.ico"
+  status = 200
+
+# Realogy brand-agnostic course
+[[redirects]]
+  from = "/courses/realogy"
+  to = "/courses/realogy/story.html"
+
+[[redirects]]
+  from = "/*"
+  to = "/404?search=:splat"
+  status = 404
+
+[[redirects]]
+  from = "http://fair-housing-pledge.netlify.com/*"
+  to = "http://fairhousingpledge.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://fair-housing-pledge.netlify.com/*"
+  to = "https://fairhousingpledge.com/:splat"
+  status = 301
+  force = true
+
+# ---------------
+# Headers
+# ---------------
+
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; style-src 'self' https://*.cloudfront.net; script-src 'self' https://*.cloudfront.net https://polyfill.io;"
+    Feature-Policy = "geolocation 'none'; midi 'none'; notifications 'none'; push 'none'; sync-xhr 'self'; microphone 'none'; camera 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'none'; vibrate 'none'; fullscreen 'none'; payment 'none'"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Server = ""
+    # Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload" # 2 years
+    X-Content-Security-Policy = "default-src 'self'; style-src 'self' https://*.cloudfront.net; script-src 'self' https://npsk-express-starter.herokuapp.com https://*.cloudfront.net https://polyfill.io; connect-src 'self' https://api.newprojectstarterkit.com https://npsk-express-starter.herokuapp.com; form-action 'self' https://api.newprojectstarterkit.com https://npsk-express-starter.herokuapp.com" # IE fallback
+    X-WebKit-CSP = "default-src 'self'; style-src 'self' https://*.cloudfront.net; script-src 'self' https://npsk-express-starter.herokuapp.com https://*.cloudfront.net https://polyfill.io; connect-src 'self' https://api.newprojectstarterkit.com https://npsk-express-starter.herokuapp.com; form-action 'self' https://api.newprojectstarterkit.com https://npsk-express-starter.herokuapp.com" # Webkit fallback
+    X-Content-Type-Options = "nosniff"
+    X-DNS-Prefetch-Control = "off"
+    X-Download-Options = "noopen"
+    X-Frame-Options = "DENY"
+    X-Robots-Tag = "noindex, nofollow"
+    X-Xss-Protection = "1; mode=block"
+
+[[headers]]
+  for = "/404/*"
+
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

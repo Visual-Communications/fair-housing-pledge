@@ -4,19 +4,8 @@ const BUILD = config.get('paths.build.client')
 
 module.exports = function (eleventyConfig) {
 
-  // Add content collections
-  const types = [
-    { plural: 'agents', single: 'agent' },
-    { plural: 'articles', single: 'article' },
-    { plural: 'pages', single: 'page' },
-    { plural: 'projects', single: 'project' },
-    { plural: 'testimonials', single: 'testimonial' },
-    { plural: 'users', single: 'user' }
-  ]
-
-  types.map(type => {
-    eleventyConfig.addCollection(type.plural, collection => collection.getAll().filter(post => post.data.contentType === type.single))
-  })
+  // Add pages collection
+  eleventyConfig.addCollection('pages', collection => collection.getAll().filter(post => post.data.contentType === 'page'))
 
   return {
     dir: {

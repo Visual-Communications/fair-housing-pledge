@@ -57,6 +57,10 @@ const paths = {
   images: {
     src: `./${SRC}/_assets/img/**/*`,
     dest: `./${BUILD}/img`
+  },
+  courses: {
+    src: `./${SRC}/courses/**/*`,
+    dest: `./${BUILD}/courses`
   }
 }
 
@@ -257,7 +261,11 @@ function assets () {
     .pipe(gulp.dest(paths.images.dest))
     .pipe(connect.reload())
 
-  const merged = merge(fonts, images)
+  const courses = gulp.src(paths.courses.src)
+    .pipe(gulp.dest(paths.courses.dest))
+    .pipe(connect.reload())
+
+  const merged = merge(fonts, images, courses)
 
   return merged.isEmpty() ? null : merged
 }
@@ -280,7 +288,8 @@ function serve (cb) {
   ], js)
   gulp.watch([
     paths.fonts.src,
-    paths.images.src
+    paths.images.src,
+    paths.courses.src
   ], assets)
 
   cb()
