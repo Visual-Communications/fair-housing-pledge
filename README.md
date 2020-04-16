@@ -1,6 +1,6 @@
 # Fair Housing Pledge
 
-[![JavaScript Style Guide][standard-badge]][standard]
+[![Netlify Status][netlify-deploy-status-badge]][netlify-deploy-status] [![JavaScript Style Guide][standard-badge]][standard]
 
 ## Quick Start
 
@@ -51,6 +51,8 @@ This website will [aspire][aspire] to be:
 
 If you'd like to contribute, please read the [Code of Conduct][code-of-conduct] and [Contributing instructions][contributing], then fork the repository and use a feature branch. Pull requests are welcome.
 
+[netlify-deploy-status-badge]: https://api.netlify.com/api/v1/badges/da8e7de8-e34c-420a-b428-23ceea2692b8/deploy-status
+[netlify-deploy-status]: https://app.netlify.com/sites/fair-housing-pledge/deploys
 [standard-badge]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
 [standard]: https://standardjs.com
 [node-download]: https://nodejs.org/en/download/
