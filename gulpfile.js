@@ -31,7 +31,10 @@ const paths = {
   },
   html: {
     dest: `./${BUILD}`,
-    output: `./${BUILD}/**/*.html`
+    output: [
+      `./${BUILD}/**/*.html`,
+      `!./${BUILD}/courses/**/*.html`
+    ]
   },
   css: {
     all: `./${SRC}/_assets/css/**/*.css`,

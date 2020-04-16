@@ -1,1 +1,1 @@
-<!-- Home page -->
+<!-- Thank you page -->

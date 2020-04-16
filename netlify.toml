@@ -26,13 +26,11 @@
 [[redirects]]
   from = "http://fair-housing-pledge.netlify.com/*"
   to = "http://fairhousingpledge.com/:splat"
-  status = 301
   force = true
 
 [[redirects]]
   from = "https://fair-housing-pledge.netlify.com/*"
   to = "https://fairhousingpledge.com/:splat"
-  status = 301
   force = true
 
 # ---------------
