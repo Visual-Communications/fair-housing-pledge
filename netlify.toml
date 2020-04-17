@@ -12,11 +12,6 @@
   to = "/img/favicon/favicon.ico"
   status = 200
 
-# Realogy brand-agnostic course
-[[redirects]]
-  from = "/courses/realogy"
-  to = "/courses/realogy/story.html"
-
 [[redirects]]
   from = "/*"
   to = "/404?search=:splat"
@@ -25,12 +20,19 @@
 [[redirects]]
   from = "http://fair-housing-pledge.netlify.com/*"
   to = "http://fairhousingpledge.com/:splat"
+  status = 301
   force = true
 
 [[redirects]]
   from = "https://fair-housing-pledge.netlify.com/*"
   to = "https://fairhousingpledge.com/:splat"
+  status = 301
   force = true
+
+# Courses
+[[redirects]]
+  from = "/courses/coldwell-banker"
+  to = "/courses/coldwell-banker/story.html"
 
 # ---------------
 # Headers
