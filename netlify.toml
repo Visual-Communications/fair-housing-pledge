@@ -1,3 +1,7 @@
+# ---------------
+# Build context
+# ---------------
+
 [build]
   base = "/"
   publish = "build/client/"
@@ -10,6 +14,16 @@
 [[redirects]]
   from = "/favicon.ico"
   to = "/img/favicon/favicon.ico"
+  status = 200
+
+[[redirects]]
+  from = "/courses/coldwell-banker/favicon.ico"
+  to = "/img/favicon/coldwell-banker/favicon.ico"
+  status = 200
+
+[[redirects]]
+  from = "/courses/realogy/favicon.ico"
+  to = "/img/favicon/realogy/favicon.ico"
   status = 200
 
 [[redirects]]
@@ -34,6 +48,11 @@
   from = "/courses/coldwell-banker"
   to = "/courses/coldwell-banker/story.html"
 
+# Courses
+[[redirects]]
+  from = "/courses/realogy"
+  to = "/courses/realogy/story.html"
+
 # ---------------
 # Headers
 # ---------------
@@ -42,22 +61,41 @@
   for = "/*"
 
   [headers.values]
-    # Content-Security-Policy = "default-src 'self'; style-src 'self' https://*.cloudfront.net; script-src 'self' https://*.cloudfront.net https://polyfill.io; font-src 'self' https://*.cloudfront.net;"
-    # Feature-Policy = "geolocation 'none'; midi 'none'; notifications 'none'; push 'none'; sync-xhr 'self'; microphone 'none'; camera 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'none'; vibrate 'none'; fullscreen 'none'; payment 'none'"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Server = ""
-    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload" # 2 years
-    # X-Content-Security-Policy = "default-src 'self'; style-src 'self' https://*.cloudfront.net; script-src 'self' https://*.cloudfront.net https://polyfill.io; font-src 'self' https://*.cloudfront.net;" # IE fallback
-    # X-WebKit-CSP = "default-src 'self'; style-src 'self' https://*.cloudfront.net; script-src 'self' https://*.cloudfront.net https://polyfill.io; font-src 'self' https://*.cloudfront.net;" # Webkit fallback
-    X-Content-Type-Options = "nosniff"
-    X-DNS-Prefetch-Control = "off"
-    X-Download-Options = "noopen"
-    X-Frame-Options = "DENY"
-    X-Robots-Tag = "noindex, nofollow"
-    X-Xss-Protection = "1; mode=block"
+    # Content-Security-Policy = '''
+    #   default-src 'self' https://*.cloudfront.net;
+    #   script-src 'self' https://*.cloudfront.net https://polyfill.io;
+    # '''
+    Feature-Policy = '''
+      geolocation 'none';
+      midi 'none';
+      notifications 'none';
+      push 'none';
+      sync-xhr 'self';
+      microphone 'none';
+      camera 'none';
+      magnetometer 'none';
+      gyroscope 'none';
+      speaker 'none';
+      vibrate 'none';
+      fullscreen 'none';
+      payment 'none';
+    '''
+    Referrer-Policy = 'strict-origin-when-cross-origin'
+    Server = ''
+    Strict-Transport-Security = '''
+      max-age=63072000;
+      includeSubDomains;
+      preload
+    ''' # 2 years
+    X-Content-Type-Options = 'nosniff'
+    X-DNS-Prefetch-Control = 'off'
+    X-Download-Options = 'noopen'
+    X-Frame-Options = 'DENY'
+    X-Robots-Tag = 'noindex, nofollow'
+    X-Xss-Protection = '1; mode=block'
 
 [[headers]]
-  for = "/404/*"
+  for = '/404/*'
 
   [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
+    X-Robots-Tag = 'noindex, nofollow'
