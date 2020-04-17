@@ -1,5 +1,5 @@
 # ---------------
-# Contexts
+# Build context
 # ---------------
 
 [build]
@@ -38,6 +38,11 @@
   from = "/courses/coldwell-banker"
   to = "/courses/coldwell-banker/story.html"
 
+# Courses
+[[redirects]]
+  from = "/courses/realogy"
+  to = "/courses/realogy/story.html"
+
 # ---------------
 # Headers
 # ---------------
@@ -47,25 +52,35 @@
 
   [headers.values]
     # Content-Security-Policy = "default-src 'self'; style-src 'self' https://*.cloudfront.net; script-src 'self' https://*.cloudfront.net https://polyfill.io; font-src 'self' https://*.cloudfront.net;"
-    # Feature-Policy = "geolocation 'none'; midi 'none'; notifications 'none'; push 'none'; sync-xhr 'self'; microphone 'none'; camera 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'none'; vibrate 'none'; fullscreen 'none'; payment 'none'"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Server = ""
-    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload" # 2 years
-    X-Content-Type-Options = "nosniff"
-    X-DNS-Prefetch-Control = "off"
-    X-Download-Options = "noopen"
-    X-Frame-Options = "DENY"
-    X-Robots-Tag = "noindex, nofollow"
-    X-Xss-Protection = "1; mode=block"
+    Feature-Policy = '''
+      geolocation 'none';
+      midi 'none';
+      notifications 'none';
+      push 'none';
+      sync-xhr 'self';
+      microphone 'none';
+      camera 'none';
+      magnetometer 'none';
+      gyroscope 'none';
+      speaker 'none';
+      vibrate 'none';
+      fullscreen 'none';
+      payment 'none';'''
+    Referrer-Policy = 'strict-origin-when-cross-origin'
+    Server = ''
+    Strict-Transport-Security = '''
+      max-age=63072000;
+      includeSubDomains;
+      preload''' # 2 years
+    X-Content-Type-Options = 'nosniff'
+    X-DNS-Prefetch-Control = 'off'
+    X-Download-Options = 'noopen'
+    X-Frame-Options = 'DENY'
+    X-Robots-Tag = 'noindex, nofollow'
+    X-Xss-Protection = '1; mode=block'
 
 [[headers]]
-  for = "/404/*"
+  for = '/404/*'
 
   [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-
-[[headers]]
-  for = "/courses/*"
-  
-  [headers.values]
-    Basic-Auth = 'realogylearning:1ea60kFdwH4bX0bgAcyeSz3k'
+    X-Robots-Tag = 'noindex, nofollow'
