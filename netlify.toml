@@ -17,6 +17,16 @@
   status = 200
 
 [[redirects]]
+  from = "/courses/coldwell-banker/favicon.ico"
+  to = "/img/favicon/coldwell-banker/favicon.ico"
+  status = 200
+
+[[redirects]]
+  from = "/courses/realogy/favicon.ico"
+  to = "/img/favicon/realogy/favicon.ico"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/404?search=:splat"
   status = 404
