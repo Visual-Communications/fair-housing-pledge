@@ -61,10 +61,10 @@
   for = "/*"
 
   [headers.values]
-    Content-Security-Policy = '''
-      default-src 'self' https://*.cloudfront.net;
-      script-src 'self' https://*.cloudfront.net https://polyfill.io;
-    '''
+    # Content-Security-Policy = '''
+    #   default-src 'self' https://*.cloudfront.net;
+    #   script-src 'self' https://*.cloudfront.net https://polyfill.io;
+    # '''
     Feature-Policy = '''
       geolocation 'none';
       midi 'none';
