@@ -1,33 +1,46 @@
 // IIFE
 (function() {
 
-function addFormListeners() {
+function init() {
+  addFormListeners()
+}
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function addFormListeners() {
   // If there are no forms, we're done
-  if (document.forms.length === 0) return false
+  if (document.getElementsByTagName('form').length === 0) return false
 
   // Get document forms and store in an array
-  const forms = Array.prototype.slice.call(document.forms)
+  const forms = Array.prototype.slice.call(document.getElementsByTagName('form'))
 
   // Add an event listener to every form
   forms.map(form => {
 
-    form.createEventListener('submit', function (e) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault()
 
-      console.log(e)
+      // Send a Google Analytics event
+      const analyticsEvent = {
+        hitType: 'event',
+        eventCategory: 'Forms',
+        eventAction: 'Submit',
+        eventLabel: capitalizeFirstLetter(e.target.name)
+      }
 
-      // ga('send', {
-      //   hitType: 'event',
-      //   eventCategory: 'Forms',
-      //   eventAction: 'Submit',
-      //   eventLabel: 'Pledge',
-      //   eventValue: [eventValue]
-      // })
+      ga('send', analyticsEvent)
+
+      // Submit the form
+      e.target.submit()
 
     })
 
   })
 
 }
+
+init()
 
 })()
