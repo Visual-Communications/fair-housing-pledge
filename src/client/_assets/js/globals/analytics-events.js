@@ -24,13 +24,12 @@ function addFormListeners() {
 
       // Send a Google Analytics event
       const analyticsEvent = {
-        hitType: 'event',
         eventCategory: 'Forms',
         eventAction: 'Submit',
         eventLabel: capitalizeFirstLetter(e.target.name)
       }
 
-      ga('send', analyticsEvent)
+      gtag('event', 'sign_up', analyticsEvent);
 
       // Submit the form
       e.target.submit()
