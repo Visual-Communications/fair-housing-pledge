@@ -87,12 +87,11 @@
           
           // Send a Google Analytics event
           const analyticsEvent = {
-            hitType: 'event',
-            eventCategory: 'Coldwell Banker Course',
+            eventCategory: 'Century 21 Course',
             eventAction: data.batch[0].event,
             eventLabel: data.batch[0].userId
           }
-          ga('send', analyticsEvent);
+          gtag('event', 'course_view', analyticsEvent);
         }
       };
 
