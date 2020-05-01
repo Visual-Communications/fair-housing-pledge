@@ -3,39 +3,66 @@
 
 function init() {
   addFormListeners()
+  addClickListeners()
 }
 
-function capitalizeFirstLetter(string) {
+function capitalizeFirstLetter (string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function addFormListeners() {
-  // If there are no forms, we're done
-  if (document.getElementsByTagName('form').length === 0) return false
+function addFormListeners () {
+  const forms = document.querySelectorAll('form')
+  if (!forms || forms.length === 0) return false
 
-  // Get document forms and store in an array
-  const forms = Array.prototype.slice.call(document.getElementsByTagName('form'))
+  forms.forEach(form => form.addEventListener('submit', handleFormSubmit))
+  return true
+}
 
-  // Add an event listener to every form
-  forms.map(form => {
+function handleFormSubmit (event) {
+  event.preventDefault()
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault()
+  // Send a Google Analytics event
+  gtag('event', 'sign_up', {
+    method: capitalizeFirstLetter(event.target.name)
+  });
 
-      // Send a Google Analytics event
-      const analyticsEvent = {
-        method: capitalizeFirstLetter(e.target.name)
-      }
+  // Submit the form
+  event.target.submit()
+  return true
+}
 
-      gtag('event', 'sign_up', analyticsEvent);
+function addClickListeners () {
+  window.addEventListener('click', handleClick, false)
+  return true
+}
 
-      // Submit the form
-      e.target.submit()
+function handleClick (event) {
+  handleCourseFinish (event)
+  return true
+}
 
-    })
+function handleCourseFinish (event) {
+  // Check if the course is finished
+  const done = document.querySelector('[data-acc-text="100%"]')
+  if (!done) return false
+  const unlocked = window.getComputedStyle(done).getPropertyValue('display') === 'block'
+  if (!unlocked) return false
 
-  })
+  // Check if the Pledge button was clicked
+  const pledgeButton = event.target.parentElement.parentElement.parentElement.parentElement.getAttribute('data-acc-text') === 'Rectangular Hotspot 1'
+  if (!pledgeButton) return false
 
+  // Get the brand
+  let brand = document.querySelector('title').textContent.replace('The Promise to Deliver Fair Housing', '').trim()
+  if (brand === '') brand = 'Coldwell Banker'
+
+  // Send a Google Analytics event
+  gtag('event', 'course_view', {
+    event_category: 'Course',
+    event_label: 'Finish',
+    value: brand
+  });
+  return true
 }
 
 init()
