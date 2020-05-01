@@ -87,9 +87,9 @@
 
           // Send a Google Analytics event
           const analyticsEvent = {
-            eventCategory: 'Coldwell Banker Course',
-            eventAction: data.batch[0].event,
-            eventLabel: data.batch[0].userId
+            event_category: 'Coldwell Banker Course',
+            event_label: data.batch[0].event,
+            value: data.batch[0].userId
           }
 
           gtag('event', 'course_view', analyticsEvent);

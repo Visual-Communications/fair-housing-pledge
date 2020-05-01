@@ -24,9 +24,7 @@ function addFormListeners() {
 
       // Send a Google Analytics event
       const analyticsEvent = {
-        eventCategory: 'Forms',
-        eventAction: 'Submit',
-        eventLabel: capitalizeFirstLetter(e.target.name)
+        method: capitalizeFirstLetter(e.target.name)
       }
 
       gtag('event', 'sign_up', analyticsEvent);
