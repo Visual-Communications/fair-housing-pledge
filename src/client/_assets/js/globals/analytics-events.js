@@ -58,9 +58,8 @@ function handleCourseFinish (event) {
 
   // Define the event
   const eventData = {
-    event_category: 'Course',
-    event_label: 'Finish',
-    value: brand
+    event_category: brand + ' Course',
+    event_label: 'Finish'
   }
 
   // Send a Google Analytics event
