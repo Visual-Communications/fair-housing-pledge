@@ -37,7 +37,7 @@ function addClickListeners () {
 }
 
 function handleClick (event) {
-  handleCourseFinish (event)
+  handleCourseFinish(event)
   return true
 }
 
@@ -56,12 +56,15 @@ function handleCourseFinish (event) {
   let brand = document.querySelector('title').textContent.replace('The Promise to Deliver Fair Housing', '').trim()
   if (brand === '') brand = 'Coldwell Banker'
 
-  // Send a Google Analytics event
-  gtag('event', 'course_view', {
+  // Define the event
+  const eventData = {
     event_category: 'Course',
     event_label: 'Finish',
     value: brand
-  });
+  }
+
+  // Send a Google Analytics event
+  gtag('event', 'course_view', eventData);
   return true
 }
 
