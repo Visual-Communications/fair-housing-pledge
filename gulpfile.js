@@ -305,7 +305,7 @@ function validate () {
 }
 
 function watch (cb) {
-  gulp.watch(paths.html.src, gulp.series(watchHtml, validate))
+  gulp.watch(paths.html.src, gulp.series(watchHtml/*, validate*/)) // TODO: Uncomment validate
   gulp.watch([paths.css.all], css)
   gulp.watch(paths.js.src, js)
   gulp.watch([
@@ -347,7 +347,7 @@ exports.develop = gulp.series(
 exports.serve = gulp.series(
   gulp.parallel(clean, lint),
   gulp.parallel(html, css, js, assets),
-  validate,
+  // validate, // TODO: Uncomment validate
   watch,
   serve
 )

@@ -1,5 +1,0 @@
-{%- assign file = 'bundle' %}
-{%- if env.node_env == 'production' %}
-{%- assign file = 'bundle.min' %}
-{%- endif %}
-    <script src="/js/{{ file }}.js" async></script>

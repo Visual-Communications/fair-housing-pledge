@@ -1,21 +1,7 @@
 ---
-layout: global
-resources:
-  title: Additional Resources
-  links:
-    - href: https://www.nar.realtor/fair-housing/fair-housing-month-at-home
-      title: NAR Fair Housing at Home
+layout: base
 ---
-  {% include components/form %}
-  {% if resources.links %}
-  <section class="pad-top-2 pad-bottom pad-x text-align-center">
-    <header>
-      <h2>{{ resources.title }}</h2>
-    </header>
-    <ul>
-      {% for link in resources.links %}
-      <li><a href="{{ link.href }}">{{ link.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </section>
-  {% endif %}
+  <div class="site-main container">
+    {% include components/form %}
+    {% include components/resources %}
+  </div>

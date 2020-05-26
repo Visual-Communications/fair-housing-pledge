@@ -24,7 +24,7 @@ function handleFormSubmit (event) {
   // Send a Google Analytics event
   gtag('event', 'sign_up', {
     method: capitalizeFirstLetter(event.target.name)
-  });
+  })
 
   // Submit the form
   event.target.submit()
@@ -63,7 +63,7 @@ function handleCourseFinish (event) {
   }
 
   // Send a Google Analytics event
-  gtag('event', 'course_view', eventData);
+  gtag('event', 'course_view', eventData)
   return true
 }
 
