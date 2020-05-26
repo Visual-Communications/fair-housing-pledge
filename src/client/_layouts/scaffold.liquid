@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="{{ site.lang }}">
 <head>
   {% include meta/utf %}
   {% include meta/viewport %}
   {% include meta/ie %}
   {% include meta/page %}
-  {% include meta/robots %}
-  {% include globals/styles %}
+  {% include meta/pwa %}
+  {% include meta/colors %}
+  {% include meta/icons %}
+  {% include meta/styles %}
   {% include meta/analytics %}
 </head>
 <body class="site {% if contentType %}{{ contentType }} {{ contentType }}-{{ page.fileSlug }}{% endif %}">
-  {% include components/masthead %}
-  <main id="content" class="site-main container">
-    {{ content }}
-  </main><!-- .site-main -->
-  {% include components/colophon %}
-  {% include globals/scripts %}
+  {{ content }}
+  {% include meta/scripts %}
 </body>
 </html>

@@ -1,7 +1,3 @@
-# ---------------
-# Build context
-# ---------------
-
 [build]
   base = "/"
   publish = "build/client/"
@@ -11,47 +7,85 @@
 # Redirects
 # ---------------
 
+# TODO: Generate project favicon files
 [[redirects]]
   from = "/favicon.ico"
   to = "/img/favicon/favicon.ico"
   status = 200
 
-[[redirects]]
-  from = "/courses/coldwell-banker/favicon.ico"
-  to = "/img/favicon/coldwell-banker/favicon.ico"
-  status = 200
+# TODO: Rewrite to a Heroku-hosted API service, if we add one
+# [[redirects]]
+#   from = "/api/*"
+#   to = "https://fair-housing-pledge.herokuapp.com/api/:splat"
+#   status = 200
+#   force = true
+#   headers = {X-From = "Netlify"}
+
+# TODO: Rewrite to a Heroku-hosted analytics service, if we add one
+# [[redirects]]
+#   from = "/analytics/*"
+#   to = "https://fair-housing-pledge-ackee.herokuapp.com/:splat"
+#   status = 200
+#   force = true
+#   headers = {X-From = "Netlify"}
 
 [[redirects]]
-  from = "/courses/realogy/favicon.ico"
-  to = "/img/favicon/realogy/favicon.ico"
+  from = "/github/*"
+  to = "https://github.com/Visual-Communications/fair-housing-pledge"
   status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "https://fair-housing-pledge.netlify.com/*"
+  to = "https://fairhousingpledge.com/:splat"
+  force = true
 
 [[redirects]]
   from = "/*"
   to = "/404?search=:splat"
   status = 404
 
-[[redirects]]
-  from = "http://fair-housing-pledge.netlify.com/*"
-  to = "http://fairhousingpledge.com/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://fair-housing-pledge.netlify.com/*"
-  to = "https://fairhousingpledge.com/:splat"
-  status = 301
-  force = true
-
 # Courses
+[[redirects]]
+  from = "/courses/*/favicon.ico"
+  to = "/img/favicon/:splat/favicon.ico"
+  status = 200
+
+[[redirects]]
+  from = "/courses/bhgre"
+  to = "/courses/bhgre/story.html"
+  status = 200
+
+[[redirects]]
+  from = "/courses/century-21"
+  to = "/courses/century-21/story.html"
+  status = 200
+
 [[redirects]]
   from = "/courses/coldwell-banker"
   to = "/courses/coldwell-banker/story.html"
+  status = 200
 
-# Courses
+[[redirects]]
+  from = "/courses/corcoran"
+  to = "/courses/corcoran/story.html"
+  status = 200
+
+[[redirects]]
+  from = "/courses/era"
+  to = "/courses/era/story.html"
+  status = 200
+  
 [[redirects]]
   from = "/courses/realogy"
   to = "/courses/realogy/story.html"
+  status = 200
+  
+[[redirects]]
+  from = "/courses/sothebys"
+  to = "/courses/sothebys/story.html"
+  status = 200
 
 # ---------------
 # Headers
@@ -61,10 +95,14 @@
   for = "/*"
 
   [headers.values]
+    Access-Control-Allow-Origin = 'https://fairhousingpledge.com'
     # Content-Security-Policy = '''
-    #   default-src 'self' https://*.cloudfront.net;
+    #   default-src 'self';
     #   script-src 'self' https://*.cloudfront.net https://polyfill.io;
-    # '''
+    #   style-src 'self' https://*.cloudfront.net;
+    #   img-src 'self' https://*.cloudfront.net;
+    #   font-src 'self' https://*.cloudfront.net;
+    #   upgrade-insecure-requests;'''
     Feature-Policy = '''
       geolocation 'none';
       midi 'none';
@@ -78,20 +116,19 @@
       speaker 'none';
       vibrate 'none';
       fullscreen 'none';
-      payment 'none';
-    '''
+      payment 'none';'''
     Referrer-Policy = 'strict-origin-when-cross-origin'
     Server = ''
     Strict-Transport-Security = '''
       max-age=63072000;
       includeSubDomains;
-      preload
-    ''' # 2 years
+      preload;''' # 2 years
+    Vary = 'Origin'
     X-Content-Type-Options = 'nosniff'
     X-DNS-Prefetch-Control = 'off'
     X-Download-Options = 'noopen'
     X-Frame-Options = 'DENY'
-    X-Robots-Tag = 'noindex, nofollow'
+    X-Robots-Tag = 'index, follow'
     X-Xss-Protection = '1; mode=block'
 
 [[headers]]
@@ -99,3 +136,24 @@
 
   [headers.values]
     X-Robots-Tag = 'noindex, nofollow'
+
+# TODO: Prevent search engines indexing the API service, if we add one
+# [[headers]]
+#   for = "/api/*"
+
+#   [headers.values]
+#     X-Robots-Tag = "noindex, nofollow"
+
+# TODO: Prevent search engines indexing the analytics service, if we add one
+# [[headers]]
+#   for = "/analytics/*"
+
+#   [headers.values]
+#     X-Robots-Tag = "noindex, nofollow"
+
+# TODO: Prevent search engines indexing the offline page, if we add one
+# [[headers]]
+#   for = "/offline/*"
+
+#   [headers.values]
+#     X-Robots-Tag = "noindex, nofollow"

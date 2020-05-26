@@ -1,7 +1,4 @@
-{% comment %}
-<!-- TODO: only load this code in production -->
-<!-- TODO: which can be done using ELEVENTY_ENV -->
-{% endcomment %}
+{% if env.eleventy_env == 'production' %}
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164050142-1"></script>
 <script>
@@ -11,3 +8,4 @@
 
   gtag('config', 'UA-164050142-1');
 </script>
+{% endif %}
