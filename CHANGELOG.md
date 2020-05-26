@@ -29,7 +29,8 @@ and this project adheres to [Semantic Versioning](semver).
 - Update environment variables
 - Update Eleventy configuration
 - Update GitHub Issue and Pull Request templates
-- Update server API - fresh NPSK clone, content type tweaks
+- Update server API - fresh NPSK clone, content type tweaks - TODO: Fix Pledges
+- Update client site files
 
 ## 1.0.0
 
