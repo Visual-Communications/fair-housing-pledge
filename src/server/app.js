@@ -3,13 +3,16 @@
 /**
  * Import dependencies
  */
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const config = require('config')
+const compression = require('compression')
 const helmet = require('helmet')
 const { Liquid } = require('liquidjs')
 const engine = new Liquid()
 const path = require('path')
+const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const createError = require('http-errors')
 const error = require('./middleware/error')
@@ -19,18 +22,11 @@ const favicon = require('serve-favicon')
 const httpLogger = require('morgan')
 const { log } = require('./modules/logger')
 const debug = {
-  startup: require('debug')('fair-housing-pledge:startup'),
-  database: require('debug')('fair-housing-pledge:database')
+  startup: require('debug')('api:startup'),
+  database: require('debug')('api:database')
 }
-require('dotenv').config()
 
-/**
- * Import routes
- */
-const index = require('./routes/index')
-const auth = require('./routes/auth')
-const agents = require('./routes/agents')
-const users = require('./routes/users')
+const isProduction = app.get('env') === 'production'
 
 /**
  * Error if missing jwtPrivateKey
@@ -42,33 +38,88 @@ if(!config.get('jwtPrivateKey')) {
 /**
  * Setup HTTP headers
  */
-app.disable('x-powered-by')
-app.use(helmet()) // Set HTTP headers
+const origin = {
+  origin: isProduction ? config.get('api.url') : '*',
+}
+
+const helmetHeaders = {
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: [
+        "'self'"
+        ],
+      upgradeInsecureRequests: true
+    }
+  },
+  featurePolicy: {
+    features: {
+      geolocation: ["'none'"],
+      midi: ["'none'"],
+      notifications: ["'none'"],
+      push: ["'none'"],
+      syncXhr: ["'self'"],
+      microphone: ["'none'"],
+      camera: ["'none'"],
+      magnetometer: ["'none'"],
+      gyroscope: ["'none'"],
+      speaker: ["'none'"],
+      vibrate: ["'none'"],
+      fullscreen: ["'none'"],
+      payment: ["'none'"]
+    }
+  },
+  frameguard: {
+    action: 'deny'
+  },
+  hsts: {
+    maxAge: isProduction ? 31536000 : 0, // 1 year
+    includeSubDomains: isProduction ? true : null,
+    preload: isProduction ? true : null
+  },
+  referrerPolicy: {
+    policy: 'strict-origin-when-cross-origin'
+  }
+}
+
+app.use(cors(origin)) // Set Access-Control-Allow-Origin header
+app.use(helmet(helmetHeaders)) // Set HTTP headers
+
+/**
+ * Setup gzip compression
+ */
+app.use(compression()) // compress all responses
 
 /**
  * Serve favicon
  */
-app.use(favicon(path.join(__dirname, '../../build/client/img/favicon', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, './public/img/favicon', 'favicon.ico')))
 
 /**
  * Setup logging
  */
-if (app.get('env') !== 'production') {
+if (!isProduction) {
   app.use(httpLogger('dev')) // Log requests to the console
 }
 
 /**
  * Connect to Database
  */
-const dbString = `mongodb://${config.db.host}/${config.db.database}`
+const protocol  = config.get('db.protocol')
+const username  = config.get('db.username')
+const password  = config.get('db.password')
+const host      = config.get('db.host')
+const port      = config.get('db.port')
+const database  = config.get('db.database')
+
+const dbString = protocol + '://' + username + ':' + password + '@' + host + port + '/' + database
 
 mongoose.connect(dbString, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
   .then(() => { debug.database('Connected to MongoDB...') })
   .catch((err) => { debug.database('Could not connect to MongoDB...', err) })
 
 mongoose.connection.on('error', err => {
-  log.error('Database error...', err)
-  debug.database('Database error...', err)
+  log.error('Database error... ', err)
+  debug.database('Database error... ', err)
 })
 
 /**
@@ -85,15 +136,29 @@ app.set('view engine', 'liquid')
 app.use(express.json()) // Return JSON
 app.use(express.urlencoded({ extended: false })) // Allow query strings
 app.use(cookieParser()) // Parse cookies
-app.use(express.static(path.join(__dirname, '../../build/client'))) // Serve static content
+// app.use(express.static(path.join(__dirname, '../../build/client'))) // Uncomment this to serve static content
+
+/**
+ * Import routes
+ */
+const index = require('./routes/index')
+const api = require('./routes/api')
+const articles = require('./routes/articles')
+const projects = require('./routes/projects')
+const testimonials = require('./routes/testimonials')
+const users = require('./routes/users')
+const auth = require('./routes/auth')
 
 /**
  * Setup routes
  */
-app.use('/api', index)
-app.use('/api/auth', auth)
-app.use('/api/agents', agents)
+app.use('/', index)
+app.use('/api', api)
+app.use('/api/articles', articles)
+app.use('/api/projects', projects)
+app.use('/api/testimonials', testimonials)
 app.use('/api/users', users)
+app.use('/api/auth', auth)
 
 /**
  * Catch 404 and forward to error handler
@@ -101,24 +166,6 @@ app.use('/api/users', users)
 app.use(function(req, res, next) {
   next(createError(404))
 })
-
-/**
- * Error middleware
- * TODO: Remove if unnecessary
- */
 app.use(error)
-
-/**
- * Error handler
- */
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
-
-  // render the error page
-  res.status(err.status || 500)
-  res.render('error')
-})
 
 module.exports = app
