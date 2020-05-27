@@ -39,7 +39,7 @@ if(!config.get('jwtPrivateKey')) {
  * Setup HTTP headers
  */
 const origin = {
-  origin: isProduction ? config.get('api.url') : '*',
+  origin: isProduction ? config.get('site.url') : '*',
 }
 
 const helmetHeaders = {
