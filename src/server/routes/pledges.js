@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const auth = require('../middleware/auth')
 const admin = require('../middleware/admin')
-const handlers = require('../handlers/articles')
+const handlers = require('../handlers/pledges')
 const rateLimit = require('express-rate-limit')
 
 const limiter = rateLimit({
@@ -14,11 +14,11 @@ const strictLimiter = rateLimit({
   max: 10 // 10 requests
 })
 
-router.get('/', limiter, handlers.getArticles)
-router.post('/', [auth, admin, strictLimiter], handlers.createArticle)
+router.get('/', limiter, handlers.getPledges)
+router.post('/', [auth, admin, strictLimiter], handlers.createPledge)
 
-router.get('/:id', limiter, handlers.getArticle)
-router.put('/:id', [auth, admin, strictLimiter], handlers.updateArticle)
-router.delete('/:id', [auth, admin, strictLimiter], handlers.deleteArticle)
+router.get('/:id', limiter, handlers.getPledge)
+router.put('/:id', [auth, admin, strictLimiter], handlers.updatePledge)
+router.delete('/:id', [auth, admin, strictLimiter], handlers.deletePledge)
 
 module.exports = router

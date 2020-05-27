@@ -45,8 +45,8 @@ npm start
 
 If you'd like to contribute, please read the [Code of Conduct][code-of-conduct] and [Contributing instructions][contributing], then fork the repository and use a feature branch. Pull requests are welcome.
 
-[netlify-deploy-badge]: https://api.netlify.com/api/v1/badges/da8e7de8-e34c-420a-b428-23ceea2692b8/deploy-status
-[netlify-deploys]: https://app.netlify.com/sites/fair-housing-pledge/deploys
+[netlify-deploy-badge]: https://api.netlify.com/api/v1/badges/9b22265d-afa2-4e77-8e93-359f0d025d93/deploy-status
+[netlify-deploys]: https://app.netlify.com/sites/fairhousingpledge/deploys
 [standard-badge]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
 [standard]: https://standardjs.com
 [fhp]: https://fairhousingpledge.com/

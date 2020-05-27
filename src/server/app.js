@@ -104,14 +104,7 @@ if (!isProduction) {
 /**
  * Connect to Database
  */
-const protocol  = config.get('db.protocol')
-const username  = config.get('db.username')
-const password  = config.get('db.password')
-const host      = config.get('db.host')
-const port      = config.get('db.port')
-const database  = config.get('db.database')
-
-const dbString = protocol + '://' + username + ':' + password + '@' + host + port + '/' + database
+const dbString  = config.get('db.string')
 
 mongoose.connect(dbString, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
   .then(() => { debug.database('Connected to MongoDB...') })
@@ -143,9 +136,7 @@ app.use(cookieParser()) // Parse cookies
  */
 const index = require('./routes/index')
 const api = require('./routes/api')
-const articles = require('./routes/articles')
-const projects = require('./routes/projects')
-const testimonials = require('./routes/testimonials')
+const pledges = require('./routes/pledges')
 const users = require('./routes/users')
 const auth = require('./routes/auth')
 
@@ -154,9 +145,7 @@ const auth = require('./routes/auth')
  */
 app.use('/', index)
 app.use('/api', api)
-app.use('/api/articles', articles)
-app.use('/api/projects', projects)
-app.use('/api/testimonials', testimonials)
+app.use('/api/pledges', pledges)
 app.use('/api/users', users)
 app.use('/api/auth', auth)
 

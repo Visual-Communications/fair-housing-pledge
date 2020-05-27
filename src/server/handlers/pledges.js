@@ -32,7 +32,10 @@ module.exports = {
     if (error) return res.status(400).send(error.details[0].message)
 
     // Create pledge
-    let pledge = new Pledge(_.pick(req.body, ['title', 'slug', 'content', 'author', 'status', 'tags', 'date']))
+    let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
+
+    // TODO: Get and add ip, referrer, user_agent
+    // https://codeburst.io/how-to-get-users-ip-details-in-expressjs-ff5252728604
 
     // Add pledge to the database
     pledge = await pledge.save()
@@ -71,13 +74,13 @@ module.exports = {
 
     // Update pledge in database with request body keys if they exist
     const requestBody = {}
-    if (req.body.title) requestBody.title = req.body.title
-    if (req.body.slug) requestBody.slug = req.body.slug
-    if (req.body.content) requestBody.content = req.body.content
-    if (req.body.author) requestBody.author = req.body.author
-    if (req.body.status) requestBody.status = req.body.status
-    if (req.body.tags) requestBody.tags = req.body.tags
-    if (req.body.date) requestBody.date = req.body.date
+    if (req.body.firstName) requestBody.firstName = req.body.firstName
+    if (req.body.lastName) requestBody.lastName = req.body.lastName
+    if (req.body.email) requestBody.email = req.body.email
+    if (req.body.state) requestBody.state = req.body.state
+    if (req.body.brand) requestBody.brand = req.body.brand
+    if (req.body.company) requestBody.company = req.body.company
+    if (req.body.event) requestBody.event = req.body.event
 
     // Update the pledge in the database, and get the updated pledge
     const pledge = await Pledge.findByIdAndUpdate(req.params.id, requestBody, { new: true })
