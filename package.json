@@ -15,7 +15,7 @@
     "url": "https://github.com/Visual-Communications/fair-housing-pledge/issues"
   },
   "scripts": {
-    "start": "npm run build",
+    "start": "npm run serve",
     "develop": "dotenv gulp develop",
     "serve": "npm run serve:server",
     "serve:client": "dotenv gulp serve",
@@ -25,7 +25,7 @@
     "watch:server": "nodemon -r dotenv/config ./src/server/bin/www",
     "build": "dotenv gulp build",
     "production": "dotenv gulp production",
-    "clear:cache": "heroku repo:purge_cache -a fair-housing-pledge && git commit --allow-empty -m \"Purge cache\" && git push heroku master"
+    "clear:cache": "heroku repo:purge_cache -a fair-housing-pledge-production && git commit --allow-empty -m \"Purge cache\" && git push heroku master"
   },
   "browserslist": [
     "defaults"
