@@ -7,7 +7,6 @@ const uniqueValidator = require('mongoose-unique-validator')
  * Define Pledge model
  */
 const Pledge = mongoose.model('Pledge', new mongoose.Schema({
-  // TODO: Update pledge model
   firstName: { type: String, required: true, trim: true, maxLength: 255 },
   lastName: { type: String, required: true, trim: true, maxLength: 255 },
   email: { type: String, required: true, trim: true, minLength: 5, maxLength: 255, unique: true, uniqueCaseInsensitive: true },
