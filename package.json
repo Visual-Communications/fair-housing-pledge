@@ -16,16 +16,7 @@
   },
   "scripts": {
     "start": "npm run serve",
-    "develop": "dotenv gulp develop",
-    "serve": "npm run serve:server",
-    "serve:client": "dotenv gulp serve",
-    "serve:server": "node -r dotenv/config ./src/server/bin/www",
-    "watch": "npm run watch:server & npm run watch:client",
-    "watch:client": "dotenv gulp watch",
-    "watch:server": "nodemon -r dotenv/config ./src/server/bin/www",
-    "build:client": "dotenv gulp build",
-    "production": "dotenv gulp production",
-    "clear:cache": "heroku repo:purge_cache -a fair-housing-pledge-production && git commit --allow-empty -m \"Purge cache\" && git push heroku master"
+    "serve": "echo 'Successfully ran `npm run serve`."
   },
   "browserslist": [
     "defaults"
