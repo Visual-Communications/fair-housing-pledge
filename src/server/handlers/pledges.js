@@ -26,7 +26,7 @@ module.exports = {
   /**
    * Create a pledge
    */
-  createPledge: async (req, res) => {
+  createPledgeLegacy: async (req, res) => {
     // Validate pledge
     const { error } = validate.create(req.body)
     if (error) return res.status(400).send(error.details[0].message)
@@ -39,11 +39,56 @@ module.exports = {
 
     // Add pledge to the database
     pledge = await pledge.save()
-
     log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
 
     // Return pledge to the client
     res.send(pledge)
+  },
+
+  /**
+   * Create one or multiple pledges
+   */
+  createPledge: async (req, res) => {
+    if (
+      // If it's an array of pledge objects
+      req.body.pledges &&
+      Object.prototype.toString.call(req.body.pledges) === '[object Array]' &&
+      req.body.pledges.length > 0
+    ) {
+
+      // Create pledges array
+      let pledges = []
+
+      req.body.pledges.forEach(async function (p) {
+        // Validate pledge
+        const { error } = validate.create(p)
+        if (error) return res.status(400).send(error.details[0].message)
+
+        // Add pledge to array
+        this.push(_.pick(p, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
+      }, pledges)
+
+      // Add pledges to the database
+      pledges = await Pledge.insertMany(pledges)
+      log.info(`${pledges.length} pledges created.`, _.pick(pledges, ['_doc', 'level', 'message', 'timestamp']))
+
+      // Return pledges to the client
+      return res.send(pledges)
+    }
+
+    // Validate pledge
+    const { error } = validate.create(req.body)
+    if (error) return res.status(400).send(error.details[0].message)
+
+    // Create pledge
+    let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
+
+    // Add pledge to the database
+    pledge = await pledge.save()
+    log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
+
+    // Return pledge to the client
+    return res.send(pledge)
   },
 
   /**
