@@ -15,6 +15,15 @@ and this project adheres to [Semantic Versioning](semver).
 ### Security
 -->
 
+## 1.2.0 - 2020-06-01 - Fix server
+
+### Changed
+- Update server redirects
+- Update HTTP headers
+
+### Fixed
+- Update slugignore to fix Heroku server build
+
 ## 1.1.0 - 2020-05-26 - Update build pipeline
 
 ### Added
@@ -32,7 +41,7 @@ and this project adheres to [Semantic Versioning](semver).
 - Update server API - fresh NPSK clone, content type tweaks - TODO: Fix Pledges
 - Update client site files
 
-## 1.0.0
+## 1.0.0 - Initial release
 
 ### Added
 - Combine ES and NPSK, remove files, update
