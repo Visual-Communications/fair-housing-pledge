@@ -13,13 +13,13 @@
   to = "/img/favicon/favicon.ico"
   status = 200
 
-# TODO: Rewrite to a Heroku-hosted API service, if we add one
-# [[redirects]]
-#   from = "/api/*"
-#   to = "https://fair-housing-pledge.herokuapp.com/api/:splat"
-#   status = 200
-#   force = true
-#   headers = {X-From = "Netlify"}
+# Rewrite to a Heroku-hosted API service
+[[redirects]]
+  from = "/api/*"
+  to = "https://fair-housing-pledge-production.herokuapp.com/api/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
 
 # TODO: Rewrite to a Heroku-hosted analytics service, if we add one
 # [[redirects]]
@@ -137,12 +137,12 @@
   [headers.values]
     X-Robots-Tag = 'noindex, nofollow'
 
-# TODO: Prevent search engines indexing the API service, if we add one
-# [[headers]]
-#   for = "/api/*"
+# Prevent search engines indexing the API service
+[[headers]]
+  for = "/api/*"
 
-#   [headers.values]
-#     X-Robots-Tag = "noindex, nofollow"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
 
 # TODO: Prevent search engines indexing the analytics service, if we add one
 # [[headers]]
