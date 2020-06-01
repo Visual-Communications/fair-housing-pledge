@@ -1,1 +1,10 @@
-/src/client/
+_docs
+/src/client
+.eleventy.js
+.eleventyignore
+CHANGELOG.md
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+gulpfile.js
+netlify.toml
+README.md
