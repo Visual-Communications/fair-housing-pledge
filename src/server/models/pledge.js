@@ -11,15 +11,15 @@ const Pledge = mongoose.model('Pledge', new mongoose.Schema({
   lastName: { type: String, required: true, trim: true, maxLength: 255 },
   email: { type: String, required: true, trim: true, minLength: 5, maxLength: 255, unique: true, uniqueCaseInsensitive: true },
   state: { type: String, required: true, trim: true, maxLength: 255 },
-  brand: { type: String, required: true, trim: true, maxLength: 255 },
-  company: { type: String, required: true, trim: true, maxLength: 255 },
+  brand: { type: String, required: false, trim: true, maxLength: 255 },
+  company: { type: String, required: false, trim: true, maxLength: 255 },
   event: { type: String, required: false, trim: true, maxLength: 255 },
   agreeToTerms: { type: String, required: true, trim: true, maxLength: 5 },
   ip: { type: String, trim: true, maxLength: 255 },
   user_agent: { type: String, trim: true, maxLength: 255 },
   referrer: { type: String, trim: true, maxLength: 255 },
   created_at: { type: Date, default: Date.now }
-}))
+}).plugin(uniqueValidator))
 
 const validate = {
   /**
@@ -31,9 +31,9 @@ const validate = {
       lastName: Joi.string().required().trim().max(255),
       email: Joi.string().required().trim().min(5).max(255).email(),
       state: Joi.string().required().trim().max(255),
-      brand: Joi.string().required().trim().max(255),
-      company: Joi.string().required().trim().max(255),
-      event: Joi.string().trim().max(255),
+      brand: Joi.string().allow('').default('N/A').trim().max(255),
+      company: Joi.string().allow('').default('N/A').trim().max(255),
+      event: Joi.string().allow('').default('N/A').trim().max(255),
       agreeToTerms: Joi.string().required().trim().max(5),
       ip: Joi.string().trim().max(255),
       user_agent: Joi.string().trim().max(255),
