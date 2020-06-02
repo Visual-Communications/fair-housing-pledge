@@ -55,6 +55,9 @@ function handlePledgeForm (event) {
 
   // TODO: Client-side validation
 
+  // TODO: Use a more backwards-compatible AJAX method than fetch,
+  // probably a library like axios
+
   fetch('https://fairhousingpledge.com/api/pledges', {
     method: 'POST',
     body: JSON.stringify(serializeObject(event.target)),
