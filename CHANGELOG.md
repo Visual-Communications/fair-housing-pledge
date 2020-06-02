@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Changed
 - Update server redirects
 - Update HTTP headers
+- Remove passwords from response
 
 ### Fixed
 - Update slugignore to fix Heroku server build
