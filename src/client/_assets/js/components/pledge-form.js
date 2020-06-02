@@ -55,7 +55,7 @@ function handlePledgeForm (event) {
 
   // TODO: Client-side validation
 
-  fetch('/api/pledges', {
+  fetch('https://fairhousingpledge.com/api/pledges', {
     method: 'POST',
     body: JSON.stringify(serializeObject(event.target)),
   }).then(function (response) {

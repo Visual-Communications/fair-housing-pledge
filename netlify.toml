@@ -98,7 +98,7 @@
     Access-Control-Allow-Origin = 'https://fairhousingpledge.com'
     # Content-Security-Policy = '''
     #   default-src 'self';
-    #   script-src 'self' https://*.cloudfront.net https://polyfill.io;
+    #   script-src 'self' https://*.cloudfront.net https://polyfill.io https://www.google-analytics.com;
     #   style-src 'self' https://*.cloudfront.net;
     #   img-src 'self' https://*.cloudfront.net;
     #   font-src 'self' https://*.cloudfront.net;

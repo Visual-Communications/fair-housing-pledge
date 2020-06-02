@@ -19,7 +19,8 @@ const Pledge = mongoose.model('Pledge', new mongoose.Schema({
   user_agent: { type: String, trim: true, maxLength: 255 },
   referrer: { type: String, trim: true, maxLength: 255 },
   created_at: { type: Date, default: Date.now },
-  'turtle-home': { type: String, required: false, trim: true, maxLength: 0 }
+  'turtle-home': { type: String, required: false, trim: true, maxLength: 0 },
+  'form-name': { type: String, required: false, trim: true, maxLength: 6 }
 }).plugin(uniqueValidator))
 
 const validate = {
@@ -40,7 +41,8 @@ const validate = {
       user_agent: Joi.string().trim().max(255),
       referrer: Joi.string().trim().max(255),
       created_at: Joi.date(),
-      'turtle-home': Joi.string().allow('').default('').trim().max(0)
+      'turtle-home': Joi.string().allow('').default('').trim().max(0),
+      'pledge-name': Joi.string().allow('').default('').trim().valid('pledge').max(6)
     })
 
     return schema.validate(pledge)

@@ -76,7 +76,7 @@ module.exports = {
       // return res.send(pledges)
 
       // Return redirect to the client
-      return res.redirect('/thank-you/')
+      return res.redirect('https://fairhousingpledge.com/thank-you/')
     }
 
     // Validate pledge
@@ -94,7 +94,7 @@ module.exports = {
     // return res.send(pledge)
 
     // Return redirect to the client
-    return res.redirect('/thank-you/')
+    return res.redirect('https://fairhousingpledge.com/thank-you/')
   },
 
   /**
