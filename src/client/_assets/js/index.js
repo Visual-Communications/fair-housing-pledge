@@ -8,3 +8,4 @@ require('./globals/analytics-events.js')
  * Components
  */
 // require('./components/form.js')
+require('./components/pledge-form.js')
