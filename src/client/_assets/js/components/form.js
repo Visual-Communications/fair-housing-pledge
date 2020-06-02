@@ -1,13 +1,13 @@
 /* IIFE */
 (function () {
 
-  function init() {
+  function init () {
     const form = document.querySelector('#pledge')
     
     if (form) form.addEventListener('submit', handleSubmit)
   }
 
-  function validateForm() {
+  function validateForm () {
 
     /* Form fields */
     const form = document.querySelector('#pledge')
