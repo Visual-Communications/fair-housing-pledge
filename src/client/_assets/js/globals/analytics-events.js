@@ -21,10 +21,12 @@ function addFormListeners () {
 function handleFormSubmit (event) {
   event.preventDefault()
 
-  // Send a Google Analytics event
-  gtag('event', 'sign_up', {
-    method: capitalizeFirstLetter(event.target.name)
-  })
+  if (window.gtag) {
+    // Send a Google Analytics event
+    gtag('event', 'sign_up', {
+      method: capitalizeFirstLetter(event.target.name)
+    })
+  }
 
   // Submit the form
   event.target.submit()
@@ -62,8 +64,10 @@ function handleCourseFinish (event) {
     event_label: 'Finish'
   }
 
-  // Send a Google Analytics event
-  gtag('event', 'course_view', eventData)
+  if (window.gtag) {
+    // Send a Google Analytics event
+    gtag('event', 'course_view', eventData)
+  }
   return true
 }
 

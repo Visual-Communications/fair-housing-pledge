@@ -73,7 +73,10 @@ module.exports = {
       log.info(`${pledges.length} pledges created.`, _.pick(pledges, ['_doc', 'level', 'message', 'timestamp']))
 
       // Return pledges to the client
-      return res.send(pledges)
+      // return res.send(pledges)
+
+      // Return redirect to the client
+      return res.redirect('/thank-you/')
     }
 
     // Validate pledge
@@ -88,7 +91,10 @@ module.exports = {
     log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
 
     // Return pledge to the client
-    return res.send(pledge)
+    // return res.send(pledge)
+
+    // Return redirect to the client
+    return res.redirect('/thank-you/')
   },
 
   /**

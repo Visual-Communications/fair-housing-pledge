@@ -53,6 +53,8 @@ function handlePledgeForm (event) {
 
   event.preventDefault()
 
+  // TODO: Client-side validation
+
   fetch('/api/pledges', {
     method: 'POST',
     body: JSON.stringify(serializeObject(event.target)),
@@ -65,6 +67,8 @@ function handlePledgeForm (event) {
     console.log(data)
   }).catch(function (error) {
     console.warn(error)
+  }).finally(function () {
+    event.target.submit()
   })
 }
 
