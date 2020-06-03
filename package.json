@@ -25,7 +25,8 @@
     "watch:server": "nodemon -r dotenv/config ./src/server/bin/www",
     "build:client": "dotenv gulp build",
     "production": "dotenv gulp production",
-    "clear:cache": "heroku repo:purge_cache -a fair-housing-pledge-production && git commit --allow-empty -m \"Purge cache\" && git push heroku master"
+    "clear:cache": "heroku repo:purge_cache -a fair-housing-pledge-production && git commit --allow-empty -m \"Purge cache\" && git push heroku master",
+    "parse": "node ./modules/parse.js"
   },
   "browserslist": [
     "defaults"
@@ -98,6 +99,7 @@
     "lighthouse": "^6.0.0",
     "merge-stream": "^2.0.0",
     "nodemon": "^2.0.4",
+    "papaparse": "^5.2.0",
     "pixrem": "^5.0.0",
     "postcss-easy-import": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
