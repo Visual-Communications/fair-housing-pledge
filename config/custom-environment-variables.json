@@ -11,6 +11,10 @@
   "api": {
     "url": "API_URL"
   },
+  "user": {
+    "email": "USER_EMAIL",
+    "password": "USER_PASSWORD"
+  },
   "jwtPrivateKey": "JWT_PRIVATE_KEY",
   "db": {
     "string": "DB_STRING"

@@ -12,6 +12,10 @@
     "url": "",
     "title": "Fair Housing Pledge"
   },
+  "user": {
+    "email": "",
+    "password": ""
+  },
   "jwtPrivateKey": "",
   "db": {
     "string": ""
