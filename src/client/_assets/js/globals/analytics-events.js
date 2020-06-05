@@ -44,36 +44,38 @@ function handleClick (event) {
 }
 
 function handleCourseFinish (event) {
-  // Check if the course is finished
+  // Check if the course is finished and the pledge button is clicked
   const done = document.querySelector('[data-acc-text="100%"]')
-  if (!done) return false
   const unlocked = window.getComputedStyle(done).getPropertyValue('display') === 'block'
-  if (!unlocked) return false
-
-  // Check if the Pledge button was clicked
   const pledgeButton = event.target.parentElement.parentElement.parentElement.parentElement.getAttribute('data-acc-text') === 'Rectangular Hotspot 1'
-  if (!pledgeButton) return false
+  if (!done || !unlocked || !pledgeButton) return false
+
+  // Prevent event propogation
+  event.preventDefault()
 
   // Get the brand
   let brand = document.querySelector('title').textContent.replace('The Promise to Deliver Fair Housing', '').trim()
   if (brand === '') brand = 'Coldwell Banker'
 
-  // Save the brand
+  // Save the brand to session storage
   sessionStorage.setItem('fhp', JSON.stringify({
     brand,
     courseCompleted: true
   }))
 
-  // Define the event
-  const eventData = {
-    event_category: brand + ' Course',
-    event_label: 'Finish'
-  }
-
   if (window.gtag) {
+    // Define the Google Analytics event
+    const eventData = {
+      event_category: brand + ' Course',
+      event_label: 'Finish'
+    }
+
     // Send a Google Analytics event
     window.gtag('event', 'course_view', eventData)
   }
+
+  // Submit the form
+  event.target.submit()
   return true
 }
 
