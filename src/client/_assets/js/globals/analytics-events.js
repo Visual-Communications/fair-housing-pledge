@@ -23,7 +23,7 @@ function handleFormSubmit (event) {
 
   if (window.gtag) {
     // Send a Google Analytics event
-    gtag('event', 'sign_up', {
+    window.gtag('event', 'sign_up', {
       method: capitalizeFirstLetter(event.target.name)
     })
   }
@@ -58,6 +58,12 @@ function handleCourseFinish (event) {
   let brand = document.querySelector('title').textContent.replace('The Promise to Deliver Fair Housing', '').trim()
   if (brand === '') brand = 'Coldwell Banker'
 
+  // Save the brand
+  sessionStorage.setItem('fhp', JSON.stringify({
+    brand,
+    courseCompleted: true
+  }))
+
   // Define the event
   const eventData = {
     event_category: brand + ' Course',
@@ -66,7 +72,7 @@ function handleCourseFinish (event) {
 
   if (window.gtag) {
     // Send a Google Analytics event
-    gtag('event', 'course_view', eventData)
+    window.gtag('event', 'course_view', eventData)
   }
   return true
 }
