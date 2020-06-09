@@ -330,7 +330,9 @@ function watchMinify (cb) {
 function serve (cb) {
   connect.server({
     root: paths.html.dest,
-    livereload: true
+    livereload: true,
+    name: 'Fair Housing Pledge',
+    port: 8082
   })
 
   return cb()
