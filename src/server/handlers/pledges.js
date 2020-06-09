@@ -64,8 +64,15 @@ module.exports = {
         const { error } = validate.create(p)
         if (error) return res.status(400).send(error.details[0].message)
 
-        // Add pledge to array
-        this.push(_.pick(p, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
+        // Don't save duplicate emails
+        const duplicate = await Pledge.findOne({
+          email: p.email
+        })
+
+        if (!duplicate) {
+          // Add pledge to array
+          this.push(_.pick(p, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
+        }
       }, pledges)
 
       // Add pledges to the database
@@ -81,17 +88,31 @@ module.exports = {
 
     // Validate pledge
     const { error } = validate.create(req.body)
-    if (error) return res.status(400).send(error.details[0].message)
+    if (error) {
+      const errorMessage = error.details[0].message
+
+      // Return error for all validation failures except duplicate email
+      const uniqueEmailString = 'Pledge validation failed: email: Error, expected `email` to be unique.'
+      if (!errorMessage.includes(uniqueEmailString)) return res.status(400).send(errorMessage)
+
+      // Allow duplicate email to redirect as though it were succesful,
+      // even though we're not saving the duplicate in the database
+      return res.redirect('https://fairhousingpledge.com/thank-you/')
+    }
 
     // Create pledge
     let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
 
-    // Add pledge to the database
-    pledge = await pledge.save()
-    log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
+    // Don't save duplicate emails
+    const duplicate = await Pledge.findOne({
+      email: pledge.email
+    })
 
-    // Return pledge to the client
-    // return res.send(pledge)
+    if (!duplicate) {
+      // Add pledge to the database
+      pledge = await pledge.save()
+      log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
+    }
 
     // Return redirect to the client
     return res.redirect('https://fairhousingpledge.com/thank-you/')
