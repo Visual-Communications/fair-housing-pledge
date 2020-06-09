@@ -79,26 +79,13 @@ module.exports = {
       pledges = await Pledge.insertMany(pledges)
       log.info(`${pledges.length} pledges created.`, _.pick(pledges, ['_doc', 'level', 'message', 'timestamp']))
 
-      // Return pledges to the client
-      // return res.send(pledges)
-
       // Return redirect to the client
       return res.redirect('https://fairhousingpledge.com/thank-you/')
     }
 
     // Validate pledge
     const { error } = validate.create(req.body)
-    if (error) {
-      const errorMessage = error.details[0].message
-
-      // Return error for all validation failures except duplicate email
-      const uniqueEmailString = 'Pledge validation failed: email: Error, expected `email` to be unique.'
-      if (!errorMessage.includes(uniqueEmailString)) return res.status(400).send(errorMessage)
-
-      // Allow duplicate email to redirect as though it were succesful,
-      // even though we're not saving the duplicate in the database
-      return res.redirect('https://fairhousingpledge.com/thank-you/')
-    }
+    if (error) return res.status(400).send(error.details[0].message)
 
     // Create pledge
     let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
