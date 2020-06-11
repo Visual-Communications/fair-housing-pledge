@@ -254,38 +254,115 @@ function loadCertificate (brand, pledge) {
     removeElement(child)
   })
 
+  // Add .certificate class
+  body.classList.add('certificate')
+
+  // Brand content
+  const brands = {
+    'BHGRE': {
+      logo: '/img/logos/logo-bhgre.svg',
+      executive: {
+        name: 'Full Name',
+        title: 'Job Title',
+        signature: '/img/signatures/name.jpg'
+      },
+      icon: '/img/icons/fhp-icon-bhgre.svg',
+      class: 'bhgre',
+      disclaimer: '© 2020 Better Homes and Gardens Real Estate LLC. All rights reserved. Better Homes and Gardens® and the Better Homes and Gardens Real Estate Logo are registered service marks owned by Meredith Corporation and licensed to Better Homes and Gardens Real Estate LLC.Better Homes and Gardens Real Estate LLC fully supports the principles of the Fair Housing Act and the Equal Opportunity Act. Each office is independently owned and operated.'
+    },
+    'C21': {
+      logo: '/img/logos/logo-c21.svg',
+      executive: {
+        name: 'Full Name',
+        title: 'Job Title',
+        signature: '/img/signatures/name.jpg'
+      },
+      icon: '/img/icons/fhp-icon-c21.svg',
+      class: 'c21',
+      disclaimer: '© 2020 Century 21 Real Estate LLC. All rights reserved. CENTURY 21 and the CENTURY 21 Logo are service marks owned by Century 21 Real Estate LLC. Century 21 Real Estate LLC fully supports the principles of the Fair Housing Act and the Equal Opportunity Act. Eachoffice is independently owned and operated.'
+    },
+    'Coldwell Banker': {
+      logo: '/img/logos/logo-cb.svg',
+      executive: {
+        name: 'Full Name',
+        title: 'Job Title',
+        signature: '/img/signatures/name.jpg'
+      },
+      icon: '/img/icons/fhp-icon-cb.svg',
+      class: 'cb',
+      disclaimer: '©2020 Coldwell Banker. All Rights Reserved. Coldwell Banker and the Coldwell Banker logos are trademarks of Coldwell Banker Real Estate LLC. The Coldwell Banker® System is comprised of company owned offices which are owned by a subsidiary of Realogy Brokerage Group LLC and franchised offices which are independently owned and operated. The Coldwell Banker System fully supports the principles of the Fair Housing Act and the Equal Opportunity Act.'
+    },
+    'Corcoran': {
+      logo: '/img/logos/logo-corcoran.svg',
+      executive: {
+        name: 'Full Name',
+        title: 'Job Title',
+        signature: '/img/signatures/name.jpg'
+      },
+      icon: '/img/icons/fhp-icon-corcoran.svg',
+      class: 'corcoran',
+      disclaimer: '©2020 Corcoran. All Rights Reserved. Corcoran and the Corcoran logo are trademarks of Corcoran Group LLC. The Corcoran® System is comprised of company-owned offices which are owned by a subsidiary of Realogy Brokerage Group LLC and franchised offices which are independently owned and operated. The Corcoran System fully supports the principles of the Fair Housing Act and the Equal Opportunity Act.'
+    },
+    'ERA': {
+      logo: '/img/logos/logo-era.svg',
+      executive: {
+        name: 'Full Name',
+        title: 'Job Title',
+        signature: '/img/signatures/name.jpg'
+      },
+      icon: '/img/icons/fhp-icon-era.svg',
+      class: 'era',
+      disclaimer: '© 2020 ERA Franchise System LLC. All Rights Reserved. ERA® and the ERA Logo are registered service marks owned by ERA Franchise Systems LLC. ERA Franchise Systems LLC fully supports the principles of the Fair Housing Act and the Equal Opportunity Act. Each office is independently owned and operated.'
+    },
+    'Realogy': {
+      logo: '/img/logos/logo-realogy.svg',
+      executive: {
+        name: 'Full Name',
+        title: 'Job Title',
+        signature: '/img/signatures/name.jpg'
+      },
+      icon: '/img/icons/fhp-icon-realogy.svg',
+      class: 'realogy',
+      disclaimer: '©2020 Realogy Holdings Corp. All Rights Reserved. Realogy Holdings Corp. fully supports the principles of the Fair Housing Act and the Equal Opportunity Act.'
+    },
+    'SIR': {
+      logo: '/img/logos/logo-sir.svg',
+      executive: {
+        name: 'Full Name',
+        title: 'Job Title',
+        signature: '/img/signatures/name.jpg'
+      },
+      icon: '/img/icons/fhp-icon-sir.svg',
+      class: 'sir',
+      disclaimer: '©2020 Sotheby\'s International Realty. All Rights Reserved. Sotheby\'s International Realty and the Sotheby\'s International Realty logo are trademarks licensed to Sotheby’s International Realty Affiliates LLC and used with permission. The Sotheby\'s International Realty® affiliate network is operated by Sotheby\'s International Realty Affiliates LLC, and the company owned brokerages are operated by Sotheby\'s International Realty, Inc. Both entities are subsidiaries of Realogy Holdings Corp. Both Sotheby\'s International Realty Affiliates LLC and Sotheby\'s International Realty, Inc. fully support the principles of the Fair Housing Act and the Equal Opportunity Act.'
+    }
+  }
 
   // Generate certificate markup
   const markup = document.createDocumentFragment()
-  const header = createElement('header', null, [
-    { property: 'style', value: 'padding: 4em 0; text-align: center;' }
-  ], ['container'])
+  const header = createElement('header', null, null, ['certificate__header', 'container', 'pad-x'])
   const logo = createElement('img', null, [
+    { property: 'src', value: brands[brand].logo },
     { property: 'alt', value: brand }
-  ], null)
-  const main = createElement('main', null, [
-    { property: 'style', value: 'text-align: center;' }
-  ], ['container'])
-  const title = createElement('h1', 'Certificate of Completion', [
-    { property: 'style', value: 'font-size: 2rem; margin-bottom: 1em;' }
-  ], null)
+  ], ['certificate__logo'])
+  const main = createElement('main', null, null, ['certificate__main', 'container', 'pad-x'])
+  const title = createElement('h1', 'Certificate of Completion', null, ['certificate__title'])
   const p1 = createElement('p', `is hereby granted to ${pledge.firstName} ${pledge.lastName}`, null, null)
   const p2 = createElement('p', 'to certify that they have completed to satisfaction the Fair Housing Pledge.', null, null)
   const date = new Date()
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   const p3 = createElement('p', `Granted: ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`, null, null)
   const signature = createElement('img', null, [
-    { property: 'alt', value: 'FULL_NAME' },
-    { property: 'style', value: 'margin-top: 2em;' }
-  ], null)
-  const name = createElement('p', 'FULL_NAME, TITLE', null, null)
+    { property: 'src', value: brands[brand].executive.signature },
+    { property: 'alt', value: brands[brand].executive.name }
+  ], ['certificate__signature'])
+  const name = createElement('p', `${brands[brand].executive.name}, ${brands[brand].executive.title}`, null, null)
   const icon = createElement('img', null, [
-    { property: 'alt', value: '' }
-  ], null)
-  const footer = createElement('footer', null, [
-    { property: 'style', value: 'text-align: center;' }
-  ], ['container'])
-  const disclaimer = createElement('p', 'DISCLAIMER', null, null)
+    { property: 'src', value: brands[brand].icon },
+    { property: 'alt', value: 'Fair Housing' }
+  ], ['certificate__icon', brands[brand].class])
+  const footer = createElement('footer', null, null, ['certificate__footer', 'pad'])
+  const disclaimer = createElement('p', brands[brand].disclaimer, null, ['certificate__disclaimer'])
 
     header.appendChild(logo)
   markup.appendChild(header)
@@ -336,7 +413,7 @@ function handleClick (event) {
 
   // Save the brand to session storage
   sessionStorage.setItem('fhp', JSON.stringify({
-    brand,
+    brand: brand,
     courseCompleted: true
   }))
 
