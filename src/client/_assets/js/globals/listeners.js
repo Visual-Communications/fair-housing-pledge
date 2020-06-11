@@ -20,7 +20,8 @@ function init () {
   */
 function getStorage (key) {
   if (!key) return JSON.stringify(sessionStorage)
-  return sessionStorage[key]
+  if (sessionStorage[key]) return sessionStorage[key]
+  return JSON.stringify(sessionStorage)
 }
 
 /**
@@ -43,12 +44,12 @@ function setStorage (key, data) {
   * @param {String} key
   * @return {Boolean}
   */
-function removeStorage (key) {
-  if (!key) return false
-  const data = getStorage(key)
-  sessionStorage.removeItem(key)
-  return data
-}
+// function removeStorage (key) {
+//   if (!key) return false
+//   const data = getStorage(key)
+//   sessionStorage.removeItem(key)
+//   return data
+// }
 
 /** --------------------
  *  DOM utilities
@@ -127,7 +128,11 @@ function addDomMarkup (markup, container) {
     constructor.prototype.children == null) {
     Object.defineProperty(constructor.prototype, 'children', {
       get: function() {
-        let i = 0, node, nodes = this.childNodes, children = []
+        let i = 0
+        let node
+        let nodes = this.childNodes
+        let children = []
+
         while (node = nodes[i++]) {
           if (node.nodeType === 1) {
             children.push(node)
@@ -219,7 +224,8 @@ function addListeners () {
  * @return {Boolean}
  */
 function handleLoad () {
-  const storage = JSON.parse(getStorage('fhp'))
+  const fhp = getStorage('fhp')
+  const storage = JSON.parse(fhp)
   if (!storage.brand || !storage.courseCompleted) return false
   
   // Pre-fill Brand field
@@ -354,7 +360,8 @@ function handleSubmit (event) {
   }
 
   // Save form to sessionStorage
-  const storage = JSON.parse(getStorage('fhp'))
+  const fhp = getStorage('fhp')
+  const storage = JSON.parse(fhp)
   const data = JSON.stringify(serializeObject(event.target))
   storage.pledge = data
   setStorage('fhp', storage)
@@ -371,29 +378,31 @@ function handleSubmit (event) {
  * Send the Pledge form results to the API.
  */
 function sendPledgeToApi (event) {
+  console.log('sendPledgeToApi()')
   if (!event.target.matches('#pledge')) return false
 
   event.preventDefault()
+  console.log('event.preventDefault()')
 
-  // TODO: Client-side validation
-
-  // TODO: Use a more backwards-compatible AJAX method than fetch,
-  // probably a library like axios
-
-  fetch('https://fairhousingpledge.com/api/pledges', {
+  // fetch('https://fairhousingpledge.com/api/pledges', {
+  fetch('http://localhost:3000/api/pledges', {
     method: 'POST',
     body: JSON.stringify(serializeObject(event.target)),
+    mode: 'cors'
   }).then(function (response) {
     if (response.ok) {
+      console.log('response.ok')
       return response.json()
     }
+    console.log('response not ok')
     return Promise.reject(response)
   }).then(function (data) {
     console.log(data)
   }).catch(function (error) {
-    console.warn(error)
+    console.warn('API error:', error)
   }).finally(function () {
-    event.target.submit()
+    // event.target.submit()
+    console.log('Finished')
   })
 }
 
