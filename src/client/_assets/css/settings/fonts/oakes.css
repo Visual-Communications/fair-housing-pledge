@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'Oakes';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/c21/oakes/oakes-regular/webfonts/oakes-regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/c21/oakes/oakes-regular/webfonts/oakes-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/c21/oakes/oakes-regular/webfonts/oakes-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/c21/oakes/oakes-regular/webfonts/oakes-regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/c21/oakes/oakes-regular/webfonts/oakes-regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/c21/oakes/oakes-regular/webfonts/oakes-regular.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Oakes';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/c21/oakes/oakes-regular/webfonts/oakes-regular-italic.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/c21/oakes/oakes-regular-italic/webfonts/oakes-regular-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/c21/oakes/oakes-regular-italic/webfonts/oakes-regular-italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/c21/oakes/oakes-regular-italic/webfonts/oakes-regular-italic.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/c21/oakes/oakes-regular-italic/webfonts/oakes-regular-italic.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/c21/oakes/oakes-regular-italic/webfonts/oakes-regular-italic.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Oakes';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/c21/oakes/oakes-bold/webfonts/oakes-bold.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/c21/oakes/oakes-bold/webfonts/oakes-bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/c21/oakes/oakes-bold/webfonts/oakes-bold.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/c21/oakes/oakes-bold/webfonts/oakes-bold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/c21/oakes/oakes-bold/webfonts/oakes-bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/c21/oakes/oakes-bold/webfonts/oakes-bold.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Oakes';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../fonts/c21/oakes/oakes-bold/webfonts/oakes-bold-italic.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/c21/oakes/oakes-bold-italic/webfonts/oakes-bold-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/c21/oakes/oakes-bold-italic/webfonts/oakes-bold-italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/c21/oakes/oakes-bold-italic/webfonts/oakes-bold-italic.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/c21/oakes/oakes-bold-italic/webfonts/oakes-bold-italic.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/c21/oakes/oakes-bold-italic/webfonts/oakes-bold-italic.svg#svgFontName') format('svg'); /* Legacy iOS */
+}

@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'Rockwell';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../fonts/bhgre/rockwell/Rockwell-Light.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/bhgre/rockwell/Rockwell-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/bhgre/rockwell/Rockwell-Light.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/bhgre/rockwell/Rockwell-Light.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Rockwell';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/bhgre/rockwell/Rockwell-Regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/bhgre/rockwell/Rockwell-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/bhgre/rockwell/Rockwell-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/bhgre/rockwell/Rockwell-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/bhgre/rockwell/Rockwell-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Rockwell';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/bhgre/rockwell/Rockwell-Italic.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/bhgre/rockwell/Rockwell-Italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/bhgre/rockwell/Rockwell-Italic.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/bhgre/rockwell/Rockwell-Italic.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/bhgre/rockwell/Rockwell-Italic.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Rockwell';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/bhgre/rockwell/Rockwell-Bold.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/bhgre/rockwell/Rockwell-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/bhgre/rockwell/Rockwell-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/bhgre/rockwell/Rockwell-Bold.ttf') format('truetype'); /* Safari, Android, iOS */
+}

@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Corporate S';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../fonts/bhgre/corporate-s/corporates-light-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/bhgre/corporate-s/corporates-light-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Corporate S';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/bhgre/corporate-s/corporates-regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/bhgre/corporate-s/corporates-regular-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Corporate S';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/bhgre/corporate-s/corporates-demi-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/bhgre/corporate-s/corporates-demi-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Corporate S';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/bhgre/corporate-s/corporates-bold-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/bhgre/corporate-s/corporates-bold-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+}

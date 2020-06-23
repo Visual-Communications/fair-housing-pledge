@@ -262,9 +262,9 @@ function loadCertificate (brand, pledge) {
     'BHGRE': {
       logo: '/img/logos/logo-bhgre.svg',
       executive: {
-        name: 'Full Name',
-        title: 'Job Title',
-        signature: '/img/signatures/name.jpg'
+        name: 'Sherry A. Chris',
+        title: 'President and Chief Executive Officer, Realogy Expansion Brands',
+        signature: '/img/signatures/sherry-chris.jpg'
       },
       icon: '/img/icons/fhp-icon-bhgre.svg',
       class: 'bhgre',
@@ -273,9 +273,9 @@ function loadCertificate (brand, pledge) {
     'C21': {
       logo: '/img/logos/logo-c21.svg',
       executive: {
-        name: 'Full Name',
-        title: 'Job Title',
-        signature: '/img/signatures/name.jpg'
+        name: 'Michael Miedler',
+        title: 'President and Chief Executive Officer, Century 21 Real Estate LLC',
+        signature: '/img/signatures/michael-miedler.jpg'
       },
       icon: '/img/icons/fhp-icon-c21.svg',
       class: 'c21',
@@ -284,9 +284,9 @@ function loadCertificate (brand, pledge) {
     'Coldwell Banker': {
       logo: '/img/logos/logo-cb.svg',
       executive: {
-        name: 'Full Name',
-        title: 'Job Title',
-        signature: '/img/signatures/name.jpg'
+        name: 'Ryan Gorman',
+        title: 'President and Chief Executive Office, Coldwell Banker',
+        signature: '/img/signatures/ryan-gorman.jpg'
       },
       icon: '/img/icons/fhp-icon-cb.svg',
       class: 'cb',
@@ -295,9 +295,9 @@ function loadCertificate (brand, pledge) {
     'Corcoran': {
       logo: '/img/logos/logo-corcoran.svg',
       executive: {
-        name: 'Full Name',
-        title: 'Job Title',
-        signature: '/img/signatures/name.jpg'
+        name: 'Pamela Liebman',
+        title: 'President and Chief Executive Officer, Corcoran',
+        signature: '/img/signatures/pamela-liebman.jpg'
       },
       icon: '/img/icons/fhp-icon-corcoran.svg',
       class: 'corcoran',
@@ -306,9 +306,9 @@ function loadCertificate (brand, pledge) {
     'ERA': {
       logo: '/img/logos/logo-era.svg',
       executive: {
-        name: 'Full Name',
-        title: 'Job Title',
-        signature: '/img/signatures/name.jpg'
+        name: 'Sherry A. Chris',
+        title: 'President and Chief Executive Officer, Realogy Expansion Brands',
+        signature: '/img/signatures/sherry-chris.jpg'
       },
       icon: '/img/icons/fhp-icon-era.svg',
       class: 'era',
@@ -317,9 +317,9 @@ function loadCertificate (brand, pledge) {
     'Realogy': {
       logo: '/img/logos/logo-realogy.svg',
       executive: {
-        name: 'Full Name',
-        title: 'Job Title',
-        signature: '/img/signatures/name.jpg'
+        name: 'John Peyton',
+        title: 'President and Chief Executive Officer, Realogy Franchise Group',
+        signature: '/img/signatures/john-peyton.jpg'
       },
       icon: '/img/icons/fhp-icon-realogy.svg',
       class: 'realogy',
@@ -328,15 +328,18 @@ function loadCertificate (brand, pledge) {
     'SIR': {
       logo: '/img/logos/logo-sir.svg',
       executive: {
-        name: 'Full Name',
-        title: 'Job Title',
-        signature: '/img/signatures/name.jpg'
+        name: 'Philip A. White, Jr.',
+        title: 'President and Chief Executive Officer, Sotheby’s International Realty',
+        signature: '/img/signatures/philip-white.jpg'
       },
       icon: '/img/icons/fhp-icon-sir.svg',
       class: 'sir',
       disclaimer: '©2020 Sotheby\'s International Realty. All Rights Reserved. Sotheby\'s International Realty and the Sotheby\'s International Realty logo are trademarks licensed to Sotheby’s International Realty Affiliates LLC and used with permission. The Sotheby\'s International Realty® affiliate network is operated by Sotheby\'s International Realty Affiliates LLC, and the company owned brokerages are operated by Sotheby\'s International Realty, Inc. Both entities are subsidiaries of Realogy Holdings Corp. Both Sotheby\'s International Realty Affiliates LLC and Sotheby\'s International Realty, Inc. fully support the principles of the Fair Housing Act and the Equal Opportunity Act.'
     }
   }
+
+  // Add brand certificate class
+  body.classList.add(`certificate_${brands[brand].class}`)
 
   // Generate certificate markup
   const markup = document.createDocumentFragment()
@@ -363,6 +366,21 @@ function loadCertificate (brand, pledge) {
   ], ['certificate__icon', brands[brand].class])
   const footer = createElement('footer', null, null, ['certificate__footer', 'pad'])
   const disclaimer = createElement('p', brands[brand].disclaimer, null, ['certificate__disclaimer'])
+
+  // Wrap 'Fair Housing Pledge.' in a non-breaking span
+  const fhpTextSpan = document.createElement('span')
+  fhpTextSpan.classList.add('certificate__nowrap')
+  fhpTextSpan.textContent = 'Fair Housing Pledge.'
+  p2.textContent = p2.textContent.replace(fhpTextSpan.textContent, '')
+  p2.appendChild(fhpTextSpan)
+
+  // Wrap job title brand name in a non-breaking span
+  const titleBrand = name.textContent.replace(/.*\, /g, '')
+  const titleBrandSpan = document.createElement('span')
+  titleBrandSpan.classList.add('certificate__nowrap')
+  titleBrandSpan.textContent = titleBrand
+  name.textContent = name.textContent.replace(titleBrand, '')
+  name.appendChild(titleBrandSpan)
 
     header.appendChild(logo)
   markup.appendChild(header)

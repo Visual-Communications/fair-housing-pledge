@@ -10,3 +10,19 @@ $font-stack-primary: sans-serif;
 $font-stack-secondary: 'Barlow Condensed', sans-serif;
 $font-stack-code: monospace;
 $font-stack-script: 'Sign Painter', script;
+
+/* Brand font stacks */
+$font-stack-bhgre: 'Corporate S', Arial, sans-serif;
+$font-stack-bhgre-title: 'Rockwell', $font-stack-bhgre;
+$font-stack-c21: 'Oakes', sans-serif;
+$font-stack-c21-title: 'Typold Condensed', $font-stack-c21;
+$font-stack-cb: 'Trebuchet MS', sans-serif;
+$font-stack-cb-title: $font-stack-cb;
+$font-stack-corcoran: 'Avenir', sans-serif;
+$font-stack-corcoran-title: $font-stack-corcoran;
+$font-stack-era: 'Gotham', sans-serif;
+$font-stack-era-title: $font-stack-era;
+$font-stack-realogy: 'Lato', sans-serif;
+$font-stack-realogy-title: $font-stack-realogy;
+$font-stack-sir: 'Benton Sans', sans-serif;
+$font-stack-sir-title: $font-stack-sir;
