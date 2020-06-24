@@ -14,8 +14,12 @@ Sass is linted, transpiled into CSS, post-processed with PostCSS, beautified in 
 
 1. Node
   - Check if Node is installed: `node --version`
-  - If you see a version number, such as `v14.2.0`, proceed to [Get Started](#get-started)
-  - If Node isn't installed, [download][node-download] and install it (or use [nvm][nvm]), then proceed to [Get Started](#get-started)
+  - If you see a version number, such as `v14.2.0`, skip the next step
+  - If Node isn't installed, [download][node-download] and install it (or use [nvm][nvm])
+2. Heroku CLI (optional -- only necessary for clearing the Heroku cache, or otherwise interacting with Heroku from the CLI)
+  - Check if Heroku CLI is installed: `heroku --version`
+  - If you see a version number, such as `heroku/7.42.1 darwin-x64 node-v12.16.2`, skip the next step
+  - If Heroku CLI isn't installed, [download and install it][heroku-cli-install]
 
 ### Get Started
 
@@ -52,6 +56,7 @@ If you'd like to contribute, please read the [Code of Conduct][code-of-conduct] 
 [fhp]: https://fairhousingpledge.com/
 [node-download]: https://nodejs.org/en/download/
 [nvm]: https://github.com/nvm-sh/nvm
+[heroku-cli-install]: https://devcenter.heroku.com/articles/heroku-cli#download-and-install
 [docs]: _docs/
 [code-of-conduct]: blob/master/CODE_OF_CONDUCT.md
 [contributing]: blob/master/CONTRIBUTING.md
