@@ -64,16 +64,20 @@ module.exports = {
         const { error } = validate.create(p)
         if (error) return res.status(400).send(error.details[0].message)
 
-        // Add pledge to array
-        this.push(_.pick(p, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
+        // Don't save duplicate emails
+        const duplicate = await Pledge.findOne({
+          email: p.email
+        })
+
+        if (!duplicate) {
+          // Add pledge to array
+          this.push(_.pick(p, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
+        }
       }, pledges)
 
       // Add pledges to the database
       pledges = await Pledge.insertMany(pledges)
       log.info(`${pledges.length} pledges created.`, _.pick(pledges, ['_doc', 'level', 'message', 'timestamp']))
-
-      // Return pledges to the client
-      // return res.send(pledges)
 
       // Return redirect to the client
       return res.redirect('https://fairhousingpledge.com/thank-you/')
@@ -86,12 +90,16 @@ module.exports = {
     // Create pledge
     let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
 
-    // Add pledge to the database
-    pledge = await pledge.save()
-    log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
+    // Don't save duplicate emails
+    const duplicate = await Pledge.findOne({
+      email: pledge.email
+    })
 
-    // Return pledge to the client
-    // return res.send(pledge)
+    if (!duplicate) {
+      // Add pledge to the database
+      pledge = await pledge.save()
+      log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
+    }
 
     // Return redirect to the client
     return res.redirect('https://fairhousingpledge.com/thank-you/')
