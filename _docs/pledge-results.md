@@ -3,7 +3,7 @@
 To download the pledge results from the database, order alphabetically, strip duplicates, and save as a CSV file:
 
 1. Update local environment variable in `.env`:
-  - Set `SITE_URL` to the live production website URL
+  - Set `SITE_URL` to the local API URL: `localhost:3000`
   - Set `DB_STRING` to the live production database URL
 2. Run the local API server: `npm run serve:server`
 3. In another terminal window, run `npm run pledge:results`
