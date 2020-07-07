@@ -5,7 +5,7 @@
 
 - `npm run develop`: Builds website for development
 - `npm run watch:client`: Builds website for development, and watches for changes
-- `npm run serve:client`: Builds website for development, serves to `localhost:8080`, and watches for changes
+- `npm run serve:client`: Builds website for development, serves to `localhost:8082`, and watches for changes
 - `npm run build:client`: Builds website for production
 
 - `npm run clear:cache`: Clears the Heroku cache

@@ -38,7 +38,11 @@ npm install
 # and ./_docs/environment-variables.md
 touch ./.env
 
-npm start
+# Serve the local server API to localhost:3000 and watch for changes
+npm watch:server
+
+# Build the local client site, serve to localhost:8082, and watch for changes
+npm serve:client
 ```
 
 ## Documentation
