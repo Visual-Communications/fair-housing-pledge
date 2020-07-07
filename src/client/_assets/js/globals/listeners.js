@@ -473,31 +473,25 @@ function handleSubmit (event) {
  * Send the Pledge form results to the API.
  */
 function sendPledgeToApi (event) {
-  console.log('sendPledgeToApi()')
   if (!event.target.matches('#pledge')) return false
 
   event.preventDefault()
-  console.log('event.preventDefault()')
 
-  // fetch('https://fairhousingpledge.com/api/pledges', {
-  fetch('http://localhost:3000/api/pledges', {
+  fetch('https://fairhousingpledge.com/api/pledges', {
     method: 'POST',
     body: JSON.stringify(serializeObject(event.target)),
     mode: 'cors'
   }).then(function (response) {
     if (response.ok) {
-      console.log('response.ok')
       return response.json()
     }
-    console.log('response not ok')
     return Promise.reject(response)
   }).then(function (data) {
-    console.log(data)
+    console.log('Pledge submission successfull.')
   }).catch(function (error) {
-    console.warn('API error:', error)
+    console.warn('Pledge submission error.')
   }).finally(function () {
-    // event.target.submit()
-    console.log('Finished')
+    event.target.submit()
   })
 }
 
