@@ -1,5 +1,5 @@
 /**
  * Globals
  */
-require('./globals/check-javascript.js')
-require('./globals/listeners.js')
+require('./modules/check-javascript.js')
+require('./modules/pledges-and-certificates.js')

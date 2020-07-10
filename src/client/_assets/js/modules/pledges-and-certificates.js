@@ -52,6 +52,23 @@ function setStorage (key, data) {
 // }
 
 /** --------------------
+ *  Window utilities
+ -------------------- */
+
+/**
+  * Gets a URL query string parameter
+  * Learn more: https://davidwalsh.name/query-string-javascript
+  * @param {String} name
+  * @return {String}
+  */
+function getUrlParameter (name) {
+  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]') // eslint-disable-line
+  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)')
+  var results = regex.exec(location.search)
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '))
+}
+
+/** --------------------
  *  DOM utilities
  -------------------- */
 
@@ -133,7 +150,7 @@ function addDomMarkup (markup, container) {
         let nodes = this.childNodes
         let children = []
 
-        while (node = nodes[i++]) {
+        while (node = nodes[i++]) { // eslint-disable-line
           if (node.nodeType === 1) {
             children.push(node)
           }
@@ -226,15 +243,33 @@ function addListeners () {
 function handleLoad () {
   const fhp = getStorage('fhp')
   const storage = JSON.parse(fhp)
-  if (!storage.brand || !storage.courseCompleted) return false
+
+  // Check for a `brand` query parameter,
+  // then use that, and set the course to completed
+  const query = getUrlParameter('brand')
+  if (query && query !== '') {
+    storage.brand = query
+    storage.courseCompleted = true
+  }
+
+  // If the course isn't completed, we're done
+  if (!storage.courseCompleted) return false
+  
+  // Pre-fill courseCompleted field
+  const courseCompletedInput = document.querySelector('#courseCompleted')
+  if (courseCompletedInput) courseCompletedInput.value = storage.courseCompleted
+
+  // If there is no brand, we're done
+  if (!storage.brand) return false
   
   // Pre-fill Brand field
   const brandInput = document.querySelector('#brand')
   if (brandInput) brandInput.value = storage.brand
 
+  // If the pledge hasn't been filled out yet, we're done
   if (!storage.pledge) return false
 
-  // Load the certificate
+  // Both the course and pledge are completed, so load the certificate
   loadCertificate(storage.brand, JSON.parse(storage.pledge))
 
   return true
@@ -263,7 +298,8 @@ function loadCertificate (brand, pledge) {
       logo: '/img/logos/logo-bhgre.svg',
       executive: {
         name: 'Sherry A. Chris',
-        title: 'President and Chief Executive Officer, Realogy Expansion Brands',
+        title: 'President and Chief Executive Officer',
+        company: 'Realogy Expansion Brands',
         signature: '/img/signatures/sherry-chris.jpg'
       },
       icon: '/img/icons/fhp-icon-bhgre.svg',
@@ -274,7 +310,8 @@ function loadCertificate (brand, pledge) {
       logo: '/img/logos/logo-c21.svg',
       executive: {
         name: 'Michael Miedler',
-        title: 'President and Chief Executive Officer, Century 21 Real Estate LLC',
+        title: 'President and Chief Executive Officer',
+        company: 'Century 21 Real Estate LLC',
         signature: '/img/signatures/michael-miedler.jpg'
       },
       icon: '/img/icons/fhp-icon-c21.svg',
@@ -285,7 +322,8 @@ function loadCertificate (brand, pledge) {
       logo: '/img/logos/logo-cb.svg',
       executive: {
         name: 'Ryan Gorman',
-        title: 'President and Chief Executive Office, Coldwell Banker',
+        title: 'President and Chief Executive Office',
+        company: 'Coldwell Banker',
         signature: '/img/signatures/ryan-gorman.jpg'
       },
       icon: '/img/icons/fhp-icon-cb.svg',
@@ -296,7 +334,8 @@ function loadCertificate (brand, pledge) {
       logo: '/img/logos/logo-corcoran.svg',
       executive: {
         name: 'Pamela Liebman',
-        title: 'President and Chief Executive Officer, Corcoran',
+        title: 'President and Chief Executive Officer',
+        company: 'Corcoran',
         signature: '/img/signatures/pamela-liebman.jpg'
       },
       icon: '/img/icons/fhp-icon-corcoran.svg',
@@ -307,7 +346,8 @@ function loadCertificate (brand, pledge) {
       logo: '/img/logos/logo-era.svg',
       executive: {
         name: 'Sherry A. Chris',
-        title: 'President and Chief Executive Officer, Realogy Expansion Brands',
+        title: 'President and Chief Executive Officer',
+        company: 'Realogy Expansion Brands',
         signature: '/img/signatures/sherry-chris.jpg'
       },
       icon: '/img/icons/fhp-icon-era.svg',
@@ -318,7 +358,8 @@ function loadCertificate (brand, pledge) {
       logo: '/img/logos/logo-realogy.svg',
       executive: {
         name: 'John Peyton',
-        title: 'President and Chief Executive Officer, Realogy Franchise Group',
+        title: 'President and Chief Executive Officer',
+        company: 'Realogy Franchise Group',
         signature: '/img/signatures/john-peyton.jpg'
       },
       icon: '/img/icons/fhp-icon-realogy.svg',
@@ -329,7 +370,8 @@ function loadCertificate (brand, pledge) {
       logo: '/img/logos/logo-sir.svg',
       executive: {
         name: 'Philip A. White, Jr.',
-        title: 'President and Chief Executive Officer, Sotheby’s International Realty',
+        title: 'President and Chief Executive Officer',
+        company: 'Sotheby’s International Realty',
         signature: '/img/signatures/philip-white.jpg'
       },
       icon: '/img/icons/fhp-icon-sir.svg',
@@ -341,63 +383,30 @@ function loadCertificate (brand, pledge) {
   // Add brand certificate class
   body.classList.add(`certificate_${brands[brand].class}`)
 
-  // Generate certificate markup
-  const markup = document.createDocumentFragment()
-  const header = createElement('header', null, null, ['certificate__header', 'container', 'pad-x'])
-  const logo = createElement('img', null, [
-    { property: 'src', value: brands[brand].logo },
-    { property: 'alt', value: brand }
-  ], ['certificate__logo'])
-  const main = createElement('main', null, null, ['certificate__main', 'container', 'pad-x'])
-  const title = createElement('h1', 'Certificate of Completion', null, ['certificate__title'])
-  const p1 = createElement('p', `is hereby granted to ${pledge.firstName} ${pledge.lastName}`, null, null)
-  const p2 = createElement('p', 'to certify that they have completed to satisfaction the Fair Housing Pledge.', null, null)
+  // Get today's date and setup month names
   const date = new Date()
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-  const p3 = createElement('p', `Granted: ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`, null, null)
-  const signature = createElement('img', null, [
-    { property: 'src', value: brands[brand].executive.signature },
-    { property: 'alt', value: brands[brand].executive.name }
-  ], ['certificate__signature'])
-  const name = createElement('p', `${brands[brand].executive.name}, ${brands[brand].executive.title}`, null, null)
-  const icon = createElement('img', null, [
-    { property: 'src', value: brands[brand].icon },
-    { property: 'alt', value: 'Fair Housing' }
-  ], ['certificate__icon', brands[brand].class])
-  const footer = createElement('footer', null, null, ['certificate__footer', 'pad'])
-  const disclaimer = createElement('p', brands[brand].disclaimer, null, ['certificate__disclaimer'])
 
-  // Wrap 'Fair Housing Pledge.' in a non-breaking span
-  const fhpTextSpan = document.createElement('span')
-  fhpTextSpan.classList.add('certificate__nowrap')
-  fhpTextSpan.textContent = 'Fair Housing Pledge.'
-  p2.textContent = p2.textContent.replace(fhpTextSpan.textContent, '')
-  p2.appendChild(fhpTextSpan)
-
-  // Wrap job title brand name in a non-breaking span
-  const titleBrand = name.textContent.replace(/.*\, /g, '')
-  const titleBrandSpan = document.createElement('span')
-  titleBrandSpan.classList.add('certificate__nowrap')
-  titleBrandSpan.textContent = titleBrand
-  name.textContent = name.textContent.replace(titleBrand, '')
-  name.appendChild(titleBrandSpan)
-
-    header.appendChild(logo)
-  markup.appendChild(header)
-    main.appendChild(title)
-    main.appendChild(p1)
-    main.appendChild(p2)
-    main.appendChild(p3)
-    main.appendChild(signature)
-    main.appendChild(name)
-    main.appendChild(icon)
-  markup.appendChild(main)
-    footer.appendChild(disclaimer)
-  markup.appendChild(footer)
-
-  // Append certificate markup to DOM
-  addDomMarkup(markup, 'body')
-
+  // Generate certificate markup and append to DOM
+  body.innerHTML = `<header class="certificate__header container pad">
+    <img class="certificate__icon" src="/img/icons/house-and-hands.jpg" alt="House and hands">
+  </header>
+  <main class="certificate__main container pad">
+    <h1 class="certificate__title">Certificate of Completion</h1>
+    <p>is hereby granted to</p>
+    <h2 class="certificate__name">${pledge.firstName} ${pledge.lastName}</h2>
+    <p>to certify that they have completed to<br />
+    satisfaction the Fair Housing Course.</p>
+    <p>Granted ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}</p>
+    <img class="certificate__signature" src="${brands[brand].executive.signature}" alt="${brands[brand].executive.name}">
+    <p>${brands[brand].executive.name}<br />
+    ${brands[brand].executive.title}<br />
+    ${brands[brand].executive.company}</p>
+    <img class="certificate__logo" src="${brands[brand].logo}" alt="${brand}">
+  </main>
+  <footer class="certificate__footer pad">
+    <p class="certificate__disclaimer">${brands[brand].disclaimer}</p>
+  </footer>`
 }
 
 /**
@@ -489,7 +498,7 @@ function sendPledgeToApi (event) {
   }).then(function (data) {
     console.log('Pledge submission successfull.')
   }).catch(function (error) {
-    console.warn('Pledge submission error.')
+    console.warn('Pledge submission error.', error)
   }).finally(function () {
     event.target.submit()
   })

@@ -1,5 +1,6 @@
 .certificate {
   display: grid;
+  font-size: 0.65rem;
   grid-template-rows: auto 1fr auto;
   max-height: 11in;
   max-width: 8.5in;
@@ -27,56 +28,85 @@
   }
 
   &_bhgre {
-    font-family: $font-stack-bhgre;
+    border-bottom: 1.5em solid #339933;
+    border-top: 1.5em solid #339933;
 
     .certificate__title {
+      color: #339933;
       font-family: $font-stack-bhgre-title;
     }
   }
 
   &_c21 {
-    font-family: $font-stack-c21;
+    border-bottom: 1.5em solid #beaf87;
+    border-top: 1.5em solid #beaf87;
 
     .certificate__title {
+      color: #beaf87;
       font-family: $font-stack-c21-title;
     }
   }
 
   &_cb {
-    font-family: $font-stack-cb;
+    border-bottom: 1.5em solid #14377d;
+    border-top: 1.5em solid #14377d;
+
+    .certificate__title {
+      color: #14377d;
+    }
   }
 
   &_corcoran {
-    font-family: $font-stack-corcoran;
+    border-bottom: 1.5em solid #000000;
+    border-top: 1.5em solid #000000;
+
+    .certificate__title {
+      color: #000000;
+    }
   }
 
   &_era {
-    font-family: $font-stack-era;
+    border-bottom: 1.5em solid #0b3279;
+    border-top: 1.5em solid #0b3279;
+
+    .certificate__title {
+      color: #0b3279;
+    }
   }
 
   &_realogy {
-    font-family: $font-stack-realogy;
+    border-bottom: 1.5em solid #104E42;
+    border-top: 1.5em solid #104E42;
+
+    .certificate__title {
+      color: #104E42;
+    }
   }
 
   &_sir {
-    font-family: $font-stack-sir;
+    border-bottom: 1.5em solid #0C2349;
+    border-top: 1.5em solid #0C2349;
+
+    .certificate__title {
+      color: #0C2349;
+    }
   }
 
   &__header {
-    padding-bottom: 4em;
-    padding-top: 4em;
     text-align: center;
   }
 
   &__title {
     font-size: 2rem;
+    font-weight: 300;
     margin-bottom: 1em;
+    text-transform: uppercase;
   }
 
   &__logo {
     margin: 0 auto;
-    max-height: 5rem;
-    max-width: 15rem;
+    max-height: 3rem;
+    max-width: 10rem;
   }
 
   &__main {
@@ -95,42 +125,16 @@
   }
 
   &__signature {
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 2em;
+    width: 200px;
   }
 
   &__icon {
-    margin-bottom: -0.5rem;
     margin-left: auto;
-    width: 8rem;
-    z-index: 1;
-
-    &.bhgre {
-      fill: #339933;
-    }
-
-    &.c21 {
-      fill: #beaf87;
-    }
-
-    &.cb {
-      fill: #132169;
-    }
-
-    &.corcoran {
-      fill: #000000;
-    }
-
-    &.era {
-      fill: #C8102E;
-    }
-
-    &.realogy {
-      fill: #104E42;
-    }
-
-    &.sir {
-      fill: #0C2349;
-    }
+    margin-right: auto;
+    width: 3rem;
   }
 
   &__nowrap {
@@ -138,15 +142,9 @@
   }
 
   &__footer {
-    background: #D0CECE;
-    text-align: center;
-
-    @media print {
-      background: none;
-    }
   }
 
   &__disclaimer {
-    font-size: 0.75em;
+    font-size: 0.5em;
   }
 }

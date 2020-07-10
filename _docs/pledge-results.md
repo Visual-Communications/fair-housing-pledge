@@ -20,6 +20,8 @@ Every Monday morning, download the pledge results and email the total count and 
 - Kroplewski, Nicole <Nicole.Kroplewski@cbhomeoffice.com>
 - Rosario, Elizabeth <Elizabeth.Rosario@cbhomeoffice.com>
 - Montiel, Christian <Christian.Montiel@cbhomeoffice.com>
+- Perry, Dawn <dawn.perry@realogy.com>
+- Riveiro, Jason <Jason.Riveiro@realogy.com>
 
 ### TODO
 

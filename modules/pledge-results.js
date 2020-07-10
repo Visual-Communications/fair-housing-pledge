@@ -8,7 +8,7 @@ const config = require('config')
 const settings = {
   authUrl: `${config.get('site.url')}/api/auth`,
   apiUrl: `${config.get('site.url')}/api/pledges`,
-  keys: ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'created_at'],
+  keys: ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'created_at', 'courseCompleted'],
   sortBy: 'firstName',
   path: path.join(__dirname, '..', 'scratch', 'db'),
   writeFile: 'pledge-results.csv'
@@ -32,8 +32,9 @@ async function init (cb) {
   // Save the data
   writeFile(csv, settings.writeFile, filtered.length)
 
-  // TODO: Email the data as an attachment,
-  // with the site name and data count in the subject line or email body
+  // TODO: Use something like SendGrid to email the data as an attachment,
+  // with the site name and data count in the subject line or email body,
+  // instead of having to manually send that email
 
   return cb()
 }
