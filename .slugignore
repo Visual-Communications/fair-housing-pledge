@@ -1,5 +1,5 @@
 _docs
-modules
+/modules
 /src/client
 .eleventy.js
 .eleventyignore
