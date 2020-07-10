@@ -21,14 +21,6 @@
   force = true
   headers = {X-From = "Netlify"}
 
-# TODO: Rewrite to a Heroku-hosted analytics service, if we add one
-# [[redirects]]
-#   from = "/analytics/*"
-#   to = "https://fair-housing-pledge-ackee.herokuapp.com/:splat"
-#   status = 200
-#   force = true
-#   headers = {X-From = "Netlify"}
-
 [[redirects]]
   from = "/github/*"
   to = "https://github.com/Visual-Communications/fair-housing-pledge"
@@ -40,11 +32,6 @@
   from = "https://fair-housing-pledge.netlify.com/*"
   to = "https://fairhousingpledge.com/:splat"
   force = true
-
-[[redirects]]
-  from = "/*"
-  to = "/404?search=:splat"
-  status = 404
 
 # Courses
 [[redirects]]
@@ -86,6 +73,11 @@
   from = "/courses/sothebys"
   to = "/courses/sothebys/story.html"
   status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/404?search=:splat"
+  status = 404
 
 # ---------------
 # Headers
@@ -143,13 +135,6 @@
 
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
-
-# TODO: Prevent search engines indexing the analytics service, if we add one
-# [[headers]]
-#   for = "/analytics/*"
-
-#   [headers.values]
-#     X-Robots-Tag = "noindex, nofollow"
 
 # TODO: Prevent search engines indexing the offline page, if we add one
 # [[headers]]

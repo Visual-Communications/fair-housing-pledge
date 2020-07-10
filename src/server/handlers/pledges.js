@@ -25,6 +25,7 @@ module.exports = {
 
   /**
    * Create a pledge
+   * TODO: Delete this method if we're not using it anymore
    */
   createPledgeLegacy: async (req, res) => {
     // Validate pledge
@@ -32,9 +33,9 @@ module.exports = {
     if (error) return res.status(400).send(error.details[0].message)
 
     // Create pledge
-    let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
+    let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted']))
 
-    // TODO: Get and add ip, referrer, user_agent
+    // TODO: Get and add ip, referrer, user_agent ?
     // https://codeburst.io/how-to-get-users-ip-details-in-expressjs-ff5252728604
 
     // Add pledge to the database
@@ -71,7 +72,7 @@ module.exports = {
 
         if (!duplicate) {
           // Add pledge to array
-          this.push(_.pick(p, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
+          this.push(_.pick(p, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted']))
         }
       }, pledges)
 
@@ -88,7 +89,7 @@ module.exports = {
     if (error) return res.status(400).send(error.details[0].message)
 
     // Create pledge
-    let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms']))
+    let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted']))
 
     // Don't save duplicate emails
     const duplicate = await Pledge.findOne({
@@ -140,6 +141,7 @@ module.exports = {
     if (req.body.brand) requestBody.brand = req.body.brand
     if (req.body.company) requestBody.company = req.body.company
     if (req.body.event) requestBody.event = req.body.event
+    if (req.body.courseCompleted) requestBody.courseCompleted = req.body.courseCompleted
 
     // Update the pledge in the database, and get the updated pledge
     const pledge = await Pledge.findByIdAndUpdate(req.params.id, requestBody, { new: true })

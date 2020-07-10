@@ -1,6 +1,6 @@
 const pages = {
   contentType: 'page',
-  layout: 'page',
+  layout: 'base',
   permalink: './{{ slug }}/index.html'
 }
 

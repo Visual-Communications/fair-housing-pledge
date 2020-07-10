@@ -1,9 +1,12 @@
 ## CLI
 
-- `npm start`: Builds website for production
-- `npm run build`: Builds website for production 
+- `npm start`: Serves the API to `localhost:3000`
+- `npm watch:server`: Serves the API to `localhost:3000`, and watches for changes
+
 - `npm run develop`: Builds website for development
-- `npm run watch:server`: Serves the API to `localhost:3000`, and watches for changes
-- `npm run serve:server`: Serves the API to `localhost:3000`
-- `npm run watch:client`: Builds website for development and watches for changes to assets
-- `npm run serve:client`: Builds website for development, watches for changes to assets, and serves to `localhost:8080`
+- `npm run watch:client`: Builds website for development, and watches for changes
+- `npm run serve:client`: Builds website for development, serves to `localhost:8082`, and watches for changes
+- `npm run build:client`: Builds website for production
+
+- `npm run clear:cache`: Clears the Heroku cache
+- `npm run pledge:results`: Downloads the pledge results from the database, orders alphabetically, strips duplicates, and saves as a CSV file to `./scratch/db/pledge-results.csv`.

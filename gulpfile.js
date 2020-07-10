@@ -20,6 +20,7 @@ const uglify = require('gulp-uglify')
 const svgmin = require('gulp-svgmin')
 const rename = require('gulp-rename')
 const connect = require('gulp-connect')
+const pledgeResults = require('./modules/pledge-results.js')
 
 const isProduction = config.get('eleventy.environment') === 'production'
 const SRC = config.get('paths.src.client')
@@ -329,7 +330,9 @@ function watchMinify (cb) {
 function serve (cb) {
   connect.server({
     root: paths.html.dest,
-    livereload: true
+    livereload: true,
+    name: 'Fair Housing Pledge',
+    port: 8082
   })
 
   return cb()
@@ -338,6 +341,8 @@ function serve (cb) {
 /**
  * Gulp tasks
  */
+exports.pledgeResults = gulp.series(pledgeResults)
+
 exports.develop = gulp.series(
   gulp.parallel(clean, lint),
   gulp.parallel(html, css, js, assets),

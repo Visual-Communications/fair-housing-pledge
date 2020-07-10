@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/corcoran/avenir/Avenir-Roman.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/corcoran/avenir/Avenir-Heavy.ttf')  format('truetype'); /* Safari, Android, iOS */
+}

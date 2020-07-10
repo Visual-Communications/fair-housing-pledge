@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Typold Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/c21/typold/Typold-Condensed-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Typold Condensed';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/c21/typold/Typold-Condensed-Medium.ttf')  format('truetype'); /* Safari, Android, iOS */
+}

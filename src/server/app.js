@@ -38,10 +38,15 @@ if(!config.get('jwtPrivateKey')) {
 /**
  * Setup HTTP headers
  */
-const origin = {
+
+// CORS
+const corsOptions = {
+  // Access-Control-Allow-Origin
   origin: isProduction ? config.get('site.url') : '*',
 }
+app.use(cors(corsOptions))
 
+// Helmet
 const helmetHeaders = {
   contentSecurityPolicy: {
     directives: {
@@ -80,8 +85,6 @@ const helmetHeaders = {
     policy: 'strict-origin-when-cross-origin'
   }
 }
-
-app.use(cors(origin)) // Set Access-Control-Allow-Origin header
 app.use(helmet(helmetHeaders)) // Set HTTP headers
 
 /**

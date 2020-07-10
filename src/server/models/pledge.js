@@ -15,6 +15,7 @@ const Pledge = mongoose.model('Pledge', new mongoose.Schema({
   company: { type: String, required: false, trim: true, maxLength: 255 },
   event: { type: String, required: false, trim: true, maxLength: 255 },
   agreeToTerms: { type: String, required: true, trim: true, maxLength: 5 },
+  courseCompleted: { type: String, required: false, trim: true, maxLength: 255 },
   ip: { type: String, trim: true, maxLength: 255 },
   user_agent: { type: String, trim: true, maxLength: 255 },
   referrer: { type: String, trim: true, maxLength: 255 },
@@ -37,6 +38,7 @@ const validate = {
       company: Joi.string().allow('').default('N/A').trim().max(255),
       event: Joi.string().allow('').default('N/A').trim().max(255),
       agreeToTerms: Joi.string().required().trim().max(5),
+      courseCompleted: Joi.string().allow('').default('N/A').trim().max(255),
       ip: Joi.string().trim().max(255),
       user_agent: Joi.string().trim().max(255),
       referrer: Joi.string().trim().max(255),
@@ -60,11 +62,12 @@ const validate = {
       company: Joi.string().trim().max(255),
       event: Joi.string().trim().max(255),
       agreeToTerms: Joi.string().trim().max(5),
+      courseCompleted: Joi.string().trim().max(255),
       ip: Joi.string().trim().max(255),
       user_agent: Joi.string().trim().max(255),
       referrer: Joi.string().trim().max(255),
       created_at: Joi.date()
-    }).or('firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'ip', 'user_agent', 'referrer', 'created_at')
+    }).or('firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted', 'ip', 'user_agent', 'referrer', 'created_at')
 
     return schema.validate(pledge)
   }
