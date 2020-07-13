@@ -37,6 +37,9 @@ npm install
 # See ./config/custom-environment-variables.json
 # and ./_docs/environment-variables.md
 touch ./.env
+# The above line will create a new file from scratch,
+# OR you can just save a .env file in the root directory,
+# if one was provided to you.
 
 # Serve the local server API to localhost:3000 and watch for changes
 npm watch:server

@@ -2,9 +2,11 @@
 
 To download the pledge results from the database, order alphabetically, strip duplicates, and save as a CSV file:
 
-1. Update local environment variable in `.env`:
-  - Set `SITE_URL` to the local API URL: `localhost:3000`
-  - Set `DB_STRING` to the live production database URL
+0. (Only do this step the very first time) Create a `./scratch/db` directory by running `mkdir -p ./scratch/db`
+1. Update environment variables in `.env`:
+  - First, make sure that you have an existing `.env` file with all of the environment variables (see `_docs/environment-variables.md`)
+  - Set `SITE_URL` to the local API URL: `localhost:3000` (and comment any other instances of the same variable by placing a `#` at the beginning of the line)
+  - Set `DB_STRING` to the live production (Heroku) database URL (and comment any other instances of the same variable by placing a `#` at the beginning of the line)
 2. Run the local API server: `npm run serve:server`
 3. In another terminal window, run `npm run pledge:results`
 
