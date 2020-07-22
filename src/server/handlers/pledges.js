@@ -1,6 +1,9 @@
 const { log } = require('../modules/logger')
 const { Pledge, validate } = require('../models/pledge')
 const _ = require('lodash')
+const config = require('config')
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(config.get('sendgrid.apiKey'))
 
 module.exports = {
   /**
@@ -44,6 +47,58 @@ module.exports = {
 
     // Return pledge to the client
     res.send(pledge)
+  },
+
+  /**
+   * Handles Pledge POST requests
+   */
+  handlePostPledge: (req, res) => {
+    this.sendEmail(req, res)
+    this.createPledge(req, res)
+  },
+
+  /**
+   * Sends an email to the Pledge recipient
+   */
+  sendEmail: (req, res) => {
+    // TODO: Get the req.body properties that were sent from the client
+    // i.e., something like: const getsEmail = req.body.getsEmail
+    const getsEmail = req.body.getsEmail
+    if (!getsEmail) return false
+    // The above code needs to be tested
+
+    // FYI: The form values are saved in req.body.pledges
+
+    // TODO: Generate the body of the HTML email, and plain text version
+    const htmlEmailBody = require('../emails/test-email.html')
+    const textEmailBody = require('../emails/test-email.txt')
+
+    // TODO: Generate a PDF from the HTML
+    // https://www.twilio.com/blog/sending-email-attachments-with-sendgrid
+
+    // TODO: Send email via SendGrid
+    const msg = {
+      to: req.body.pledges.email,
+      from: 'test@example.com', // TODO: Fill in sender email address
+      subject: 'Sending with Twilio SendGrid is Fun', // TODO: Fill in subject
+      text: textEmailBody,
+      html: htmlEmailBody,
+    }
+
+    // Send the email
+    sgMail
+      .send(msg)
+      .then(() => {}, error => {
+        if (!error) console.log('Success!')
+
+        console.error(error);
+     
+        if (error.response) {
+          console.error(error.response.body)
+        }
+      });
+
+    return true
   },
 
   /**

@@ -486,9 +486,13 @@ function sendPledgeToApi (event) {
 
   event.preventDefault()
 
+  const postBody = serializeObject(event.target)
+
+  // TODO: Add extra data to postBody object that needs to be sent to the API
+
   fetch('https://fairhousingpledge.com/api/pledges', {
     method: 'POST',
-    body: JSON.stringify(serializeObject(event.target)),
+    body: JSON.stringify(postBody),
     mode: 'cors'
   }).then(function (response) {
     if (response.ok) {

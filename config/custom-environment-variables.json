@@ -18,5 +18,8 @@
   "jwtPrivateKey": "JWT_PRIVATE_KEY",
   "db": {
     "string": "DB_STRING"
+  },
+  "sendgrid": {
+    "apiKey": "SENDGRID_API_KEY"
   }
 }
