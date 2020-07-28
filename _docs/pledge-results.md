@@ -24,6 +24,11 @@ Every Monday morning, download the pledge results and email the total count and 
 - Montiel, Christian <Christian.Montiel@cbhomeoffice.com>
 - Perry, Dawn <dawn.perry@realogy.com>
 - Riveiro, Jason <Jason.Riveiro@realogy.com>
+- Anzel, Bill <bill.anzel@realogy.com>
+- O'connor, Cindy <cindy.oconnor@realogy.com>
+- Cao, Elizabeth <elizabeth.cao@cbhomeoffice.com>
+- Gladdis, Lynette <lynette.gladdis@realogy.com>
+- Stephen, Sanoj <sanoj.stephen@sothebyshomes.com>
 
 ### TODO
 
