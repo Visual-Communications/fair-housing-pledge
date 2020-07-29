@@ -83,19 +83,20 @@
       </div>
     </div>
     <div class="form__row">
-      <label class="form__label" for="brand">Brand</label>
-      <div class="form__select">
-        <input type="text" name="brand" id="brand" class="form__input" required />
-        <datalist id="brands" class="c-select-field__menu">
-          <option>Better Homes and Gardens Real Estate</option>
-          <option>CENTURY 21</option>
-          <option>Coldwell Banker</option>
-          <option>Corcoran</option>
-          <option>ERA</option>
-          <option>Sotheby's International Realty</option>
-        </datalist>
-      </div>
-    </div>
+            <label class="form__label" for="brand">New Brand</label>
+            {% comment %} <input name="brand" id="brand" class="form__input" required /> {% endcomment %}
+                <select name="brand" id="brand" class="form__input" required>
+                  <option>Better Homes and Gardens Real Estate</option>
+                  <option>Century 21 Real Estate</option>
+                  <option>Coldwell Banker - Company Owned (previously NRT)</option>
+                  <option>Coldwell Banker – Affiliates</option>
+                  <option>Corcoran</option>
+                  <option>ERA Real Estate</option>
+                  <option>Sotheby’s International Realty</option>
+                  <option>Realogy</option>     
+                  <option>Other</option>                                                                                                                        
+                </select>       
+    </div>    
     <div class="form__row">
       <label for="company" class="form__label">Company Name</label>
       <input type="text" name="company" id="company" class="form__input" value="" autocorrect="off" required />
