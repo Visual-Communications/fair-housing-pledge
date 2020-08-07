@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
+    "@sendgrid/mail": "^7.2.2",
     "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
     "compression": "^1.7.4",
@@ -62,11 +63,14 @@
     "http-errors": "^1.7.3",
     "joi-password-complexity": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
+    "jspdf": "^1.5.3",
     "liquidjs": "^9.12.0",
     "lodash": "^4.17.15",
+    "mongodb": "^3.5.9",
     "mongoose": "^5.9.17",
     "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.10.0",
+    "sendgrid": "^5.2.3",
     "serve-favicon": "^2.5.0",
     "winston": "^3.2.1"
   },

@@ -29,6 +29,7 @@ Every Monday morning, download the pledge results and email the total count and 
 - Cao, Elizabeth <elizabeth.cao@cbhomeoffice.com>
 - Gladdis, Lynette <lynette.gladdis@realogy.com>
 - Stephen, Sanoj <sanoj.stephen@sothebyshomes.com>
+- Alter, Marc <marc.alter@corcoran.com>
 
 ### TODO
 
