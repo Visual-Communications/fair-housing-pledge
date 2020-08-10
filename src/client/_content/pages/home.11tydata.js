@@ -12,7 +12,12 @@ module.exports = {
         title: 'NAR Fair Housing at Home'
       }
     ]
+<<<<<<< HEAD
   },
+=======
+  }
+},
+>>>>>>> a39121be46b879b306d2e8f5ba39dbe7376b2640
   scripts: [
     {
       src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js",
@@ -30,4 +35,8 @@ module.exports = {
       'crossorigin="anonymous"'
      ] }
   ]   
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a39121be46b879b306d2e8f5ba39dbe7376b2640
