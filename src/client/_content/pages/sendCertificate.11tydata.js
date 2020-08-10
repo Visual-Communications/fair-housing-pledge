@@ -1,4 +1,4 @@
-const pages = {
+module.exports = {
     contentType: 'page',
     title: 'course certificate',
     layout: 'sendCertificate',
@@ -22,6 +22,3 @@ const pages = {
        ] }
     ]   
   }
-  
-  module.exports = pages
-  

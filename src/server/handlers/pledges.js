@@ -81,7 +81,11 @@ module.exports = {
       log.info(`${pledges.length} pledges created.`, _.pick(pledges, ['_doc', 'level', 'message', 'timestamp']))
 
       // Return redirect to the client
-      return res.redirect('https://fairhousingpledge.com/thank-you/')
+      // return res.redirect('https://fairhousingpledge.com/thank-you/')
+         return res.redirect('https://fairhousingpledge.com/course-certificate/')
+
+      // return res.redirect('http://localhost:8082/course-certificate/')
+
     }
 
     // Validate pledge
@@ -103,7 +107,10 @@ module.exports = {
     }
 
     // Return redirect to the client
-    return res.redirect('https://fairhousingpledge.com/thank-you/')
+    // return res.redirect('https://fairhousingpledge.com/thank-you/')
+    // return res.redirect('http://localhost:8082/course-certificate/')
+       return res.redirect('https://fairhousingpledge.com/course-certificate/')
+
   },
 
   /**
