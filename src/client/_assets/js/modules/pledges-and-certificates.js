@@ -487,6 +487,8 @@ function sendPledgeToApi (event) {
   event.preventDefault()
 
   fetch('https://fairhousingpledge.com/api/pledges', {
+    // fetch('http://localhost:3000/api/pledges', {
+
     method: 'POST',
     body: JSON.stringify(serializeObject(event.target)),
     mode: 'cors'

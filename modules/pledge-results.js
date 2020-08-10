@@ -31,7 +31,6 @@ async function init (cb) {
 
   // Save the data
   writeFile(csv, settings.writeFile, filtered.length)
-
   // TODO: Use something like SendGrid to email the data as an attachment,
   // with the site name and data count in the subject line or email body,
   // instead of having to manually send that email
