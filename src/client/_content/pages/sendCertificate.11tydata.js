@@ -1,6 +1,7 @@
 module.exports = {
     contentType: 'page',
-    title: 'course certificate',
+    // TODO: axe 'printable' when PDF happens
+    title: 'printable course certificate',
     layout: 'sendCertificate',
     // layout: 'base',
     slug: 'course-certificate',
