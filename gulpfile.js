@@ -26,6 +26,48 @@ const isProduction = config.get('eleventy.environment') === 'production'
 const SRC = config.get('paths.src.client')
 const BUILD = config.get('paths.build.client')
 
+//FOR THE SHAREPOINT UPLOAD
+var spsave = require('gulp-spsave')
+var gulpWatch = require('gulp-watch')
+var cached = require('gulp-cached');
+
+var coreOptions = {
+  siteUrl: 'https://tenant.sharepoint.com/sites/yoursite',
+  notification: true,
+  // path to document library or in this case the master pages gallery
+  folder: "_catalogs/masterpage/Display Templates/", 
+  flatten: false
+
+};
+var sharePointCreds = {
+  username: 'user@example.com',
+  password: 'your password'
+};
+
+
+gulp.task('spdefault', function() {
+  // runs the spsave gulp command on only files the have 
+  // changed in the cached files
+  //consider pledge-results
+  //CONSIDER MAKING THIS DATABASE.
+  return gulp.src('src/**')
+      .pipe(cached('spFiles'))
+      .pipe(spsave(coreOptions, sharePointCreds));     
+});
+
+
+gulp.task('default', function() {
+  // create an initial in-memory cache of files
+  gulp.src('src/**')
+  .pipe(cached('spFiles'));
+  
+  // watch the src folder for any changes of the files
+  gulp.gulpWatch(['./src/**'], ['spdefault']);
+});
+
+
+//SHAREPOINT UPLOAD ENDS HERE
+
 const paths = {
   html: {
     src: [

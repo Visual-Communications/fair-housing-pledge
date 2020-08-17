@@ -1,40 +1,4 @@
 init();
-// ================
-// PDF Generation
-// ================
-
-import jsPDF from 'jspdf'
-
-
-    var doc = new jsPDF();
-    var specialElementHandlers = {
-        '#editor': function (element, renderer) {
-            return true;
-        }
-    };
-
-    $('#cmd').click(function () {
-      doc.fromHTML($('#content').html(), 15, 15, {
-          'width': 170,
-              'elementHandlers': specialElementHandlers
-      });
-      doc.save('sample-file.pdf');
-  });
-
-
-//Your  Draft
-// function generatePDF() {
-//     console.log("FUNCTION IS FIRING AGAIN");
-//       var doc = new jsPDF();
-//       doc.fromHTML($('#certificateContents').get(0), 10,10) 
-       
-//       doc.save('document.pdf');
-//   }
-  
-//     var button1 = document.querySelector('#testB')
-// if (button1) {
-//     button1.addEventListener('click', generatePDF)
-// }
 
 // =================
 // initializing
@@ -102,10 +66,10 @@ var footerImage = document.getElementById('brandFooterID')
       footerImage.src = "https://raw.githubusercontent.com/Visual-Communications/fair-housing-pledge/master/src/client/_assets/img/certificate/FH%20Pledge_SIR_F.jpg?token=AIK53GKPTVF6RLQM63KRXDK7GXD4U"
       break; 
     }    
-    //TODO: Add default?
+
     default : {
-      headerImage.src = null;
-      footerImage.src = null;
+      headerImage.src = "https://raw.githubusercontent.com/Visual-Communications/fair-housing-pledge/master/src/client/_assets/img/certificate/FH%20Pledge_Generic_H.jpg?token=AIK53GNHG56S7H7FZTXWTTS7INPHW";
+      footerImage.src = "https://raw.githubusercontent.com/Visual-Communications/fair-housing-pledge/master/src/client/_assets/img/certificate/FH%20Pledge_Generic_F.jpg?token=AIK53GJTW6GNZHSBYPTBBCS7INPSS";
     }
 
   }
