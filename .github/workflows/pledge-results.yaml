@@ -1,0 +1,20 @@
+# name: Pledge Results
+
+# # CRON values will be changed to trigger once every 24 hours (or less, depending on what we decide)
+# on:
+#   schedule:
+#   # - cron: '0,20,40 0-3,10-23 * * *'
+#   - cron:  '*/15 * * * *'
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     #research uses
+#     - uses: actions/checkout@v2
+#     - name: Pledge Results
+#       # run: curl -s "${API}"
+#       run: npm run pledge:results
+#       env:
+#       # Do I need to remake the Secret??
+#         API: ${{ secrets.API_URL }}
