@@ -22,8 +22,10 @@ const settings = {
 async function init (cb) {
   // Get the data
   const token = await getApiToken(settings.authUrl)
+  console.log('token populated')
   const file = await getApiData(settings.apiUrl, token)
-
+  console.log('file populated')
+  
   // Manipulate the data
   const sorted = sortByKey(file, settings.sortBy)
   const filtered = filterKeys(sorted, settings.keys)
@@ -31,9 +33,6 @@ async function init (cb) {
 
   // Save the data
   writeFile(csv, settings.writeFile, filtered.length)
-  // TODO: Use something like SendGrid to email the data as an attachment,
-  // with the site name and data count in the subject line or email body,
-  // instead of having to manually send that email
 
   return cb()
 }
@@ -61,15 +60,21 @@ function handleError (error) {
  * param {String} url
  * return {String}
  */
+
 async function getApiToken (url) {
-  return await axios.post(url, {
+  console.log('getApiToken is firing')
+  // return await axios.post(url, {
+     return axios.post(url, {
+
       email: config.get('user.email'),
       password: config.get('user.password')
-    })
+    }) 
     .then(function (response) {
+      console.log("token received")
       return response.headers['set-cookie'][0].replace('x-auth-token=', '').replace(/; .*/, '')
     })
     .catch(function (error) {
+      console.log("token failed")
       return handleError(error)
     })
 }
@@ -82,6 +87,7 @@ async function getApiToken (url) {
  * return {String}
  */
 async function getApiData (url, token) {
+  console.log('getApiData')
   try {
     const response = await axios.get(url, {
       headers: {
@@ -102,6 +108,7 @@ async function getApiData (url, token) {
  * return {Array[Object]}
  */
 function sortByKey (data, key) {
+  console.log('sortByKey is firing')
   return JSON.parse(data)
     .sort(function(a, b) {
       if (a[key].toUpperCase() < b[key].toUpperCase()) return -1
@@ -118,6 +125,7 @@ function sortByKey (data, key) {
  * return {Array[Object]}
  */
 function filterKeys (data, keys) {
+  console.log('filterKeys')
   return data.map(person => {
     const object = {}
     keys.forEach(key => {
@@ -135,6 +143,7 @@ function filterKeys (data, keys) {
  * return {String}
  */
 function jsonToCsv (data) {
+  console.log('jsonToCsv')
   return Papa.unparse(JSON.stringify(data), {
     header: true
   })
@@ -149,6 +158,7 @@ function jsonToCsv (data) {
  * return {String}
  */
 function writeFile (data, filename, count) {
+  console.log('writeFile')
   const writeFile = path.join(settings.path, filename)
 
   try {

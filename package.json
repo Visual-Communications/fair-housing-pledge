@@ -70,8 +70,10 @@
     "mongoose": "^5.9.17",
     "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.10.0",
+    "node-cron": "^2.0.3",
     "sendgrid": "^5.2.3",
     "serve-favicon": "^2.5.0",
+    "shelljs": "^0.8.4",
     "winston": "^3.2.1"
   },
   "devDependencies": {

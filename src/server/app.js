@@ -25,6 +25,7 @@ const debug = {
   startup: require('debug')('api:startup'),
   database: require('debug')('api:database')
 }
+const cron = require('./modules/cron')
 
 const isProduction = app.get('env') === 'production'
 
@@ -159,5 +160,7 @@ app.use(function(req, res, next) {
   next(createError(404))
 })
 app.use(error)
+cron()
+
 
 module.exports = app
