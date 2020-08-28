@@ -20,7 +20,7 @@ const uglify = require('gulp-uglify')
 const svgmin = require('gulp-svgmin')
 const rename = require('gulp-rename')
 const connect = require('gulp-connect')
-const pledgeResults = require('./modules/pledge-results.js')
+const pledgeResults = require('./src/server/modules/pledge-results.js')
 
 const isProduction = config.get('eleventy.environment') === 'production'
 const SRC = config.get('paths.src.client')

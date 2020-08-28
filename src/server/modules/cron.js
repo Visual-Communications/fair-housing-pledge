@@ -1,16 +1,19 @@
 //CRON JOB====================
 const cron = require('node-cron');
-let shell = require('shelljs');
+// let shell = require('shelljs');
+const pledgeResults = require('./pledge-results')
 
 function init() {
-    cron.schedule("* * * * * *", function() {
+    cron.schedule("5 * * * * *", function() {
         console.log('running a task every interval');
-        if (shell.exec("npm run pledge:results").code !== 0) {
+        // if (pledgeResults.exec("npm run pledge:results").code !== 0) {
           // if (shell.exec("dir").code !== 0) {
       
-          console.log("something went wrong");
-        }
-      
+        //   console.log("something went wrong");
+        // }
+      pledgeResults( () => {
+          console.log('pass function in pledgeResults')
+      });
       });
 }
 //====================

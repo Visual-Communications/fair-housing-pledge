@@ -10,7 +10,7 @@ const settings = {
   apiUrl: `${config.get('site.url')}/api/pledges`,
   keys: ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'created_at', 'courseCompleted'],
   sortBy: 'firstName',
-  path: path.join(__dirname, '..', 'scratch', 'db'),
+  path: path.join(__dirname, '..', '..','..', 'scratch', 'db'),
   writeFile: 'pledge-results.csv'
 }
 
@@ -32,6 +32,8 @@ async function init (cb) {
   const csv = jsonToCsv(filtered)
 
   // Save the data
+  //TODO: do something else instead of writefile
+  //Instead of saving it to the Hard Drive, we want to save it to sharePoint/somewhere else
   writeFile(csv, settings.writeFile, filtered.length)
 
   return cb()
@@ -160,7 +162,6 @@ function jsonToCsv (data) {
 function writeFile (data, filename, count) {
   console.log('writeFile')
   const writeFile = path.join(settings.path, filename)
-
   try {
     fs.writeFile(writeFile, data, {
       encoding: 'utf8'
