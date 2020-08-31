@@ -35,8 +35,8 @@ var footerImage = document.getElementById('brandFooterID')
     }
     case "Century 21 Real Estate" : {
       console.log("brand: " + brand);
-      headerImage.src = "https://raw.githubusercontent.com/Visual-Communications/fair-housing-pledge/master/src/client/_assets/img/certificate/FH%20Pledge_C21_H.jpg?token=AIK53GIR2LXYGC7SRKXG44C7JE4RA"
-      footerImage.src = "https://raw.githubusercontent.com/Visual-Communications/fair-housing-pledge/master/src/client/_assets/img/certificate/FH%20Pledge_C21_F.jpg?token=AIK53GOPC5YHYFV3JHQWFL27JE4SU"
+      headerImage.src = "../img/certificate/C21-Header.jpg"
+      footerImage.src = "./img/certificate/C21-Footer.jpg"
       break;
     }
     //TODO: Add Coldwell Banker Images
