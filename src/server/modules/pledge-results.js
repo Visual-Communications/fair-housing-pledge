@@ -11,6 +11,8 @@ const settings = {
   keys: ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'created_at', 'courseCompleted'],
   sortBy: 'firstName',
   path: path.join(__dirname, '..', '..','..', 'scratch', 'db'),
+  // path: path.join('C:','Users', 'esemp','Realogy', 'Fair Housing Pledge - Documents', 'General'),
+
   writeFile: 'pledge-results.csv'
 }
 

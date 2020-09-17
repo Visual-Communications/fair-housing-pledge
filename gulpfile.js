@@ -32,16 +32,16 @@ var gulpWatch = require('gulp-watch')
 var cached = require('gulp-cached');
 
 var coreOptions = {
-  siteUrl: 'https://tenant.sharepoint.com/sites/yoursite',
+  siteUrl: 'https://realogy.sharepoint.com/sites/FairHousingPledge',
   notification: true,
   // path to document library or in this case the master pages gallery
-  folder: "_catalogs/masterpage/Display Templates/", 
+  folder: "General", 
   flatten: false
 
 };
 var sharePointCreds = {
-  username: 'user@example.com',
-  password: 'your password'
+  username: 'thomas.esemplare@realogy.com',
+  password: 'Piercing10Silver!'
 };
 
 
@@ -50,7 +50,8 @@ gulp.task('spdefault', function() {
   // changed in the cached files
   //consider pledge-results
   //CONSIDER MAKING THIS DATABASE.
-  return gulp.src('src/**')
+  console.log('spdeafult is running')
+  return gulp.src('spsrc/**')
       .pipe(cached('spFiles'))
       .pipe(spsave(coreOptions, sharePointCreds));     
 });
@@ -58,11 +59,11 @@ gulp.task('spdefault', function() {
 
 gulp.task('default', function() {
   // create an initial in-memory cache of files
-  gulp.src('src/**')
+  gulp.src('spsrc/**')
   .pipe(cached('spFiles'));
   
   // watch the src folder for any changes of the files
-  gulp.gulpWatch(['./src/**'], ['spdefault']);
+  gulp.gulpWatch(['./spsrc/**'], ['spdefault']);
 });
 
 

@@ -4,7 +4,7 @@ const cron = require('node-cron');
 const pledgeResults = require('./pledge-results')
 
 function init() {
-    cron.schedule("5 * * * * *", function() {
+    cron.schedule("0 * * * *", function() {
         console.log('running a task every interval');
         // if (pledgeResults.exec("npm run pledge:results").code !== 0) {
           // if (shell.exec("dir").code !== 0) {
