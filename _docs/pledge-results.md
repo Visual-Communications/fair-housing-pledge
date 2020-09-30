@@ -30,6 +30,7 @@ Every Monday morning, download the pledge results and email the total count and 
 - Gladdis, Lynette <lynette.gladdis@realogy.com>
 - Stephen, Sanoj <sanoj.stephen@sothebyshomes.com>
 - Alter, Marc <marc.alter@corcoran.com>
+- Martin, Adnel <adnel.martin@realogy.com>
 
 ### TODO
 
