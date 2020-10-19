@@ -70,8 +70,11 @@ module.exports = {
           email: p.email
         })
 
+        // Sleep so users don't enter the same email multiple times in rapid succession.
+        sleep(500);
         if (!duplicate) {
           // Add pledge to array
+          
           this.push(_.pick(p, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted']))
         }
       }, pledges)
