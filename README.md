@@ -46,6 +46,10 @@ npm watch:server
 
 # Build the local client site, serve to localhost:8082, and watch for changes
 npm serve:client
+
+# Or, on certain machines (namely Windows):
+npm run serve:client
+
 ```
 
 ## Documentation
