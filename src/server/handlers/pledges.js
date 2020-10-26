@@ -39,7 +39,7 @@ module.exports = {
     // https://codeburst.io/how-to-get-users-ip-details-in-expressjs-ff5252728604
 
     // Add pledge to the database
-    pledge = await pledge.save()
+    // pledge = await pledge.save()
     log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
 
     // Return pledge to the client
