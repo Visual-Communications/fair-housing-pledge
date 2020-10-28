@@ -27,24 +27,24 @@ module.exports = {
    * Create a pledge
    * TODO: Delete this method if we're not using it anymore
    */
-  createPledgeLegacy: async (req, res) => {
-    // Validate pledge
-    const { error } = validate.create(req.body)
-    if (error) return res.status(400).send(error.details[0].message)
+  // createPledgeLegacy: async (req, res) => {
+  //   // Validate pledge
+  //   const { error } = validate.create(req.body)
+  //   if (error) return res.status(400).send(error.details[0].message)
 
-    // Create pledge
-    let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted']))
+  //   // Create pledge
+  //   let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted']))
 
-    // TODO: Get and add ip, referrer, user_agent ?
-    // https://codeburst.io/how-to-get-users-ip-details-in-expressjs-ff5252728604
+  //   // TODO: Get and add ip, referrer, user_agent ?
+  //   // https://codeburst.io/how-to-get-users-ip-details-in-expressjs-ff5252728604
 
-    // Add pledge to the database
-    // pledge = await pledge.save()
-    log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
+  //   // Add pledge to the database
+  //   // pledge = await pledge.save()
+  //   log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
 
-    // Return pledge to the client
-    res.send(pledge)
-  },
+  //   // Return pledge to the client
+  //   res.send(pledge)
+  // },
 
   /**
    * Create one or multiple pledges
