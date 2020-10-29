@@ -71,7 +71,6 @@ module.exports = {
         })
 
         // Sleep so users don't enter the same email multiple times in rapid succession.
-        sleep(500);
         if (!duplicate) {
           // Add pledge to array
           this.push(_.pick(p, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted']))
@@ -84,7 +83,6 @@ module.exports = {
 
       // Return redirect to the client
          return res.redirect('https://fairhousingpledge.com/course-certificate/')
-
       // return res.redirect('http://localhost:8082/course-certificate/')
 
     }
@@ -102,7 +100,6 @@ module.exports = {
     })
 
     //sleep so the database doesn't rapidly enter two entries
-    sleep(500);
     if (!duplicate) {
       // Add pledge to the database
       pledge = await pledge.save()
