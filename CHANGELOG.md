@@ -15,19 +15,20 @@ and this project adheres to [Semantic Versioning](semver).
 ### Removed
 
 ### Fixed
+- Disable submit button to prevent duplicate POST requests. [#89][#89]
 
 ### Security
 
 ## 1.3.1 - 2020-11-23 - Remove deprecated method call
 
 ### Added
-- Install `feature-policy` module.
+- Install `feature-policy` module. [#86][#86]
 
 ### Removed
-- Remove deprecated `helmet.featurePolicy()` call.
+- Remove deprecated `helmet.featurePolicy()` call. [#86][#86]
 
 ### Fixed
-- Set Feature Policy HTTP header by `feature-policy` module.
+- Set Feature Policy HTTP header by `feature-policy` module. [#86][#86]
 
 ## 1.3.0 - 2020-11-23 - Bulk delete
 
@@ -72,3 +73,5 @@ and this project adheres to [Semantic Versioning](semver).
 [changelog]: https://keepachangelog.com/en/1.0.0/
 [semver]: https://semver.org/spec/v2.0.0.html
 [#84]: https://github.com/Visual-Communications/fair-housing-pledge/issues/84
+[#86]: https://github.com/Visual-Communications/fair-housing-pledge/issues/86
+[#89]: https://github.com/Visual-Communications/fair-housing-pledge/issues/89
