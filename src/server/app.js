@@ -75,7 +75,7 @@ app.use(helmet(helmetHeaders)) // Set HTTP headers
 /**
  * Set Feature Policy HTTP header.
  *
- * @since unreleased
+ * @since 1.3.1
  */
 app.use(featurePolicy({
   features: {

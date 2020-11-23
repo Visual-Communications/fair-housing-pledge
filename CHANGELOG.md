@@ -7,19 +7,27 @@ and this project adheres to [Semantic Versioning](semver).
 ## Unreleased
 
 ### Added
-- Install `feature-policy` module.
 
 ### Changed
 
 ### Deprecated
 
 ### Removed
+
+### Fixed
+
+### Security
+
+## 1.3.1 - 2020-11-23 - Remove deprecated method call
+
+### Added
+- Install `feature-policy` module.
+
+### Removed
 - Remove deprecated `helmet.featurePolicy()` call.
 
 ### Fixed
 - Set Feature Policy HTTP header by `feature-policy` module.
-
-### Security
 
 ## 1.3.0 - 2020-11-23 - Bulk delete
 
