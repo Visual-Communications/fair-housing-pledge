@@ -1,7 +1,5 @@
 # Pledges
 
-## Route handlers
-
 | Route              | HTTP Method | Route Handler Callback | Description              |
 | :---               | :---        | :---                   | :---                     |
 | `/api/pledges`     | `GET`       | `getPledges()`         | Gets all pledges         |
