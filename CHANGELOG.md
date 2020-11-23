@@ -4,16 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](changelog),
 and this project adheres to [Semantic Versioning](semver).
 
-<!--
-## X.X.X - XXXX-XX-XX - XXXXXX
+## Unreleased
 
 ### Added
+- Install `feature-policy` module.
+
 ### Changed
+
 ### Deprecated
+
 ### Removed
+- Remove deprecated `helmet.featurePolicy()` call.
+
 ### Fixed
+- Set Feature Policy HTTP header by `feature-policy` module.
+
 ### Security
--->
 
 ## 1.3.0 - 2020-11-23 - Bulk delete
 
