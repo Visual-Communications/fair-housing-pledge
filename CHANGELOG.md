@@ -15,9 +15,13 @@ and this project adheres to [Semantic Versioning](semver).
 ### Removed
 
 ### Fixed
-- Disable submit button to prevent duplicate POST requests. [#89][#89]
 
 ### Security
+
+## 1.3.2 - 2020-11-23 - Prevent duplicate Pledges
+
+### Fixed
+- Disable submit button to prevent duplicate POST requests. [#89][#89]
 
 ## 1.3.1 - 2020-11-23 - Remove deprecated method call
 
