@@ -456,6 +456,11 @@ function handleClick (event) {
 function handleSubmit (event) {
   event.preventDefault()
 
+  // Disable submit button to prevent duplicate POST requests.
+  const button = document.querySelector('[name="pledge"] [type="submit"]')
+  button.setAttribute('disabled', '');
+  button.textContent = 'Submitting...'
+
   // Send a Google Analytics event
   if (window.gtag) {
     window.gtag('event', 'sign_up', {

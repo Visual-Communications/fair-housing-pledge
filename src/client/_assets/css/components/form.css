@@ -116,12 +116,19 @@
     color: white;
     cursor: pointer;
     font-weight: 700;
+    min-width: 8.25rem;
     padding: 0.75em 1em 0.5em;
 
     &:hover,
     &:focus {
       background: hsl(238.2, 51.8%, 55%);
       padding: 0.75em 1em 0.5em;
+    }
+
+    &[disabled] {
+      background: hsl(238.2, 51.8%, 37.5%);
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   }
 }
