@@ -153,7 +153,9 @@ module.exports = {
   },
 
   /**
-   * Delete pledges
+   * Delete pledges.
+   *
+   * @since 1.3.0
    */
   deletePledges: async (req, res) => {
     // If no pledges requested, return 404 error to the client
