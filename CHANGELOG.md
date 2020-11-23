@@ -20,6 +20,9 @@ and this project adheres to [Semantic Versioning](semver).
 ### Added
 - Add a method for bulk-deleting multiple pledges at once [#84][#84]
 
+### Removed
+- Remove deprecated `createPledgeLegacy()` method
+
 ## 1.2.0 - 2020-06-01 - Fix server
 
 ### Changed
