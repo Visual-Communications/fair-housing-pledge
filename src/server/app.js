@@ -9,6 +9,7 @@ const app = express()
 const config = require('config')
 const compression = require('compression')
 const helmet = require('helmet')
+const featurePolicy = require('feature-policy')
 const { Liquid } = require('liquidjs')
 const engine = new Liquid()
 const path = require('path')
@@ -57,23 +58,6 @@ const helmetHeaders = {
       upgradeInsecureRequests: true
     }
   },
-  featurePolicy: {
-    features: {
-      geolocation: ["'none'"],
-      midi: ["'none'"],
-      notifications: ["'none'"],
-      push: ["'none'"],
-      syncXhr: ["'self'"],
-      microphone: ["'none'"],
-      camera: ["'none'"],
-      magnetometer: ["'none'"],
-      gyroscope: ["'none'"],
-      speaker: ["'none'"],
-      vibrate: ["'none'"],
-      fullscreen: ["'none'"],
-      payment: ["'none'"]
-    }
-  },
   frameguard: {
     action: 'deny'
   },
@@ -87,6 +71,29 @@ const helmetHeaders = {
   }
 }
 app.use(helmet(helmetHeaders)) // Set HTTP headers
+
+/**
+ * Set Feature Policy HTTP header.
+ *
+ * @since 1.3.1
+ */
+app.use(featurePolicy({
+  features: {
+    geolocation: ["'none'"],
+    midi: ["'none'"],
+    notifications: ["'none'"],
+    push: ["'none'"],
+    syncXhr: ["'self'"],
+    microphone: ["'none'"],
+    camera: ["'none'"],
+    magnetometer: ["'none'"],
+    gyroscope: ["'none'"],
+    speaker: ["'none'"],
+    vibrate: ["'none'"],
+    fullscreen: ["'none'"],
+    payment: ["'none'"]
+  }
+}))
 
 /**
  * Setup gzip compression
