@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](semver).
 ## 1.3.0 - 2020-11-23 - Bulk delete
 
 ### Added
-- Add a method for bulk-deleting multiple pledges at once [#84]
+- Add a method for bulk-deleting multiple pledges at once [#84][#84]
 
 ## 1.2.0 - 2020-06-01 - Fix server
 
@@ -54,3 +54,4 @@ and this project adheres to [Semantic Versioning](semver).
 
 [changelog]: https://keepachangelog.com/en/1.0.0/
 [semver]: https://semver.org/spec/v2.0.0.html
+[#84]: https://github.com/Visual-Communications/fair-housing-pledge/issues/84
