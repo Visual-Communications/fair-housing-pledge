@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Added
 
 ### Changed
+- Change courseCompleted to boolean. [#93][#93]
 
 ### Deprecated
 
@@ -79,3 +80,4 @@ and this project adheres to [Semantic Versioning](semver).
 [#84]: https://github.com/Visual-Communications/fair-housing-pledge/issues/84
 [#86]: https://github.com/Visual-Communications/fair-housing-pledge/issues/86
 [#89]: https://github.com/Visual-Communications/fair-housing-pledge/issues/89
+[#93]: https://github.com/Visual-Communications/fair-housing-pledge/issues/93
