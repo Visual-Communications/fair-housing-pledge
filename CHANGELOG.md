@@ -7,10 +7,8 @@ and this project adheres to [Semantic Versioning](semver).
 ## Unreleased
 
 ### Added
-- Add `updatePledges()` method. [#93][#93]
 
 ### Changed
-- Change courseCompleted to boolean. [#93][#93]
 
 ### Deprecated
 
@@ -19,6 +17,14 @@ and this project adheres to [Semantic Versioning](semver).
 ### Fixed
 
 ### Security
+
+## 1.4.0 - 2020-11-27 - Bulk update pledges
+
+### Added
+- Add `updatePledges()` method. [#93][#93]
+
+### Changed
+- Change courseCompleted to boolean. [#93][#93]
 
 ## 1.3.2 - 2020-11-23 - Prevent duplicate Pledges
 
