@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Removed
 
 ### Fixed
+- Update pledge validation `delete()` method so `pledges` is required.
 
 ### Security
 
