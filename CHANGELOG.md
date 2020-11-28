@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](semver).
 ## Unreleased
 
 ### Added
-- Add `updatePledges()` method. [#89][#89]
+- Add `updatePledges()` method. [#93][#93]
 
 ### Changed
 
