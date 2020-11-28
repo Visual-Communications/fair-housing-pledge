@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Fixed
 - Update pledge validation `delete()` method so `pledges` is required.
+- Replace /api redirect loop with client error.
 
 ### Security
 
