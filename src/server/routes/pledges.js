@@ -16,6 +16,7 @@ const strictLimiter = rateLimit({
 
 router.get('/', [auth, admin, limiter], handlers.getPledges)
 router.post('/', [strictLimiter], handlers.createPledge)
+router.put('/', [auth, admin, limiter], handlers.updatePledges)
 router.delete('/', [auth, admin, limiter], handlers.deletePledges)
 
 router.get('/:id', [auth, admin, limiter], handlers.getPledge)
