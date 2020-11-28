@@ -72,6 +72,17 @@ const validate = {
     return schema.validate(pledge)
   },
   /**
+   * Validate a request to update pledges
+   */
+  updateMany: function (request) {
+    const schema = Joi.object({
+      to: Joi.object().required(),
+      from: Joi.object().required()
+    })
+
+    return schema.validate(request)
+  },
+  /**
    * Validate pledge IDs for deleting
    */
   delete: function (pledges) {

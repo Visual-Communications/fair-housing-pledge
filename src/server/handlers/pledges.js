@@ -137,6 +137,29 @@ module.exports = {
   },
 
   /**
+   * Update multiple pledges
+   */
+  updatePledges: async (req, res) => {
+    // Validate request.
+    const { error } = validate.updateMany(req.body)
+    if (error) {
+      return res.status(400).send(error.details[0].message)
+    }
+
+    // Update pledges in the database and get updated pledges.
+    const pledges = await Pledge.updateMany(req.body.from, req.body.to)
+
+    // If no matches are found, return 404 error to the client.
+    if (0 === pledges.n) res.status(404).send('no matches found')
+
+    // Log message to the server.
+    log.info(`${pledges.nModified} pledges updated.`, _.pick(pledges, ['_doc', 'level', 'message', 'timestamp']))
+
+    // Return message to the client.
+    res.send(`${pledges.nModified} pledges updated.`)
+  },
+
+  /**
    * Delete a pledge
    */
   deletePledge: async (req, res) => {
