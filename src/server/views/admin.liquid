@@ -1,0 +1,21 @@
+{% layout "global.liquid" %}
+{% block masthead %}
+  <header class="admin__masthead" role="banner">
+    <div class="admin__masthead-layout">
+      <h1 class="admin__masthead-title">Fair Housing Pledge</h1>  
+      <nav class="admin__nav">
+        <ul class="admin__nav-list">
+          <li class="admin__nav-item"><a class="admin__nav-link" href="/logout">Log Out</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+{% endblock %}
+{% block main %}
+<main id="content">
+  <div class="admin__main" data-admin="dashboard">
+    <p class="pad" data-admin="loading">Loading...</p>
+  </div>
+</main>
+<script src="/js/bundle.js"></script>
+{% endblock %}

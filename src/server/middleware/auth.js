@@ -23,12 +23,10 @@ module.exports = function (req, res, next) {
   // Check cookie
   const token = req.cookies['x-auth-token']
 
-  // If no token, deny access
+  // If no token, deny access and redirect to login page.
   if (!token) {
     log.error('Access denied. No token provided.', { status: 401 })
-    return res
-      .status(401)
-      .send('Access denied. No token provided.')
+    return res.redirect('/login')
   }
 
   try {

@@ -10,6 +10,5 @@ const limiter = rateLimit({
 
 router.post('/', limiter, handlers.authenticateUser)
 router.post('/refresh', [auth, limiter], handlers.refreshUserToken)
-router.post('/logout', [auth, limiter], handlers.logoutUser)
 
 module.exports = router
