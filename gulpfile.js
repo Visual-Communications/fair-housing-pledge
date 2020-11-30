@@ -84,7 +84,7 @@ const paths = {
     all: `./${SRC}/_assets/css/**/*.css`,
     src: `./${SRC}/_assets/css/style.css`,
     dest: `./${BUILD}/css`,
-    admin: 'src/server/public/css',
+    admin: 'src/server/public/admin/css',
     output: `./${BUILD}/css/bundle.css`
   },
   js: {
@@ -104,14 +104,14 @@ const paths = {
         all: `./src/server/admin/js/*.js`,
         index: `./src/server/admin/js/index.js`
       },
-      dest: `./src/server/public/js`,
-      output: `./src/server/public/js/**.js`
+      dest: `./src/server/public/admin/js`,
+      output: `./src/server/public/admin/js/**.js`
     }
   },
   fonts: {
     src: `./${SRC}/_assets/fonts/**/*`,
     dest: `./${BUILD}/fonts`,
-    admin: 'src/server/public/fonts'
+    admin: 'src/server/public/admin/fonts'
   },
   images: {
     src: `./${SRC}/_assets/img/**/*`,
@@ -281,8 +281,8 @@ function js () {
         bundle: paths.js.admin.entry.index
       },
       output: {
-        path: path.resolve(__dirname, 'src/server/public/js'),
-        publicPath: '/js/',
+        path: path.resolve(__dirname, 'src/server/public/admin/js'),
+        publicPath: '/admin/js/',
         filename: '[name].js'
       },
       module: {
