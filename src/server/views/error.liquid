@@ -1,5 +1,21 @@
 {% layout "global.liquid" %}
-{% block content %}
-<h1>{{ error.status }}</h1>
-<p>{{ message }}</p>
+{% block masthead %}
+  <header class="admin__masthead" role="banner">
+    <div class="admin__masthead-layout">
+      <h1 class="admin__masthead-title">Fair Housing Pledge</h1> 
+      <nav class="admin__nav">
+        <ul class="admin__nav-list">
+          <li class="admin__nav-item"><a class="admin__nav-link" href="/login">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+{% endblock %}
+{% block main %}
+<div class="admin__main pad">
+  <div class="container">
+    <h2>{{ error.status }}</h2>
+    <p>{{ message }}</p>
+  </div>
+</div>
 {% endblock %}
