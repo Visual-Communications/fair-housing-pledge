@@ -84,6 +84,7 @@ const paths = {
     all: `./${SRC}/_assets/css/**/*.css`,
     src: `./${SRC}/_assets/css/style.css`,
     dest: `./${BUILD}/css`,
+    admin: 'src/server/public/css',
     output: `./${BUILD}/css/bundle.css`
   },
   js: {
@@ -96,11 +97,21 @@ const paths = {
       index: `./${SRC}/_assets/js/index.js`
     },
     dest: `./${BUILD}/js`,
-    output: `./${BUILD}/js/**.js`
+    output: `./${BUILD}/js/**.js`,
+    admin: {
+      src: ['./src/server/admin/js/**/*.js'],
+      entry: {
+        all: `./src/server/admin/js/*.js`,
+        index: `./src/server/admin/js/index.js`
+      },
+      dest: `./src/server/public/js`,
+      output: `./src/server/public/js/**.js`
+    }
   },
   fonts: {
     src: `./${SRC}/_assets/fonts/**/*`,
-    dest: `./${BUILD}/fonts`
+    dest: `./${BUILD}/fonts`,
+    admin: 'src/server/public/fonts'
   },
   images: {
     src: `./${SRC}/_assets/img/**/*`,
@@ -189,14 +200,21 @@ function lint () {
       ]
     }))
 
-  const js = gulp.src(paths.js.src)
+  const clientJs = gulp.src(paths.js.src)
     .pipe(standard({ // Standard
       fix: true,
       envs: ['browser'] // https://eslint.org/docs/user-guide/configuring#specifying-environments
     }))
     .pipe(standard.reporter('default'))
 
-  const merged = merge(css, js)
+  const adminJs = gulp.src(paths.js.admin.src)
+    .pipe(standard({ // Standard
+      fix: true,
+      envs: ['browser'] // https://eslint.org/docs/user-guide/configuring#specifying-environments
+    }))
+    .pipe(standard.reporter('default'))
+
+  const merged = merge(css, clientJs, adminJs)
   return merged.isEmpty() ? null : merged
 }
 
@@ -215,11 +233,12 @@ function css () {
     .pipe(beautify.css({ indent_size: 2 })) // Beautify
     .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
     .pipe(gulp.dest(paths.css.dest))
+    .pipe(gulp.dest(paths.css.admin))
     .pipe(connect.reload())
 }
 
 function js () {
-  return gulp.src(paths.js.entry.all)
+  const clientJs = gulp.src(paths.js.entry.all)
     .pipe(sourcemaps.init())
     .pipe(webpack({ // Bundle modules with Webpack
       mode: isProduction ? 'production' : 'development',
@@ -253,6 +272,44 @@ function js () {
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.js.dest))
     .pipe(connect.reload())
+
+  const adminJs = gulp.src(paths.js.admin.entry.all)
+    .pipe(sourcemaps.init())
+    .pipe(webpack({ // Bundle modules with Webpack
+      mode: isProduction ? 'production' : 'development',
+      entry: {
+        bundle: paths.js.admin.entry.index
+      },
+      output: {
+        path: path.resolve(__dirname, 'src/server/public/js'),
+        publicPath: '/js/',
+        filename: '[name].js'
+      },
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /(node_modules)/,
+            use: {
+              loader: 'babel-loader', // Transpile JS with Babel
+              options: {
+                presets: ['@babel/preset-env']
+              }
+            }
+          }
+        ]
+      },
+      devtool: 'source-map'
+    }, compiler, err => {
+      if (err) { throw new Error(err) }
+    }))
+    .pipe(beautify({ indent_size: 2 })) // Beautify
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.js.admin.dest))
+    .pipe(connect.reload())
+
+  const merged = merge(clientJs, adminJs)
+  return merged.isEmpty() ? null : merged
 }
 
 function minifyHtml () {
@@ -325,6 +382,7 @@ function assets () {
   const fonts = gulp.src(paths.fonts.src)
     // TODO: Optimize fonts
     .pipe(gulp.dest(paths.fonts.dest))
+    .pipe(gulp.dest(paths.fonts.admin))
     .pipe(connect.reload())
 
   const images = gulp.src(paths.images.src)
@@ -351,7 +409,7 @@ function validate () {
 function watch (cb) {
   gulp.watch(paths.html.src, gulp.series(watchHtml/*, validate*/)) // TODO: Uncomment validate
   gulp.watch([paths.css.all], css)
-  gulp.watch(paths.js.src, js)
+  gulp.watch([...paths.js.src, ...paths.js.admin.src], js)
   gulp.watch([
     paths.fonts.src,
     paths.images.src,
