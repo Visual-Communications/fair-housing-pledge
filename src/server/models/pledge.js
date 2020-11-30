@@ -90,7 +90,7 @@ const validate = {
       pledges: Joi.alternatives().try(
         Joi.array().items(Joi.string().trim().max(255)),
         Joi.string().trim().max(255),
-      )
+      ).required()
     })
 
     return schema.validate(pledges)

@@ -2,6 +2,7 @@ const { log } = require('../modules/logger')
 const { User, validate } = require('../models/user')
 const _ = require('lodash')
 const bcrypt = require('bcrypt')
+const config = require('config')
 const app = require('express')()
 const isProduction = app.get('env') === 'production'
 
@@ -10,22 +11,32 @@ module.exports = {
    * Authenticate a user
    */
   authenticateUser: async (req, res) => {
+    const origin = req.header('origin')
+    const websiteRequest = origin && origin.includes(config.get('site.url'))
+
     {
       // Validate user
       const { error } = validate.auth(req.body)
-      if (error) return res.status(400).send(error.details[0].message)
+      if (error) {
+        if (websiteRequest) return res.status(400).redirect('/login')
+        return res.status(400).send('Invalid email or password')
+      }
     }
     
     {
       // Validate password
       const { error } = validate.password(req.body)
-      if (error) return res.status(400).send(error.details[0].message)
+      if (error) {
+        if (websiteRequest) return res.status(400).redirect('/login')
+        return res.status(400).send('Invalid email or password')
+      }
     }
 
     // Verify user exists
     let user = await User.findOne({ email: req.body.email })
     if (!user) {
       log.info('Failed login attempt: Invalid email.', { user: req.body.email })
+      if (websiteRequest) return res.status(400).redirect('/login')
       return res.status(400).send('Invalid email or password')
     }
 
@@ -33,6 +44,7 @@ module.exports = {
     const validPassword = await bcrypt.compare(req.body.password, user.password)
     if (!validPassword) {
       log.info('Failed login attempt: Invalid password.', { user: req.body.email })
+      if (websiteRequest) return res.status(400).redirect('/login')
       return res.status(400).send('Invalid email or password')
     }
 
@@ -41,8 +53,22 @@ module.exports = {
 
     log.info('User logged in.', { user: _.pick(user, ['_id', 'email', 'role']) })
 
+    if (websiteRequest) {
+      // Return auth token to the client and log in
+      return res
+        // Set a cookie
+        .cookie('x-auth-token', token, {
+          httpOnly: isProduction,
+          maxAge: 7 * 24 * 60 * 60 * 1000, // 1 week
+          // path: '/',
+          sameSite: isProduction,
+          secure: isProduction,
+        })
+        .redirect('/admin')
+    }
+
     // Return auth token to the client
-    res
+    return res
       // Set a cookie
       .cookie('x-auth-token', token, {
         httpOnly: isProduction,
@@ -59,6 +85,9 @@ module.exports = {
    * Refresh a user token
    */
   refreshUserToken: async (req, res) => {
+    const origin = req.header('origin')
+    const websiteRequest = origin && origin.includes(config.get('site.url'))
+
     // Verify user exists
     let user = await User.findOne({ email: req.body.email })
     if (!user) {
@@ -72,6 +101,7 @@ module.exports = {
     // If no token, deny access
     if (!token) {
       log.error('Access denied. No token provided.', { status: 401 })
+      if (websiteRequest) res.redirect(401, '/login')
       return res
         .status(401)
         .send('Access denied. No token provided.')
@@ -94,18 +124,5 @@ module.exports = {
       })
       // Send the response
       .send('Token refresh successful.')
-  },
-
-  /**
-   * Log out a user
-   */
-  logoutUser: async (req, res) => {
-    log.info('User logged out.')
-
-    res
-      // Remove a cookie
-      .clearCookie('x-auth-token')
-      // Send the response
-      .send('Logout successful.')
   }
 }

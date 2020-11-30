@@ -18,6 +18,19 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Security
 
+## 1.5.0 - 2020-11-30 - Admin dashboard
+
+### Added
+- Add admin dashboard [#92][#92]
+- Add admin CSS, fonts, and JS to gulp pipeline. [#92][#92]
+
+### Changed
+- Update ITCSS directory structure. [#92][#92]
+
+### Fixed
+- Update pledge validation `delete()` method so `pledges` is required.
+- Replace /api redirect loop with client error.
+
 ## 1.4.0 - 2020-11-27 - Bulk update pledges
 
 ### Added
@@ -87,4 +100,5 @@ and this project adheres to [Semantic Versioning](semver).
 [#84]: https://github.com/Visual-Communications/fair-housing-pledge/issues/84
 [#86]: https://github.com/Visual-Communications/fair-housing-pledge/issues/86
 [#89]: https://github.com/Visual-Communications/fair-housing-pledge/issues/89
+[#92]: https://github.com/Visual-Communications/fair-housing-pledge/issues/92
 [#93]: https://github.com/Visual-Communications/fair-housing-pledge/issues/93

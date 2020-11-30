@@ -1,0 +1,91 @@
+.admin {
+  background: #eee;
+
+  &__masthead {
+    background: #ccc;
+    border-bottom: 0.25em solid $blue;
+    padding: $space;
+
+    &-layout {
+
+      @include mq-600 {
+        display: grid;
+        grid-template-columns: 1fr auto;
+      }
+    }
+
+    &-title {
+      font-size: 1em;
+      margin-bottom: 0;
+
+      @include mq-600 {
+        padding-top: 0.25em;
+      }
+    }
+  }
+
+  &__nav {
+    padding-top: 0.5em;
+
+    @include mq-600 {
+      line-height: 1.5;
+      padding-top: 0;
+    }
+
+    &-list {
+      margin-left: -0.5em;
+      margin-right: -0.5em;
+    }
+
+    &-item {
+      display: block;
+
+      @include mq-600 {
+        display: inline-block;
+      }
+
+      &:first-child .admin__nav-link {
+        padding-left: 0;
+      }
+
+      &:last-child .admin__nav-link {
+        padding-right: 0;
+      }
+    }
+
+    &-link {
+      padding-left: 0;
+      padding-right: 0;
+
+      @include mq-600 {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+      }
+    }
+  }
+
+  &__form {
+    border: none;
+
+    &-title {
+      font-size: 1.5em;
+    }
+  }
+
+  &__success {
+    color: green;
+  }
+
+  &__error {
+    color: red;
+  }
+
+  &__brands {
+    margin: 0;
+
+    th:first-child,
+    td:first-child {
+      padding-left: $space;
+    }
+  }
+}

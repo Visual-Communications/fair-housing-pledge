@@ -1,3 +1,4 @@
+const config = require('config')
 const { log } = require('../modules/logger')
 const { Pledge, validate } = require('../models/pledge')
 const _ = require('lodash')
@@ -6,7 +7,7 @@ module.exports = {
   /**
    * Get pledges
    */
-  getPledges: async (req, res) => {
+  getPledges: async (req, res, options = {}) => {
     // Get pledges
     const pledges = await Pledge.find()
 
@@ -20,7 +21,7 @@ module.exports = {
     if (sortBy) pledges.sort((a, b) => (a[sortBy] > b[sortBy]) ? 1 : -1)
 
     // Return pledges to the client
-    res.send(pledges)
+    return options.dashboard ? pledges : res.send(pledges)
   },
 
   /**
@@ -58,8 +59,7 @@ module.exports = {
       log.info(`${pledges.length} pledges created.`, _.pick(pledges, ['_doc', 'level', 'message', 'timestamp']))
 
       // Return redirect to the client
-      return res.redirect('https://fairhousingpledge.com/course-certificate/')
-      // return res.redirect('http://localhost:8082/course-certificate/')
+      return res.redirect(config.get('site.url') + '/course-certificate/')
 
     }
 
