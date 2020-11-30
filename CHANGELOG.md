@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](semver).
 ## Unreleased
 
 ### Added
+- Add admin dashboard [#92][#92]
+- Add admin CSS, fonts, and JS to gulp pipeline. [#92][#92]
 
 ### Changed
+- Update ITCSS directory structure. [#92][#92]
 
 ### Deprecated
 
@@ -87,4 +90,5 @@ and this project adheres to [Semantic Versioning](semver).
 [#84]: https://github.com/Visual-Communications/fair-housing-pledge/issues/84
 [#86]: https://github.com/Visual-Communications/fair-housing-pledge/issues/86
 [#89]: https://github.com/Visual-Communications/fair-housing-pledge/issues/89
+[#92]: https://github.com/Visual-Communications/fair-housing-pledge/issues/92
 [#93]: https://github.com/Visual-Communications/fair-housing-pledge/issues/93
