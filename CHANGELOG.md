@@ -7,21 +7,29 @@ and this project adheres to [Semantic Versioning](semver).
 ## Unreleased
 
 ### Added
-- Add admin dashboard [#92][#92]
-- Add admin CSS, fonts, and JS to gulp pipeline. [#92][#92]
 
 ### Changed
-- Update ITCSS directory structure. [#92][#92]
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
-- Update pledge validation `delete()` method so `pledges` is required.
-- Replace /api redirect loop with client error.
 
 ### Security
+
+## 1.5.0 - 2020-11-30 - Admin dashboard
+
+### Added
+- Add admin dashboard [#92][#92]
+- Add admin CSS, fonts, and JS to gulp pipeline. [#92][#92]
+
+### Changed
+- Update ITCSS directory structure. [#92][#92]
+
+### Fixed
+- Update pledge validation `delete()` method so `pledges` is required.
+- Replace /api redirect loop with client error.
 
 ## 1.4.0 - 2020-11-27 - Bulk update pledges
 
