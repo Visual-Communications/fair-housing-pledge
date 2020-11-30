@@ -84,7 +84,6 @@ const paths = {
     all: `./${SRC}/_assets/css/**/*.css`,
     src: `./${SRC}/_assets/css/style.css`,
     dest: `./${BUILD}/css`,
-    admin: 'src/server/public/admin/css',
     output: `./${BUILD}/css/bundle.css`
   },
   js: {
@@ -104,14 +103,13 @@ const paths = {
         all: `./src/server/admin/js/*.js`,
         index: `./src/server/admin/js/index.js`
       },
-      dest: `./src/server/public/admin/js`,
-      output: `./src/server/public/admin/js/**.js`
+      dest: `./${BUILD}/js/admin`,
+      output: `./${BUILD}/js/admin/**.js`
     }
   },
   fonts: {
     src: `./${SRC}/_assets/fonts/**/*`,
-    dest: `./${BUILD}/fonts`,
-    admin: 'src/server/public/admin/fonts'
+    dest: `./${BUILD}/fonts`
   },
   images: {
     src: `./${SRC}/_assets/img/**/*`,
@@ -233,7 +231,6 @@ function css () {
     .pipe(beautify.css({ indent_size: 2 })) // Beautify
     .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
     .pipe(gulp.dest(paths.css.dest))
-    .pipe(gulp.dest(paths.css.admin))
     .pipe(connect.reload())
 }
 
@@ -281,8 +278,8 @@ function js () {
         bundle: paths.js.admin.entry.index
       },
       output: {
-        path: path.resolve(__dirname, 'src/server/public/admin/js'),
-        publicPath: '/admin/js/',
+        path: path.resolve(__dirname, 'build/js/admin'),
+        publicPath: '/js/admin/',
         filename: '[name].js'
       },
       module: {
@@ -382,7 +379,6 @@ function assets () {
   const fonts = gulp.src(paths.fonts.src)
     // TODO: Optimize fonts
     .pipe(gulp.dest(paths.fonts.dest))
-    .pipe(gulp.dest(paths.fonts.admin))
     .pipe(connect.reload())
 
   const images = gulp.src(paths.images.src)
