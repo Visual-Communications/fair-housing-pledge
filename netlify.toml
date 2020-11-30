@@ -22,8 +22,8 @@
   headers = {X-From = "Netlify"}
 
 [[redirects]]
-  from = "/admin"
-  to = "https://fair-housing-pledge-production.herokuapp.com/admin"
+  from = "/admin/*"
+  to = "https://fair-housing-pledge-production.herokuapp.com/admin/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}

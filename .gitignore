@@ -14,9 +14,7 @@ package-lock.json
 /public/
 /build/
 /dist/
-/src/server/public/css/
-/src/server/public/fonts/
-/src/server/public/js/
+/src/server/public/admin/
 
 # Temporary files
 /_scratch/
