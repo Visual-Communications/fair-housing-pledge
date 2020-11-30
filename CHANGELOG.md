@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Added
 - Add admin dashboard [#92][#92]
 - Add admin CSS, fonts, and JS to gulp pipeline. [#92][#92]
+- Add dashboard route redirects. [#92][#92]
 
 ### Changed
 - Update ITCSS directory structure. [#92][#92]

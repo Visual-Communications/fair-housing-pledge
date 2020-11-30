@@ -22,6 +22,27 @@
   headers = {X-From = "Netlify"}
 
 [[redirects]]
+  from = "/admin"
+  to = "https://fair-housing-pledge-production.herokuapp.com/admin"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/login"
+  to = "https://fair-housing-pledge-production.herokuapp.com/login"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/logout"
+  to = "https://fair-housing-pledge-production.herokuapp.com/logout"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
   from = "/github/*"
   to = "https://github.com/Visual-Communications/fair-housing-pledge"
   status = 200
