@@ -7,8 +7,10 @@ and this project adheres to [Semantic Versioning](semver).
 ## Unreleased
 
 ### Added
+- Allow CORS during local development. [#105][#105]
 
 ### Changed
+- Swap `gulp-connect` for `browser-sync`. [#105][#105]
 
 ### Deprecated
 
@@ -17,6 +19,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Fixed
 
 ### Security
+- Bump `bcrypt` a major version.
 
 ## 1.5.0 - 2020-11-30 - Admin dashboard
 
@@ -103,3 +106,4 @@ and this project adheres to [Semantic Versioning](semver).
 [#89]: https://github.com/Visual-Communications/fair-housing-pledge/issues/89
 [#92]: https://github.com/Visual-Communications/fair-housing-pledge/issues/92
 [#93]: https://github.com/Visual-Communications/fair-housing-pledge/issues/93
+[#105]: https://github.com/Visual-Communications/fair-housing-pledge/issues/105
