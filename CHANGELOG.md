@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](semver).
 - Allow CORS during local development. [#105][#105]
 
 ### Changed
+- Update resource links during local development. [#105][#105]
 - Swap `gulp-connect` for `browser-sync`. [#105][#105]
 
 ### Deprecated

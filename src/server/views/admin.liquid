@@ -17,5 +17,9 @@
     <p class="pad" data-admin="loading">Loading...</p>
   </div>
 </main>
-<script src="/js/admin/bundle.js"></script>
+{% if build.env == 'production' %}
+<script src="/js/admin/bundle.min.js"></script>
+{% else %}
+<script src="{{ site.url }}/js/admin/bundle.js"></script>
+{% endif %}
 {% endblock %}

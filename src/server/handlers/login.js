@@ -9,7 +9,8 @@ module.exports = {
   /**
    * Show login screen.
    *
-   * @since unreleased
+   * @since 1.5.0
+   * @since unreleased Pass site URL.
    *
    * @param {Object} req Request object.
    * @param {Object} res Response object.
@@ -27,7 +28,10 @@ module.exports = {
         if (isExpired) {
           log.error('Access denied. Token is expired.', { status: 401 })
           // Render login page.
-          res.render('login', { title: 'Log In' })
+          res.render('login', {
+            title: 'Log In',
+            site: { url: config.get('site.url') }
+          })
         }
 
         // Set user to decoded token and continue
@@ -40,11 +44,17 @@ module.exports = {
       catch (ex) {
         log.error('Invalid token.', { status: 400 })
         // Render login page.
-        res.render('login', { title: 'Log In' })
+        res.render('login', {
+          title: 'Log In',
+          site: { url: config.get('site.url') }
+        })
       }
     }
     
     // Render login page.
-    res.render('login', { title: 'Log In' })
+    res.render('login', {
+      title: 'Log In',
+      site: { url: config.get('site.url') }
+    })
   }
 }
