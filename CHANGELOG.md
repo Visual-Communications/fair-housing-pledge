@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Added
 - Allow CORS during local development. [#105][#105]
+- Cache dashboard pledge data client-side. [#104][#104]
 
 ### Changed
 - Update resource links during local development. [#105][#105]
@@ -18,6 +19,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Removed
 
 ### Fixed
+- Allow auth requests from both API URL and site URL. [#104][#104]
 
 ### Security
 - Bump `bcrypt` a major version.
@@ -107,4 +109,5 @@ and this project adheres to [Semantic Versioning](semver).
 [#89]: https://github.com/Visual-Communications/fair-housing-pledge/issues/89
 [#92]: https://github.com/Visual-Communications/fair-housing-pledge/issues/92
 [#93]: https://github.com/Visual-Communications/fair-housing-pledge/issues/93
+[#104]: https://github.com/Visual-Communications/fair-housing-pledge/issues/104
 [#105]: https://github.com/Visual-Communications/fair-housing-pledge/issues/105
