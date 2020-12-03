@@ -5,6 +5,9 @@
   "eleventy": {
     "environment": ""
   },
+  "build": {
+    "env": ""
+  },
   "site": {
     "url": ""
   },
