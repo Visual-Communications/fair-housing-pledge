@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Added
 - Allow CORS during local development. [#105][#105]
+- Add BUILD_ENV environment variable. [#105][#105]
 - Cache dashboard pledge data client-side. [#104][#104]
 
 ### Changed
