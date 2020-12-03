@@ -19,7 +19,7 @@ const beautify = require('gulp-beautify')
 const uglify = require('gulp-uglify')
 const svgmin = require('gulp-svgmin')
 const rename = require('gulp-rename')
-const connect = require('gulp-connect')
+const browserSync = require('browser-sync').create()
 const pledgeResults = require('./src/server/modules/pledge-results.js')
 
 const isProduction = config.get('eleventy.environment') === 'production'
@@ -146,7 +146,6 @@ async function html () {
     // https://github.com/addyosmani/critical-path-css-demo/blob/dca7ec42c6b9d7bb2d8425c4055aabc753c1a6ac/gulpfile.js#L100-L111
     //
     .pipe(gulp.dest(paths.html.dest))
-    .pipe(connect.reload())
 
   return html
 }
@@ -166,7 +165,6 @@ async function watchHtml () {
     // https://github.com/addyosmani/critical-path-css-demo/blob/dca7ec42c6b9d7bb2d8425c4055aabc753c1a6ac/gulpfile.js#L100-L111
     //
     .pipe(gulp.dest(paths.html.dest))
-    .pipe(connect.reload())
 
   return html
 }
@@ -231,7 +229,6 @@ function css () {
     .pipe(beautify.css({ indent_size: 2 })) // Beautify
     .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
     .pipe(gulp.dest(paths.css.dest))
-    .pipe(connect.reload())
 }
 
 function js () {
@@ -268,7 +265,6 @@ function js () {
     .pipe(beautify({ indent_size: 2 })) // Beautify
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.js.dest))
-    .pipe(connect.reload())
 
   const adminJs = gulp.src(paths.js.admin.entry.all)
     .pipe(sourcemaps.init())
@@ -303,7 +299,6 @@ function js () {
     .pipe(beautify({ indent_size: 2 })) // Beautify
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.js.admin.dest))
-    .pipe(connect.reload())
 
   const merged = merge(clientJs, adminJs)
   return merged.isEmpty() ? null : merged
@@ -332,7 +327,6 @@ function minifyHtml () {
       useShortDoctype: true
     }))
     .pipe(gulp.dest(paths.html.dest))
-    .pipe(connect.reload())
 }
 
 function minifyCss () {
@@ -342,7 +336,6 @@ function minifyCss () {
     .pipe(rename({ suffix: '.min' })) // Rename
     .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
     .pipe(gulp.dest(paths.css.dest))
-    .pipe(connect.reload())
 }
 
 function minifyJs () {
@@ -352,14 +345,12 @@ function minifyJs () {
     .pipe(rename({ suffix: '.min' })) // Rename
     .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
     .pipe(gulp.dest(paths.js.dest))
-    .pipe(connect.reload())
 }
 
 function minifySvg () {
   return gulp.src(paths.svg.output)
     .pipe(svgmin()) // Optimize and minify
     .pipe(gulp.dest(paths.svg.dest))
-    .pipe(connect.reload())
 }
 
 function postMinify (cb) {
@@ -379,16 +370,13 @@ function assets () {
   const fonts = gulp.src(paths.fonts.src)
     // TODO: Optimize fonts
     .pipe(gulp.dest(paths.fonts.dest))
-    .pipe(connect.reload())
 
   const images = gulp.src(paths.images.src)
     // TODO: Optimize images
     .pipe(gulp.dest(paths.images.dest))
-    .pipe(connect.reload())
 
   const courses = gulp.src(paths.courses.src)
     .pipe(gulp.dest(paths.courses.dest))
-    .pipe(connect.reload())
 
   const merged = merge(fonts, images, courses)
   return merged.isEmpty() ? null : merged
@@ -425,10 +413,9 @@ function watchMinify (cb) {
 }
 
 function serve (cb) {
-  connect.server({
-    root: paths.html.dest,
-    livereload: true,
-    name: 'Fair Housing Pledge',
+  browserSync.init({
+    server: paths.html.dest,
+    cors: true,
     port: 8082
   })
 
