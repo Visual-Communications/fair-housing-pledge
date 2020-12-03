@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Added
 
 ### Changed
+- Update resource links during local development. [#105][#105]
 
 ### Deprecated
 
@@ -103,3 +104,4 @@ and this project adheres to [Semantic Versioning](semver).
 [#89]: https://github.com/Visual-Communications/fair-housing-pledge/issues/89
 [#92]: https://github.com/Visual-Communications/fair-housing-pledge/issues/92
 [#93]: https://github.com/Visual-Communications/fair-housing-pledge/issues/93
+[#105]: https://github.com/Visual-Communications/fair-housing-pledge/issues/105
