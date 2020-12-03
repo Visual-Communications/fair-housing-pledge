@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](semver).
 ## Unreleased
 
 ### Added
+- Allow CORS during local development. [#105][#105]
 
 ### Changed
 - Update resource links during local development. [#105][#105]
+- Swap `gulp-connect` for `browser-sync`. [#105][#105]
 
 ### Deprecated
 
@@ -18,6 +20,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Fixed
 
 ### Security
+- Bump `bcrypt` a major version.
 
 ## 1.5.0 - 2020-11-30 - Admin dashboard
 
