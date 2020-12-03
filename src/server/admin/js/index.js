@@ -6,17 +6,28 @@ const axios = require('axios')
  * @since unreleased
  */
 function init () {
-  // Get pledge data.
-  axios.get('/api/pledges')
-    .then(response => {
-      // Render admin dashboard.
-      renderDashboard(response.data)
-    })
-    .catch(error => {
-      console.error(error)
-      // Refresh the page.
-      location.reload()
-    })
+  // Get pledges data from sessionStorage.
+  const pledges = sessionStorage.getItem('pledges')
+
+  if (!pledges) {
+    // Get pledges data from the API and store it in sessionStorage.
+    axios.get('/api/pledges')
+      .then(response => {
+        sessionStorage.setItem('pledges', JSON.stringify(response.data))
+
+        // Render the admin dashboard with pledges data from sessionStorage.
+        renderDashboard(JSON.parse(sessionStorage.getItem('pledges')))
+      })
+      .catch(error => {
+        // Log the error and display it in the UI.
+        console.error(error)
+        const loading = document.querySelector('[data-admin="loading"]')
+        loading.textContent = `Error: ${error}`
+      })
+  } else {
+    // Render the admin dashboard with pledges data from sessionStorage.
+    renderDashboard(JSON.parse(sessionStorage.getItem('pledges')))
+  }
 }
 
 /**

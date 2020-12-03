@@ -12,7 +12,10 @@ module.exports = {
    */
   authenticateUser: async (req, res) => {
     const origin = req.header('origin')
-    const websiteRequest = origin && origin.includes(config.get('site.url'))
+    const websiteRequest = origin && (
+      origin.includes(config.get('api.url')) ||
+      origin.includes(config.get('site.url'))
+    )
 
     {
       // Validate user
