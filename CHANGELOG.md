@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Changed
 - Update resource links during local development. [#105][#105]
 - Swap `gulp-connect` for `browser-sync`. [#105][#105]
+- Improve admin messaging.
 
 ### Deprecated
 
@@ -110,5 +111,6 @@ and this project adheres to [Semantic Versioning](semver).
 [#89]: https://github.com/Visual-Communications/fair-housing-pledge/issues/89
 [#92]: https://github.com/Visual-Communications/fair-housing-pledge/issues/92
 [#93]: https://github.com/Visual-Communications/fair-housing-pledge/issues/93
+[#102]: https://github.com/Visual-Communications/fair-housing-pledge/issues/102
 [#104]: https://github.com/Visual-Communications/fair-housing-pledge/issues/104
 [#105]: https://github.com/Visual-Communications/fair-housing-pledge/issues/105

@@ -88,4 +88,20 @@
       padding-left: $space;
     }
   }
+
+  &__message > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+[data-state="inactive"] {
+  display: none;
+}
+
+[data-state="success"] {
+  color: green;
+}
+
+[data-state="error"] {
+  color: red;
 }

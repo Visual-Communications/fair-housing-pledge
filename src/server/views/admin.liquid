@@ -14,7 +14,9 @@
 {% block main %}
 <main id="content">
   <div class="admin__main" data-admin="dashboard">
-    <p class="pad" data-admin="loading">Loading...</p>
+    <div class="pad admin__message" data-admin="message" data-state="loading">
+      <p>Loading...</p>
+    </div>
   </div>
 </main>
 {% if build.env == 'production' %}
