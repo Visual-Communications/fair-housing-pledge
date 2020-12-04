@@ -1,3 +1,8 @@
+/**
+ * @todo: Probably use IndexedDB instead of sessionStorage. Maybe use ZangoDB as
+ * an interface: https://erikolson186.github.io/zangodb/
+ */
+
 const axios = require('axios')
 
 /**
