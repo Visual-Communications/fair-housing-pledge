@@ -73,6 +73,8 @@ function clearMessage () {
  * Render admin dashboard.
  *
  * @since 1.5.0
+ * @since unreleased Pass abstracted brands data to summary markup.
+ * @since unreleased Render download markup.
  * 
  * @param {array} pledges Array of pledge objects.
  */
@@ -80,19 +82,28 @@ function renderDashboard (pledges) {
   // Remove loading message.
   clearMessage()
 
+  // Get brands data.
+  const brands = getBrandsData (pledges)
+
   // Render the dashboard.
   const dashboard = document.querySelector('[data-admin="dashboard"]')
-  dashboard.appendChild(getDashboardMarkup(pledges))
+  const navigation = document.querySelector('.admin__nav-list')
+  const summary = getSummaryMarkup(brands)
+  const download = getDownloadMarkup(['summary', 'pledges'])
+
+  dashboard.appendChild(summary)
+  navigation.insertBefore(download, navigation.querySelector('[data-admin="logout"]'))
 }
 
 /**
- * Render admin dashboard markup.
+ * Get brands data.
  *
- * @since 1.5.0
- * 
- * @param {array} pledges Array of pledge objects.
+ * @since unreleased
+ *
+ * @param  {array} pledges Array of pledge objects.
+ * @return {Object}        Brands data object.
  */
-function getDashboardMarkup (pledges) {
+function getBrandsData (pledges) {
   /**
    * Filter pledges data by brand.
    *
@@ -140,6 +151,18 @@ function getDashboardMarkup (pledges) {
   brands.sir.name = 'Sotheby\'s'
   brands.total.name = 'Total'
 
+  return brands
+}
+
+/**
+ * Get admin dashboard summary markup.
+ *
+ * @since 1.5.0
+ * @since unreleased Abstract brands logic to its own function.
+ * 
+ * @param {Object} brands Brands data.
+ */
+function getSummaryMarkup (brands) {
   // Build the markup.
   const markup = document.createDocumentFragment()
   const table = document.createElement('table')
@@ -192,6 +215,44 @@ function getDashboardMarkup (pledges) {
     table.appendChild(thead)
     table.appendChild(tbody)
   markup.appendChild(table)
+
+  // Return the markup.
+  return markup
+}
+
+/**
+ * Get download section markup.
+ *
+ * @since unreleased
+ *
+ * @return {string}         Download section markup.
+ */
+function getDownloadMarkup (contexts) {
+  // Build the markup.
+  const markup = document.createDocumentFragment()
+
+  // For each context...
+  contexts.forEach((context, index) => {
+    // Build the markup.
+    const li = document.createElement('li')
+    const button = document.createElement('button')
+
+    // Add classes.
+    li.classList.add('admin__nav-list-item')
+    button.classList.add('admin__download-button')
+
+    // Add attributes.
+    button.setAttribute('type', 'button')
+    button.setAttribute('data-admin', 'download')
+    button.setAttribute('data-download', context)
+
+    // Add text content.
+    button.textContent = `Download ${context}`
+
+    // Append the markup.
+    li.appendChild(button)
+    markup.appendChild(li)
+  })
 
   // Return the markup.
   return markup
