@@ -8,7 +8,7 @@ const { clearMessage } = require('./message')
 /**
  * Add Download event listeners.
  *
- * @since unreleased
+ * @since 2.0.0
  */
 export function addDownloadEventListeners () {
   const buttons = document.querySelectorAll('[data-admin="download"]')
@@ -20,7 +20,7 @@ export function addDownloadEventListeners () {
 /**
  * Add message event listeners.
  *
- * @since unreleased
+ * @since 2.0.0
  */
 export function addMessageEventListeners () {
   // Listen for message close button clicks and clear message.

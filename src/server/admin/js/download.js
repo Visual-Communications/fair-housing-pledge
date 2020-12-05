@@ -6,7 +6,7 @@ const { getPledgesData } = require('./pledges')
 /**
  * Get download section markup.
  *
- * @since unreleased
+ * @since 2.0.0
  *
  * @param  {array}  Array of context strings.
  * @return {string} Download section markup.
@@ -46,7 +46,7 @@ export function getDownloadMarkup (contexts) {
 /**
  * Handle download.
  *
- * @since unreleased
+ * @since 2.0.0
  *
  * @param {Event} event Click event.
  */
@@ -68,8 +68,9 @@ export async function handleDownload (event) {
         'No Course': brands[brand].pledgesCount - brands[brand].courseCompletedCount,
       }
     })
-    let data
 
+    // Build CSV data.
+    let data
     switch (download) {
       case 'summary':
         data = Papa.unparse(summary)
@@ -82,11 +83,13 @@ export async function handleDownload (event) {
         return showMessage('error', message)
         break
     }
-
     const csv = new Blob([data], {type: 'text/plain'})
+
+    // Build invisible download link and click it.
     const url = window.URL.createObjectURL(csv)
     const hyperlink = document.createElement('a')
     hyperlink.setAttribute('href', url)
+    // @todo: Add date to filename.
     hyperlink.setAttribute('download', `${download}.csv`)
     hyperlink.textContent = `Download ${download}`
     hyperlink.click()

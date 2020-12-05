@@ -8,7 +8,7 @@ const { showMessage } = require('./message')
 /**
  * Get pledges data from sessionStorage or API.
  *
- * @since unreleased
+ * @since 2.0.0
  *
  * @return {array} Array of pledge objects.
  */

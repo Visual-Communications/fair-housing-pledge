@@ -10,7 +10,7 @@ module.exports = {
    * Show login screen.
    *
    * @since 1.5.0
-   * @since unreleased Pass site URL.
+   * @since 2.0.0 Pass site URL.
    *
    * @param {Object} req Request object.
    * @param {Object} res Response object.

@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](semver).
 ## Unreleased
 
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## 2.0.0
+
+### Added
 - Allow CORS during local development. [#105][#105]
 - Add BUILD_ENV environment variable. [#105][#105]
 - Cache dashboard pledge data client-side. [#104][#104]
@@ -17,10 +31,6 @@ and this project adheres to [Semantic Versioning](semver).
 - Swap `gulp-connect` for `browser-sync`. [#105][#105]
 - Improve admin messaging.
 - **Breaking change:** Update, rename, and modularize functions.
-
-### Deprecated
-
-### Removed
 
 ### Fixed
 - Allow auth requests from both API URL and site URL. [#104][#104]

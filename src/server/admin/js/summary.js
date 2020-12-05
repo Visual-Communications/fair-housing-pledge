@@ -7,7 +7,7 @@ const { showMessage } = require('./message')
 /**
  * Get summary data.
  *
- * @since unreleased
+ * @since 2.0.0
  *
  * @param  {array} pledges Array of pledge objects.
  * @return {Object}        Summary brands data object.
@@ -31,7 +31,7 @@ export function getSummaryData (pledges) {
     /**
      * Filter pledges data by brand.
      *
-     * @since unreleased
+     * @since 2.0.0
      *
      * @param  {string}  string  String to filter pledge brand name by.
      * @return {array}           Filtered array of pledge objects.
@@ -74,7 +74,7 @@ export function getSummaryData (pledges) {
 /**
  * Get admin dashboard summary markup.
  *
- * @since unreleased
+ * @since 2.0.0
  * 
  * @param {Object} brands Brands data.
  */

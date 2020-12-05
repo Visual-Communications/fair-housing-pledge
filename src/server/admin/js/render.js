@@ -6,7 +6,7 @@ const { getDownloadMarkup } = require('./download')
 /**
  * Render admin dashboard.
  *
- * @since unreleased
+ * @since 2.0.0
  */
 export async function renderDashboard () {
   // Get pledges and brands data.

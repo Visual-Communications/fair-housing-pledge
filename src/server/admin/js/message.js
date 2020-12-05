@@ -3,7 +3,7 @@ const { addMessageEventListeners } = require('./events')
 /**
  * Show UI message.
  *
- * @since unreleased
+ * @since 2.0.0
  *
  * @param {string} state   The state.
  * @param {string} message The message.
@@ -44,7 +44,7 @@ export function showMessage (state, message) {
 /**
  * Clear message.
  * 
- * @since unreleased
+ * @since 2.0.0
  *
  * @param {Event} event The optional click event.
  */
