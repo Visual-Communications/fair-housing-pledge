@@ -91,8 +91,11 @@ function renderDashboard (pledges) {
   const summary = getSummaryMarkup(brands)
   const download = getDownloadMarkup(['summary', 'pledges'])
 
+  // Add markup.
   dashboard.appendChild(summary)
-  navigation.insertBefore(download, navigation.querySelector('[data-admin="logout"]'))
+  navigation.insertBefore(download, navigation.querySelector('[data-admin-nav="logout"]'))
+
+  // @todo: Add event listeners.
 }
 
 /**
@@ -239,6 +242,7 @@ function getDownloadMarkup (contexts) {
 
     // Add classes.
     li.classList.add('admin__nav-list-item')
+    li.classList.add('admin__nav-list-item_button')
     button.classList.add('admin__download-button')
 
     // Add attributes.

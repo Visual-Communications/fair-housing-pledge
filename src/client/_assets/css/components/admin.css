@@ -35,21 +35,31 @@
     &-list {
       margin-left: -0.5em;
       margin-right: -0.5em;
-    }
 
-    &-item {
-      display: block;
+      &-item {
+        display: block;
 
-      @include mq-600 {
-        display: inline-block;
-      }
+        @include mq-600 {
+          display: inline-block;
+        }
 
-      &:first-child .admin__nav-link {
-        padding-left: 0;
-      }
+        &:first-child .admin__nav-link {
+          padding-left: 0;
+        }
 
-      &:last-child .admin__nav-link {
-        padding-right: 0;
+        &:last-child .admin__nav-link {
+          padding-right: 0;
+        }
+
+        &_button {
+          margin-bottom: 0.5rem;
+          margin-top: 0.5rem;
+
+          @include mq-600 {
+            margin-bottom: 0;
+            margin-top: 0;
+          }
+        }
       }
     }
 
