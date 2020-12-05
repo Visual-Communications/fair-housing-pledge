@@ -7,7 +7,7 @@ module.exports = {
   /**
    * Handle logout.
    *
-   * @since unreleased
+   * @since 1.5.0
    *
    * @param {Object} req Request object.
    * @param {Object} res Response object.

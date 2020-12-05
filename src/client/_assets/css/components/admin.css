@@ -35,21 +35,31 @@
     &-list {
       margin-left: -0.5em;
       margin-right: -0.5em;
-    }
 
-    &-item {
-      display: block;
+      &-item {
+        display: block;
 
-      @include mq-600 {
-        display: inline-block;
-      }
+        @include mq-600 {
+          display: inline-block;
+        }
 
-      &:first-child .admin__nav-link {
-        padding-left: 0;
-      }
+        &:first-child .admin__nav-link {
+          padding-left: 0;
+        }
 
-      &:last-child .admin__nav-link {
-        padding-right: 0;
+        &:last-child .admin__nav-link {
+          padding-right: 0;
+        }
+
+        &_button {
+          margin-bottom: 0.5rem;
+          margin-top: 0.5rem;
+
+          @include mq-600 {
+            margin-bottom: 0;
+            margin-top: 0;
+          }
+        }
       }
     }
 
@@ -87,5 +97,65 @@
     td:first-child {
       padding-left: $space;
     }
+  }
+
+  &__message > :last-child {
+    margin-bottom: 0;
+  }
+
+  &__download-button {
+    background: hsl( 240, 100%, 50% );
+    border-radius: 0.25em;
+    box-shadow: 0 0.125rem 0 0 hsl( 240, 25%, 90% );
+    color: hsl( 0, 0%, 100% );
+    display: inline-block;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: box-shadow 200ms ease;
+
+    @include mq-600 {
+      margin-right: $space;
+    }
+
+    &:link,
+    &:visited {
+      box-shadow: 0 0.125rem 0 0 hsl( 240, 25%, 90% );
+      color: hsl( 0, 0%, 100% );
+    }
+
+    &:hover,
+    &:focus {
+      background: hsl( 220, 100%, 50% );
+      box-shadow: 0 0.125rem 0 0 hsl( 240, 25%, 80% );
+      color: hsl( 0, 0%, 100% );
+      padding: 0.25rem;
+    }
+
+    &:active {
+      background: hsl( 220, 100%, 60% );
+      box-shadow: none;
+      color: hsl( 0, 0%, 100% );
+      padding: 0.25rem;
+    }
+  }
+}
+
+[data-state="inactive"] {
+  display: none;
+}
+
+[data-state="success"] p {
+  color: green;
+
+  > button {
+    margin: 0 $space;
+  }
+}
+
+[data-state="error"] p {
+  color: red;
+
+  > button {
+    margin: 0 $space;
   }
 }

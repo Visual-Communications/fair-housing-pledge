@@ -7,12 +7,13 @@ module.exports = function (req, res, next) {
   // Check headers
   const origin = req.header('origin')
   const referrer = req.header('referrer')
-  const url = config.get('site.url')
+  const apiUrl = config.get('api.url')
+  const siteUrl = config.get('site.url')
 
   // If origin or referrer doesn't match, deny access
   if (
-    (origin && !origin.includes(url)) ||
-    (referrer && !referrer.includes(url))
+    (origin && !origin.includes(apiUrl) && !origin.includes(siteUrl)) ||
+    (referrer && !referrer.includes(apiUrl) && !referrer.includes(siteUrl))
   ) {
     log.error('Access denied. Seems like a CSRF attack.', { status: 400 })
     return res

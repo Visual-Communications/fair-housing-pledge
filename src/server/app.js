@@ -52,8 +52,8 @@ const helmetHeaders = {
   contentSecurityPolicy: {
     directives: {
       defaultSrc: [
-        "'self'"
-        ],
+        isProduction ? "'self'" : `'self' ${config.get('site.url')}`
+      ],
       upgradeInsecureRequests: true
     }
   },

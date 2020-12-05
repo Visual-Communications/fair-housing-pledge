@@ -18,6 +18,26 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Security
 
+## 2.0.0
+
+### Added
+- Allow CORS during local development. [#105][#105]
+- Add BUILD_ENV environment variable. [#105][#105]
+- Cache dashboard pledge data client-side. [#104][#104]
+- Add dashboard data export buttons. [#102][#102]
+
+### Changed
+- Update resource links during local development. [#105][#105]
+- Swap `gulp-connect` for `browser-sync`. [#105][#105]
+- Improve admin messaging.
+- **Breaking change:** Update, rename, and modularize functions.
+
+### Fixed
+- Allow auth requests from both API URL and site URL. [#104][#104]
+
+### Security
+- Bump `bcrypt` a major version.
+
 ## 1.5.0 - 2020-11-30 - Admin dashboard
 
 ### Added
@@ -103,3 +123,6 @@ and this project adheres to [Semantic Versioning](semver).
 [#89]: https://github.com/Visual-Communications/fair-housing-pledge/issues/89
 [#92]: https://github.com/Visual-Communications/fair-housing-pledge/issues/92
 [#93]: https://github.com/Visual-Communications/fair-housing-pledge/issues/93
+[#102]: https://github.com/Visual-Communications/fair-housing-pledge/issues/102
+[#104]: https://github.com/Visual-Communications/fair-housing-pledge/issues/104
+[#105]: https://github.com/Visual-Communications/fair-housing-pledge/issues/105
