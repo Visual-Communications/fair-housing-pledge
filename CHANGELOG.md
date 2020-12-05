@@ -18,11 +18,16 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Security
 
-## 2.0.0
+## 2.0.1
+
+### Fixed
+- Fix broken resource links by passing build environment to render views.
+
+## 2.0.0 - 2020-12-05 - Dashboard download buttons
 
 ### Added
 - Allow CORS during local development. [#105][#105]
-- Add BUILD_ENV environment variable. [#105][#105]
+- Add `BUILD_ENV` environment variable. [#105][#105]
 - Cache dashboard pledge data client-side. [#104][#104]
 - Add dashboard data export buttons. [#102][#102]
 

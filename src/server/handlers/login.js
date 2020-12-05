@@ -11,11 +11,19 @@ module.exports = {
    *
    * @since 1.5.0
    * @since 2.0.0 Pass site URL.
+   * @since 2.0.1 Pass build environment.
    *
    * @param {Object} req Request object.
    * @param {Object} res Response object.
    */
   showLogin: async (req, res) => {
+    // Build login render data.
+    const data = {
+      title: 'Log In',
+      site: { url: config.get('site.url') },
+      build: { env: config.get('build.env') }
+    }
+
     // If there's a valid token, redirect to dashboard.
     const token = req.cookies['x-auth-token']
     if (token) {
@@ -28,10 +36,7 @@ module.exports = {
         if (isExpired) {
           log.error('Access denied. Token is expired.', { status: 401 })
           // Render login page.
-          res.render('login', {
-            title: 'Log In',
-            site: { url: config.get('site.url') }
-          })
+          res.render('login', data)
         }
 
         // Set user to decoded token and continue
@@ -44,17 +49,11 @@ module.exports = {
       catch (ex) {
         log.error('Invalid token.', { status: 400 })
         // Render login page.
-        res.render('login', {
-          title: 'Log In',
-          site: { url: config.get('site.url') }
-        })
+        res.render('login', data)
       }
     }
     
     // Render login page.
-    res.render('login', {
-      title: 'Log In',
-      site: { url: config.get('site.url') }
-    })
+    res.render('login', data)
   }
 }
