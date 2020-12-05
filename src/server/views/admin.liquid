@@ -5,7 +5,7 @@
       <h1 class="admin__masthead-title">Fair Housing Pledge</h1>  
       <nav class="admin__nav">
         <ul class="admin__nav-list">
-          <li class="admin__nav-item"><a class="admin__nav-link" href="/logout">Log Out</a></li>
+          <li class="admin__nav-item" data-admin-nav="logout"><a class="admin__nav-link" href="/logout">Log Out</a></li>
         </ul>
       </nav>
     </div>
@@ -14,8 +14,14 @@
 {% block main %}
 <main id="content">
   <div class="admin__main" data-admin="dashboard">
-    <p class="pad" data-admin="loading">Loading...</p>
+    <div class="pad admin__message" data-admin="message" data-state="loading">
+      <p>Loading...</p>
+    </div>
   </div>
 </main>
-<script src="/js/admin/bundle.js"></script>
+{% if build.env == 'production' %}
+<script src="/js/admin/bundle.min.js"></script>
+{% else %}
+<script src="{{ site.url }}/js/admin/bundle.js"></script>
+{% endif %}
 {% endblock %}

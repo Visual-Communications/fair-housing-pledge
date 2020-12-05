@@ -1,16 +1,20 @@
-const { getPledges } = require('./pledges')
+const config = require('config')
 const { log } = require('../modules/logger')
 
 module.exports = {
   /**
    * Show admin dashboard.
    *
-   * @since unreleased
+   * @since 1.5.0
+   * @since 2.0.0 Pass page title and site URL.
    *
    * @param {Object} req Request object.
    * @param {Object} res Response object.
    */
   showDashboard: async (req, res) => {
-    return res.render('admin')
+    return res.render('admin', {
+      title: 'Dashboard',
+      site: { url: config.get('site.url') }
+    })
   }
 }

@@ -7,7 +7,11 @@
   <title>Fair Housing Pledge | {{ title }}</title>
   <link rel="shortcut icon" href="/img/favicon/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/img/favicon/favicon.ico" type="image/x-icon">
+  {% if build.env == 'production' %}
   <link rel="stylesheet" href="/css/bundle.min.css">
+  {% else %}
+  <link rel="stylesheet" href="{{ site.url }}/css/bundle.css">
+  {% endif %}
 </head>
 <body class="admin">
   {% block masthead %}{% endblock %}
