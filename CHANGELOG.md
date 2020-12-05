@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](semver).
 - Update resource links during local development. [#105][#105]
 - Swap `gulp-connect` for `browser-sync`. [#105][#105]
 - Improve admin messaging.
-- **Breaking change:** Rename `getDashboardMarkup()` to `getSummaryMarkup()`.
+- **Breaking change:** Update, rename, and modularize functions.
 
 ### Deprecated
 
