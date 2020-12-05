@@ -18,7 +18,12 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Security
 
-## 2.0.1
+## 2.0.2 - 2020-12-05 - Minify admin JS
+
+### Fixed
+- Fix admin JavaScript minification.
+
+## 2.0.1 - 2020-12-05 - Fix resource links
 
 ### Fixed
 - Fix broken resource links by passing build environment to render views.

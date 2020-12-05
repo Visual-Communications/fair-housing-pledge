@@ -96,7 +96,7 @@ const paths = {
       index: `./${SRC}/_assets/js/index.js`
     },
     dest: `./${BUILD}/js`,
-    output: `./${BUILD}/js/**.js`,
+    output: `./${BUILD}/js/*/**.js`,
     admin: {
       src: ['./src/server/admin/js/**/*.js'],
       entry: {
