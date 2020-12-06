@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](semver).
 ## Unreleased
 
 ### Added
-- Add pledges data to admin dashboard. [#100][#100]
 
 ### Changed
 
@@ -18,6 +17,11 @@ and this project adheres to [Semantic Versioning](semver).
 ### Fixed
 
 ### Security
+
+## 2.1.0
+
+### Added
+- Add pledges data to admin dashboard. [#100][#100]
 
 ## 2.0.2 - 2020-12-05 - Minify admin JS
 

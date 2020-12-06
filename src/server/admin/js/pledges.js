@@ -32,7 +32,7 @@ export async function getPledgesData () {
 /**
  * Get pledges markup.
  *
- * @since unreleased
+ * @since 2.1.0
  *
  * @param  {array} pledges Array of pledge objects.
  * @return {string}        Markup.
