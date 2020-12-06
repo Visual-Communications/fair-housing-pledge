@@ -99,6 +99,19 @@
     }
   }
 
+  &__pledges {
+    margin: 0;
+
+    .admin__brands + & {
+      border-top: 0.25em solid $blue;
+    }
+
+    th:first-child,
+    td:first-child {
+      padding-left: $space;
+    }
+  }
+
   &__message > :last-child {
     margin-bottom: 0;
   }

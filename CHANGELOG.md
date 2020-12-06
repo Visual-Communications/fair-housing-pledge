@@ -18,6 +18,11 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Security
 
+## 2.1.0
+
+### Added
+- Add pledges data to admin dashboard. [#100][#100]
+
 ## 2.0.2 - 2020-12-05 - Minify admin JS
 
 ### Fixed
@@ -133,6 +138,7 @@ and this project adheres to [Semantic Versioning](semver).
 [#89]: https://github.com/Visual-Communications/fair-housing-pledge/issues/89
 [#92]: https://github.com/Visual-Communications/fair-housing-pledge/issues/92
 [#93]: https://github.com/Visual-Communications/fair-housing-pledge/issues/93
+[#100]: https://github.com/Visual-Communications/fair-housing-pledge/issues/100
 [#102]: https://github.com/Visual-Communications/fair-housing-pledge/issues/102
 [#104]: https://github.com/Visual-Communications/fair-housing-pledge/issues/104
 [#105]: https://github.com/Visual-Communications/fair-housing-pledge/issues/105
