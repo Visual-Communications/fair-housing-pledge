@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](semver).
 ## Unreleased
 
 ### Added
+- Add pledges data to admin dashboard. [#100][#100]
 
 ### Changed
 
@@ -133,6 +134,7 @@ and this project adheres to [Semantic Versioning](semver).
 [#89]: https://github.com/Visual-Communications/fair-housing-pledge/issues/89
 [#92]: https://github.com/Visual-Communications/fair-housing-pledge/issues/92
 [#93]: https://github.com/Visual-Communications/fair-housing-pledge/issues/93
+[#100]: https://github.com/Visual-Communications/fair-housing-pledge/issues/100
 [#102]: https://github.com/Visual-Communications/fair-housing-pledge/issues/102
 [#104]: https://github.com/Visual-Communications/fair-housing-pledge/issues/104
 [#105]: https://github.com/Visual-Communications/fair-housing-pledge/issues/105
