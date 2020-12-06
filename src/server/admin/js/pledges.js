@@ -28,3 +28,68 @@ export async function getPledgesData () {
     return showMessage('error', error)
   }
 }
+
+/**
+ * Get pledges markup.
+ *
+ * @since unreleased
+ *
+ * @param  {array} pledges Array of pledge objects.
+ * @return {string}        Markup.
+ */
+export function getPledgesMarkup (pledges) {
+  try {
+    // Build pledges dashboard data.
+    const dashboardPledges = pledges.map(pledge => {
+      return {
+        'Name': `${pledge.firstName} ${pledge.lastName}`,
+        'Email': pledge.email,
+        // @todo: Rename brands.
+        'Brand': pledge.brand,
+        'Course': pledge.courseCompleted,
+      }
+    })
+
+    // Build the table.
+    const table = document.createElement('table')
+    table.classList.add('admin__pledges')
+
+    // Build and append table headers.
+    const thead = document.createElement('thead')
+    const tr = document.createElement('tr')
+    const headers = Object.keys(dashboardPledges[0])
+    headers.forEach(header => {
+      const th = document.createElement('th')
+      th.textContent = header
+      tr.appendChild(th)
+    })
+    thead.appendChild(tr)
+    table.appendChild(thead)
+
+    // Build and append table rows.
+    const tbody = document.createElement('tbody')
+    dashboardPledges.forEach(pledge => {
+      // Build the row.
+      const tr = document.createElement('tr')
+      Object.keys(pledge).forEach(cell => {
+        const td = document.createElement('td')
+        td.textContent = pledge[cell]
+        tr.appendChild(td)
+      })
+
+      // Append the row.
+      tbody.appendChild(tr)
+    })
+    table.appendChild(tbody)
+
+    // Build and return the markup.
+    const markup = document.createDocumentFragment()
+    markup.appendChild(table)
+    showMessage('message', markup)
+    return markup
+  }
+
+  catch (error) {
+    return showMessage('error', error)
+  }
+}
