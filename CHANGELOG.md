@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](semver).
 ## Unreleased
 
 ### Added
+- Add `package.json` version. [#115]
 
 ### Changed
 
@@ -18,10 +19,10 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Security
 
-## 2.1.0
+## 2.1.0 - 2020-12-06 - Dashboard pledge data
 
 ### Added
-- Add pledges data to admin dashboard. [#100][#100]
+- Add pledges data to admin dashboard. [#100]
 
 ## 2.0.2 - 2020-12-05 - Minify admin JS
 
@@ -36,19 +37,19 @@ and this project adheres to [Semantic Versioning](semver).
 ## 2.0.0 - 2020-12-05 - Dashboard download buttons
 
 ### Added
-- Allow CORS during local development. [#105][#105]
-- Add `BUILD_ENV` environment variable. [#105][#105]
-- Cache dashboard pledge data client-side. [#104][#104]
-- Add dashboard data export buttons. [#102][#102]
+- Allow CORS during local development. [#105]
+- Add `BUILD_ENV` environment variable. [#105]
+- Cache dashboard pledge data client-side. [#104]
+- Add dashboard data export buttons. [#102]
 
 ### Changed
-- Update resource links during local development. [#105][#105]
-- Swap `gulp-connect` for `browser-sync`. [#105][#105]
+- Update resource links during local development. [#105]
+- Swap `gulp-connect` for `browser-sync`. [#105]
 - Improve admin messaging.
 - **Breaking change:** Update, rename, and modularize functions.
 
 ### Fixed
-- Allow auth requests from both API URL and site URL. [#104][#104]
+- Allow auth requests from both API URL and site URL. [#104]
 
 ### Security
 - Bump `bcrypt` a major version.
@@ -56,12 +57,12 @@ and this project adheres to [Semantic Versioning](semver).
 ## 1.5.0 - 2020-11-30 - Admin dashboard
 
 ### Added
-- Add admin dashboard [#92][#92]
-- Add admin CSS, fonts, and JS to gulp pipeline. [#92][#92]
-- Add dashboard route redirects. [#92][#92]
+- Add admin dashboard [#92]
+- Add admin CSS, fonts, and JS to gulp pipeline. [#92]
+- Add dashboard route redirects. [#92]
 
 ### Changed
-- Update ITCSS directory structure. [#92][#92]
+- Update ITCSS directory structure. [#92]
 
 ### Fixed
 - Update pledge validation `delete()` method so `pledges` is required.
@@ -70,31 +71,31 @@ and this project adheres to [Semantic Versioning](semver).
 ## 1.4.0 - 2020-11-27 - Bulk update pledges
 
 ### Added
-- Add `updatePledges()` method. [#93][#93]
+- Add `updatePledges()` method. [#93]
 
 ### Changed
-- Change courseCompleted to boolean. [#93][#93]
+- Change courseCompleted to boolean. [#93]
 
 ## 1.3.2 - 2020-11-23 - Prevent duplicate Pledges
 
 ### Fixed
-- Disable submit button to prevent duplicate POST requests. [#89][#89]
+- Disable submit button to prevent duplicate POST requests. [#89]
 
 ## 1.3.1 - 2020-11-23 - Remove deprecated method call
 
 ### Added
-- Install `feature-policy` module. [#86][#86]
+- Install `feature-policy` module. [#86]
 
 ### Removed
-- Remove deprecated `helmet.featurePolicy()` call. [#86][#86]
+- Remove deprecated `helmet.featurePolicy()` call. [#86]
 
 ### Fixed
-- Set Feature Policy HTTP header by `feature-policy` module. [#86][#86]
+- Set Feature Policy HTTP header by `feature-policy` module. [#86]
 
 ## 1.3.0 - 2020-11-23 - Bulk delete
 
 ### Added
-- Add a method for bulk-deleting multiple pledges at once. [#84][#84]
+- Add a method for bulk-deleting multiple pledges at once. [#84]
 
 ### Removed
 - Remove deprecated `createPledgeLegacy()` method.
@@ -142,3 +143,4 @@ and this project adheres to [Semantic Versioning](semver).
 [#102]: https://github.com/Visual-Communications/fair-housing-pledge/issues/102
 [#104]: https://github.com/Visual-Communications/fair-housing-pledge/issues/104
 [#105]: https://github.com/Visual-Communications/fair-housing-pledge/issues/105
+[#115]: https://github.com/Visual-Communications/fair-housing-pledge/issues/115
