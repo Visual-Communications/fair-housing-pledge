@@ -423,6 +423,20 @@ function serve (cb) {
 }
 
 /**
+ * Move all unreleased changes to a new version in CHANGELOG.md.
+ *
+ * @since 2.2.0
+ *
+ * @param  {Function} cb Callback function.
+ */
+function changelog (cb) {
+  const { init } = require('./modules/version/changelog')
+  init()
+
+  return cb()
+}
+
+/**
  * Gulp tasks
  */
 exports.pledgeResults = gulp.series(pledgeResults)
@@ -436,7 +450,7 @@ exports.develop = gulp.series(
 exports.serve = gulp.series(
   gulp.parallel(clean, lint),
   gulp.parallel(html, css, js, assets),
-  // validate, // TODO: Uncomment validate
+  // @todo: validate
   watch,
   serve
 )
@@ -463,5 +477,7 @@ exports.production = gulp.series(
   gulp.parallel(watch, watchMinify),
   serve
 )
+
+exports.changelog = changelog
 
 exports.default = exports.build
