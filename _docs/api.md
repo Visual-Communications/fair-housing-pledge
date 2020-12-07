@@ -1,4 +1,6 @@
-# Pledges
+# API
+
+## Pledges
 
 | Route              | HTTP Method | Route Handler Callback | Description              |
 | :---               | :---        | :---                   | :---                     |
