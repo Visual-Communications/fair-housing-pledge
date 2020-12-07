@@ -29,8 +29,7 @@
     "clear:cache": "heroku repo:purge_cache -a fair-housing-pledge-production && git commit --allow-empty -m \"Purge cache\" && git push heroku master",
     "pledge:results": "dotenv gulp pledgeResults",
     "changelog:release": "gulp changelog",
-    "docblock:release": ". ./modules/version/unreleased.sh",
-    "version": "npm run changelog:release && npm run docblock:release && git add .",
+    "version": "npm run changelog:release && git add .",
     "postversion": "git push && git push --tags"
   },
   "browserslist": [
