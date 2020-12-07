@@ -10,16 +10,6 @@ and this project adheres to [Semantic Versioning](semver).
 - Add `package.json` version. [#115]
 - Add `postversion` script to push the version commit and tag to GitHub. [#115]
 - Add `version` script to bump unreleased Changelog to new version. [#115]
-[#84]: https://github.com/Visual-Communications/fair-housing-pledge/issues/84
-[#86]: https://github.com/Visual-Communications/fair-housing-pledge/issues/86
-[#89]: https://github.com/Visual-Communications/fair-housing-pledge/issues/89
-[#92]: https://github.com/Visual-Communications/fair-housing-pledge/issues/92
-[#93]: https://github.com/Visual-Communications/fair-housing-pledge/issues/93
-[#100]: https://github.com/Visual-Communications/fair-housing-pledge/issues/100
-[#102]: https://github.com/Visual-Communications/fair-housing-pledge/issues/102
-[#104]: https://github.com/Visual-Communications/fair-housing-pledge/issues/104
-[#105]: https://github.com/Visual-Communications/fair-housing-pledge/issues/105
-[#115]: https://github.com/Visual-Communications/fair-housing-pledge/issues/115
 
 ### Changed
 
