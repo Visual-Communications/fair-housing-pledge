@@ -36,7 +36,7 @@ const versions = changelogLines.reduce((acc, curr) => {
 /**
  * Initialize.
  *
- * @since unreleased
+ * @since 2.2.0
  */
 function init () {
   if (versions.length !== new Set(versions).size) {

@@ -425,7 +425,7 @@ function serve (cb) {
 /**
  * Move all unreleased changes to a new version in CHANGELOG.md.
  *
- * @since unreleased
+ * @since 2.2.0
  *
  * @param  {Function} cb Callback function.
  */
