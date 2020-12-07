@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](semver).
 ## [Unreleased]
 
 ### Added
+- Add `package.json` version. [#115]
+- Add `postversion` script to push the version commit and tag to GitHub. [#115]
+- Add `version` script to bump unreleased Changelog to new version and @unreleased. [#115]
 
 ### Changed
 
@@ -17,13 +20,6 @@ and this project adheres to [Semantic Versioning](semver).
 ### Fixed
 
 ### Security
-
-## [2.2.0] - 2020-12-07
-
-### Added
-- Add `package.json` version. [#115]
-- Add `postversion` script to push the version commit and tag to GitHub. [#115]
-- Add `version` script to bump unreleased Changelog to new version and @unreleased. [#115]
 
 ## [2.1.0] - 2020-12-06
 
@@ -140,8 +136,7 @@ and this project adheres to [Semantic Versioning](semver).
 
 [changelog]: https://keepachangelog.com/en/1.0.0/
 [semver]: https://semver.org/spec/v2.0.0.html
-[unreleased]: https://github.com/Visual-Communications/fair-housing-pledge/compare/HEAD..2.2.0
-[2.2.0]: https://github.com/Visual-Communications/fair-housing-pledge/commits/2.2.0
+[unreleased]: https://github.com/Visual-Communications/fair-housing-pledge/compare/HEAD..2.1.0
 [2.1.0]: https://github.com/Visual-Communications/fair-housing-pledge/commits/2.1.0
 [2.0.2]: https://github.com/Visual-Communications/fair-housing-pledge/commits/2.0.2
 [2.0.1]: https://github.com/Visual-Communications/fair-housing-pledge/commits/2.0.1
