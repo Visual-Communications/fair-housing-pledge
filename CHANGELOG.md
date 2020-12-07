@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Added
 - Add pledges data to admin dashboard. [#100]
+- Add `postversion` script to push the version commit and tag to GitHub. [#100]
 
 ## 2.0.2 - 2020-12-05 - Minify admin JS
 

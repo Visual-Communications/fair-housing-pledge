@@ -27,7 +27,8 @@
     "build:client": "dotenv gulp build",
     "production": "dotenv gulp production",
     "clear:cache": "heroku repo:purge_cache -a fair-housing-pledge-production && git commit --allow-empty -m \"Purge cache\" && git push heroku master",
-    "pledge:results": "dotenv gulp pledgeResults"
+    "pledge:results": "dotenv gulp pledgeResults",
+    "postversion": "git push && git push --tags"
   },
   "browserslist": [
     "defaults"
