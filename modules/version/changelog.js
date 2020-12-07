@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const CHANGELOG = fs.readFileSync(path.join("../../", "CHANGELOG.md"), "UTF-8");
+const CHANGELOG = fs.readFileSync(path.join("./", "CHANGELOG.md"), "UTF-8");
 const { version, repository } = require("./package.json");
 const { url } = repository
 const repo = url.replace('git+', '').replace('.git', '')
