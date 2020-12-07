@@ -177,7 +177,7 @@ function init () {
         0,
         changelogLines[unreleaseLinkLine].indexOf("..") + 2
       ) + version,
-      `[${version}]: ${repo}/commits/tag/${version}`,
+      `[${version}]: ${repo}/commits/${version}`,
       ...changelogLines.slice(unreleaseLinkLine + 1),
       ""
     ]
