@@ -37,7 +37,7 @@ const versions = changelogLines.reduce((acc, curr) => {
  *
  * @since unreleased
  */
-export function init () {
+function init () {
   if (versions.length !== new Set(versions).size) {
     console.warn("Duplicate versions found. Check your changelog.");
   }
@@ -185,3 +185,5 @@ export function init () {
   );
   console.log("Updated CHANGELOG");
 }
+
+module.exports.init = init
