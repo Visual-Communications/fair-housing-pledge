@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Added
 - Add `package.json` version. [#115]
 - Add `postversion` script to push the version commit and tag to GitHub. [#115]
-- Add `version` script to bump unreleased Changelog to new version and @unreleased. [#115]
+- Add `version` script to bump unreleased Changelog to new version. [#115]
 
 ### Changed
 
