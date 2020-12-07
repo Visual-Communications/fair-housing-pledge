@@ -29,7 +29,7 @@
     "clear:cache": "heroku repo:purge_cache -a fair-housing-pledge-production && git commit --allow-empty -m \"Purge cache\" && git push heroku master",
     "pledge:results": "dotenv gulp pledgeResults",
     "changelog:release": "gulp changelog",
-    "docblock:release": "CURRENT_VERSION=$(node -p \"require('./package.json').version\") && find . -type d ( -name node_modules -o -name vendor -o -name vendors -o -name .git ) -prune -false -o ( -iname *.php -o -iname *.js ) -print0 | xargs -0 sed -i \"\" \"s/@since unreleased/@since \"$CURRENT_VERSION\"/g\"",
+    "docblock:release": ". ./modules/version/unreleased.sh",
     "version": "npm run changelog:release && npm run docblock:release && git add .",
     "postversion": "git push && git push --tags"
   },

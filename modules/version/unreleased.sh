@@ -1,0 +1,1 @@
+CURRENT_VERSION=$(node -p "require('./package.json').version") && find . -type d ( -name node_modules -o -name vendor -o -name vendors -o -name .git ) -prune -false -o ( -iname *.php -o -iname *.js ) -print0 | xargs -0 sed -i "" "s/@since unreleased/@since "$CURRENT_VERSION"/g"
