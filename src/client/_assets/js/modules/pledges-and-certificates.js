@@ -1,5 +1,3 @@
-const config = require('config')
-
 // IIFE
 (function () {
 
@@ -501,7 +499,7 @@ function sendPledgeToApi (event) {
 
   event.preventDefault()
 
-  fetch(`${config.get('api.url')}/api/pledges`, {
+  fetch('https://fairhousingpledge.com/api/pledges', {
 
     method: 'POST',
     body: JSON.stringify(serializeObject(event.target)),
