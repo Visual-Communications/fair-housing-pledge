@@ -1,7 +1,7 @@
 /**
  * Abbreviate brand name.
  *
- * @since unreleased
+ * @since 2.3.0
  *
  * @param  {string} brand Brand name.
  * @return {string}       Abbreviated brand name.
@@ -22,7 +22,7 @@ export function abbreviateBrandName (brand) {
 /**
  * Abbreviate state.
  *
- * @since unreleased
+ * @since 2.3.0
  *
  * @param  {string} state State.
  * @return {string}       Abbreviated State.
