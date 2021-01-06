@@ -303,6 +303,7 @@ function js () {
   const merged = merge(clientJs, adminJs)
   return merged.isEmpty() ? null : merged
 }
+exports.js = js
 
 function minifyHtml () {
   return gulp.src(paths.html.output)
@@ -339,13 +340,30 @@ function minifyCss () {
 }
 
 function minifyJs () {
-  return gulp.src(paths.js.output)
-    .pipe(sourcemaps.init())
-    .pipe(uglify()) // Minify
-    .pipe(rename({ suffix: '.min' })) // Rename
-    .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
-    .pipe(gulp.dest(paths.js.dest))
+
+  const merged = merge(
+    // Website client JS.
+    gulp.src([
+      `./${BUILD}/js/**.js`,
+    ])
+      .pipe(sourcemaps.init())
+      .pipe(uglify()) // Minify
+      .pipe(rename({ suffix: '.min' })) // Rename
+      .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
+      .pipe(gulp.dest(paths.js.dest)),
+
+    // Admin client JS.
+    gulp.src([paths.js.admin.output])
+      .pipe(sourcemaps.init())
+      .pipe(uglify()) // Minify
+      .pipe(rename({ suffix: '.min' })) // Rename
+      .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
+      .pipe(gulp.dest(paths.js.admin.dest))
+  )
+
+  return merged.isEmpty() ? null : merged
 }
+exports.minifyJs = minifyJs
 
 function minifySvg () {
   return gulp.src(paths.svg.output)
