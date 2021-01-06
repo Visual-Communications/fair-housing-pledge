@@ -69,6 +69,12 @@ const helmetHeaders = {
         thisOrigin,
         'https://fonts.gstatic.com'
       ],
+      baseUri: [
+        thisOrigin,
+      ],
+      formAction: [
+        thisOrigin,
+      ],
       upgradeInsecureRequests: true
     },
     reportOnly: true
