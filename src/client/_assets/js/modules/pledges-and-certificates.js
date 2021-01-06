@@ -1,3 +1,5 @@
+const config = require('config')
+
 // IIFE
 (function () {
 
@@ -58,14 +60,22 @@ function setStorage (key, data) {
 /**
   * Gets a URL query string parameter
   * Learn more: https://davidwalsh.name/query-string-javascript
-  * @param {String} name
-  * @return {String}
+  * @param  {string} name
+  * @return {string}
   */
 function getUrlParameter (name) {
-  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]') // eslint-disable-line
-  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)')
-  var results = regex.exec(location.search)
-  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '))
+  if (!name) return false
+
+  // Get the parameter value.
+  var parameter = new RegExp(
+    '[\\?&]' + name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]') + '=([^&#]*)'
+  )
+    .exec(location.search)
+
+  // If there's no parameter value, bail.
+  if (!parameter) return false
+
+  return decodeURIComponent(parameter[1].replace(/\+/g, ' '))
 }
 
 /** --------------------
@@ -491,8 +501,7 @@ function sendPledgeToApi (event) {
 
   event.preventDefault()
 
-  fetch('https://fairhousingpledge.com/api/pledges', {
-    // fetch('http://localhost:3000/api/pledges', {
+  fetch(`${config.get('api.url')}/api/pledges`, {
 
     method: 'POST',
     body: JSON.stringify(serializeObject(event.target)),
