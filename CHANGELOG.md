@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Removed
 
 ### Fixed
+- Build minified JS in production.
 
 ### Security
 
