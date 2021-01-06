@@ -37,7 +37,7 @@ if(!config.get('jwtPrivateKey')) {
 }
 
 /**
- * Setup HTTP headers
+ * Set HTTP headers.
  */
 
 // CORS
@@ -47,15 +47,31 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-// Helmet
+// Set HTTP headers with Helmet.
+const thisOrigin = isProduction ? "'self'" : `'self' ${config.get('site.url')}`
 const helmetHeaders = {
   contentSecurityPolicy: {
     directives: {
       defaultSrc: [
-        isProduction ? "'self'" : `'self' ${config.get('site.url')}`
+        "'none'",
+      ],
+      scriptSrc: [
+        thisOrigin,
+        "'unsafe-inline'"
+      ],
+      styleSrc: [
+        thisOrigin,
+      ],
+      imgSrc: [
+        thisOrigin,
+      ],
+      fontSrc: [
+        thisOrigin,
+        'https://fonts.gstatic.com'
       ],
       upgradeInsecureRequests: true
-    }
+    },
+    reportOnly: true
   },
   frameguard: {
     action: 'deny'
@@ -69,7 +85,7 @@ const helmetHeaders = {
     policy: 'strict-origin-when-cross-origin'
   }
 }
-app.use(helmet(helmetHeaders)) // Set HTTP headers
+app.use(helmet(helmetHeaders))
 
 /**
  * Set Feature Policy HTTP header.
