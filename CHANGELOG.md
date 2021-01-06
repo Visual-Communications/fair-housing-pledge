@@ -7,20 +7,31 @@ and this project adheres to [Semantic Versioning](semver).
 ## [Unreleased]
 
 ### Added
-- CSP report-only headers.
 
 ### Changed
-- Get form action URL from environment variable.
-- Clean up `getUrlParameter()` logic.
 
 ### Deprecated
 
 ### Removed
-- CSP headers.
 
 ### Fixed
 
 ### Security
+
+## [2.3.0] - 2021-01-06
+
+### Added
+- CSP report-only headers.
+- Add more admin dashboard pledges data columns. [#162]
+
+### Changed
+- Get form action URL from environment variable.
+- Clean up `getUrlParameter()` logic.
+- Abbreviate brand names and states.
+- Style admin tables to better view data.
+
+### Removed
+- CSP headers.
 
 ## [2.2.0] - 2020-12-07
 
@@ -144,7 +155,8 @@ and this project adheres to [Semantic Versioning](semver).
 
 [changelog]: https://keepachangelog.com/en/1.0.0/
 [semver]: https://semver.org/spec/v2.0.0.html
-[unreleased]: https://github.com/Visual-Communications/fair-housing-pledge/compare/HEAD..2.2.0
+[unreleased]: https://github.com/Visual-Communications/fair-housing-pledge/compare/HEAD..2.3.0
+[2.3.0]: https://github.com/Visual-Communications/fair-housing-pledge/commits/2.3.0
 [2.2.0]: https://github.com/Visual-Communications/fair-housing-pledge/commits/2.2.0
 [2.1.0]: https://github.com/Visual-Communications/fair-housing-pledge/commits/2.1.0
 [2.0.2]: https://github.com/Visual-Communications/fair-housing-pledge/commits/2.0.2
