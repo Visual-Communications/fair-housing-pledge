@@ -91,24 +91,38 @@
   }
 
   &__brands {
+    font-size: 0.75em;
     margin: 0;
+    table-layout: auto;
 
-    th:first-child,
-    td:first-child {
-      padding-left: $space;
+    th,
+    td {
+      padding-bottom: 0.25rem;
+      padding-top: 0.25rem;
+
+      &:first-child {
+        padding-left: $space;
+      }
     }
   }
 
   &__pledges {
+    font-size: 0.75em;
     margin: 0;
+    table-layout: auto;
 
     .admin__brands + & {
       border-top: 0.25em solid $blue;
     }
 
-    th:first-child,
-    td:first-child {
-      padding-left: $space;
+    th,
+    td {
+      padding-bottom: 0.25rem;
+      padding-top: 0.25rem;
+
+      &:first-child {
+        padding-left: $space;
+      }
     }
   }
 

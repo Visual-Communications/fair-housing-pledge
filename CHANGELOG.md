@@ -8,10 +8,13 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Added
 - CSP report-only headers.
+- Add more admin dashboard pledges data columns. [#162]
 
 ### Changed
 - Get form action URL from environment variable.
 - Clean up `getUrlParameter()` logic.
+- Abbreviate brand names and states.
+- Style admin tables to better view data.
 
 ### Deprecated
 
