@@ -7,12 +7,16 @@ and this project adheres to [Semantic Versioning](semver).
 ## [Unreleased]
 
 ### Added
+- CSP report-only headers.
 
 ### Changed
+- Get form action URL from environment variable.
+- Clean up `getUrlParameter()` logic.
 
 ### Deprecated
 
 ### Removed
+- CSP headers.
 
 ### Fixed
 
