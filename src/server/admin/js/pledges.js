@@ -78,7 +78,15 @@ export function getPledgesMarkup (pledges) {
       const tr = document.createElement('tr')
       Object.keys(pledge).forEach(cell => {
         const td = document.createElement('td')
-        td.textContent = pledge[cell]
+        if (cell === 'Email') {
+	        // Add email link markup.
+        	const a = document.createElement('a')
+        	a.setAttribute('href', `mailto:${pledge[cell]}`)
+        	a.textContent = pledge[cell]
+        	td.appendChild(a)
+        } else {
+            td.textContent = pledge[cell]    
+        }
         tr.appendChild(td)
       })
 
