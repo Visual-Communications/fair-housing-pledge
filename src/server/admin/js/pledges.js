@@ -1,5 +1,6 @@
 const axios = require('axios')
 const { showMessage } = require('./message')
+const { abbreviateBrandName, abbreviateState } = require('./abbreviation')
 
 /**
  * @todo: Probably use IndexedDB instead of sessionStorage and use ZangoDB as an interface: https://erikolson186.github.io/zangodb/
@@ -41,12 +42,16 @@ export function getPledgesMarkup (pledges) {
   try {
     // Build pledges dashboard data.
     const dashboardPledges = pledges.map(pledge => {
+      const date = new Date(pledge.created_at)
       return {
-        'Name': `${pledge.firstName} ${pledge.lastName}`,
-        'Email': pledge.email,
-        // @todo: Rename brands.
-        'Brand': pledge.brand,
-        'Course': pledge.courseCompleted,
+        'First': pledge.firstName,
+        'Last': pledge.lastName,
+        'Email': pledge.email.toLowerCase(),
+        'Brand': abbreviateBrandName(pledge.brand),
+        'Company': pledge.company,
+        'State': abbreviateState(pledge.state),
+        'Course': pledge.courseCompleted === 'true' ? '✅' : '❌',
+        'Date': `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`,
       }
     })
 
