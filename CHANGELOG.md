@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Added
 - Admin dashboard data sorting. [#99]
+- Ability to download sorted data. [#129]
 
 ### Changed
 
