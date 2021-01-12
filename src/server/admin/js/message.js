@@ -42,7 +42,7 @@ export function showMessage (state, message) {
 /**
  * Show UI error.
  *
- * @since unreleased
+ * @since 2.4.0
  *
  * @param {Error} error The error.
  */

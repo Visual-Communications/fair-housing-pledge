@@ -5,6 +5,8 @@ const { abbreviateBrandName, abbreviateState } = require('../abbreviation')
 
 /**
  * Dashboard class.
+ *
+ * @since 2.4.0
  */
 export class Dashboard {
   constructor() {
@@ -29,7 +31,7 @@ export class Dashboard {
   /**
    * Initialize the class.
    *
-   * @since unreleased
+   * @since 2.4.0
    *
    * @return {[type]} [description]
    */
@@ -51,7 +53,7 @@ export class Dashboard {
   /**
    * Get pledges raw data from sessionStorage or API.
    *
-   * @since unreleased
+   * @since 2.4.0
    *
    * @return {array} Array of pledge objects.
    */
@@ -76,7 +78,7 @@ export class Dashboard {
   /**
    * Get pledges data formatted for dashboard.
    *
-   * @since unreleased
+   * @since 2.4.0
    *
    * @return {Object[]} Array of pledge objects.
    */
@@ -99,7 +101,7 @@ export class Dashboard {
   /**
    * Filter pledges data by brand.
    *
-   * @since unreleased
+   * @since 2.4.0
    *
    * @param  {string}  string  String to filter pledge brand name by.
    * @return {array}           Filtered array of pledge objects.
@@ -111,7 +113,7 @@ export class Dashboard {
   /**
    * Get summary data.
    *
-   * @since unreleased
+   * @since 2.4.0
    *
    * @return {Object} Summary data.
    */
@@ -161,7 +163,7 @@ export class Dashboard {
   /**
    * Get table markup.
    *
-   * @since  unreleased
+   * @since 2.4.0
    *
    * @param  {string}  type             Table type.
    * @param  {array}   headers          Table headers.
@@ -250,7 +252,7 @@ export class Dashboard {
   /**
    * Get download section markup.
    *
-   * @since unreleased
+   * @since 2.4.0
    *
    * @param  {array}  Array of context strings.
    * @return {string} Download section markup.
@@ -290,7 +292,7 @@ export class Dashboard {
   /**
    * Render admin dashboard.
    *
-   * @since unreleased
+   * @since 2.4.0
    */
   async renderDashboard () {
     // Build markup.
@@ -344,7 +346,7 @@ export class Dashboard {
   /**
    * Format objects keys in an array.
    *
-   * @since unreleased
+   * @since 2.4.0
    *
    * @param  {Array} object The original array of objects.
    * @return {Array}        The formatted array of objects.
@@ -373,7 +375,7 @@ export class Dashboard {
   /**
    * Add Download event listeners.
    *
-   * @since unreleased
+   * @since 2.4.0
    */
   addDownloadEventListeners () {
     const buttons = document.querySelectorAll('[data-admin="download"]')
@@ -393,7 +395,7 @@ export class Dashboard {
   /**
    * Handle download.
    *
-   * @since unreleased
+   * @since 2.4.0
    *
    * @param {Event} event Click event.
    */
@@ -427,7 +429,7 @@ export class Dashboard {
   /**
    * Add sort event listeners.
    *
-   * @since unreleased
+   * @since 2.4.0
    */
   addSortEventListeners () {
     const buttons = document.querySelectorAll('[data-action="sort"]')
@@ -450,7 +452,7 @@ export class Dashboard {
   /**
    * Sort table rows.
    *
-   * @since unreleased
+   * @since 2.4.0
    *
    * @param {HTMLElement} button The clicked button.
    * @param {object}      data   The data to sort.
