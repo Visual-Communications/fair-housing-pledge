@@ -468,11 +468,17 @@ export class Dashboard {
     const sorted = data[trigger]
       .sort((a, b) => {
         // @todo: Toggle asc/desc on click.
-        if (typeof a[sortBy] === 'string' || a[sortBy] instanceof String) {
+        if (
+          sortBy !== 'date' &&
+          (typeof a[sortBy] === 'string' || a[sortBy] instanceof String)
+        ) {
           // Ascending order.
           return a[sortBy] > b[sortBy] ? 1 : -1
         } else {
           // Descending order.
+          if (sortBy === 'date') {
+            return new Date(a[sortBy]) < new Date(b[sortBy]) ? 1 : -1  
+          }
           return a[sortBy] < b[sortBy] ? 1 : -1
         }
       })
