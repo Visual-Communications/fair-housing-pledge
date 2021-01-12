@@ -57,14 +57,15 @@ export class Dashboard {
    */
   async getPledgesRawData () {
     try {
-      if (!sessionStorage.getItem('pledges')) {
+      if (!sessionStorage.getItem('dashboard')) {
         // Get pledges data from API and store in sessionStorage.
         const { data } = await axios.get('/api/pledges')
-        sessionStorage.setItem('pledges', JSON.stringify(data))
+        sessionStorage.setItem('dashboard', JSON.stringify({ pledges: { data } }))
+        return data
       }
 
       // Return pledges data from sessionStorage.
-      return JSON.parse(sessionStorage.getItem('pledges'))
+      return JSON.parse(sessionStorage.getItem('dashboard')).pledges.data
     }
 
     catch (error) {
