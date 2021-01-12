@@ -1,5 +1,3 @@
-const { addMessageEventListeners } = require('./events')
-
 /**
  * Show UI message.
  *
@@ -42,6 +40,17 @@ export function showMessage (state, message) {
 }
 
 /**
+ * Show UI error.
+ *
+ * @since 2.4.0
+ *
+ * @param {Error} error The error.
+ */
+export function showError (error) {
+  showMessage('error', `${error.name}: ${error.message}`)
+}
+
+/**
  * Clear message.
  * 
  * @since 2.0.0
@@ -49,11 +58,29 @@ export function showMessage (state, message) {
  * @param {Event} event The optional click event.
  */
 export function clearMessage (event) {
-  // If this was triggered by a click event, remove the event listener.
-  if (event) event.target.removeEventListener('click', clearMessage)
-
-  // Update state and remove any child elements.
   const container = document.querySelector('[data-admin="message"]')
+
+  // If this was triggered by a click event, remove the message.
+  if (event) container.removeChild(event.target.parentElement)
+
+  // Update state.
   container.setAttribute('data-state', 'inactive')
+
+  /*
+  @todo: Remove child elements that do not contain a close button instead of
+  removing all child elements.
+   */
   container.innerHTML = ''
+}
+
+/**
+ * Add message event listeners.
+ *
+ * @since 2.0.0
+ */
+export function addMessageEventListeners () {
+  const buttons = document.querySelectorAll('[data-message="close"]')
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', clearMessage)
+  }
 }
