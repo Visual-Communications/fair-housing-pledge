@@ -1,6 +1,5 @@
 import 'regenerator-runtime/runtime'
-const { renderDashboard } = require('./render')
-const { addDownloadEventListeners } = require('./events')
+const { Dashboard } = require('./classes/Dashboard')
 
 /**
  * Initialize admin dashboard.
@@ -8,9 +7,7 @@ const { addDownloadEventListeners } = require('./events')
  * @since 2.0.0
  */
 async function init () {
-  // Render admin dashboard and add event listeners.
-  await renderDashboard()
-  addDownloadEventListeners()
+  const dashboard = new Dashboard()
 }
 
 init()
