@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Removed
 
 ### Fixed
+- Sort admin dashboard dates correctly. [#135]
 
 ### Security
 
