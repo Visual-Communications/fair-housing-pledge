@@ -90,7 +90,7 @@
     color: red;
   }
 
-  &__brands {
+  &__table {
     font-size: 0.75em;
     margin: 0;
     table-layout: auto;
@@ -104,26 +104,11 @@
         padding-left: $space;
       }
     }
-  }
 
-  &__pledges {
-    font-size: 0.75em;
-    margin: 0;
-    table-layout: auto;
-
-    .admin__brands + & {
+    & + & {
       border-top: 0.25em solid $blue;
     }
 
-    th,
-    td {
-      padding-bottom: 0.25rem;
-      padding-top: 0.25rem;
-
-      &:first-child {
-        padding-left: $space;
-      }
-    }
   }
 
   &__message > :last-child {
