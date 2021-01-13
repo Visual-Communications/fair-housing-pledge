@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Removed
 
 ### Fixed
+- Remove emoji from dashboard pledges Course column. [#138]
 
 ### Security
 
