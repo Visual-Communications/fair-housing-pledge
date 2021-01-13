@@ -86,13 +86,13 @@ export class Dashboard {
     return this.pledges.raw.map(pledge => {
       const date = new Date(pledge.created_at)
       return {
-        first: this.toSentenceCase(pledge.firstName),
-        last: this.toSentenceCase(pledge.lastName),
+        first: this.toTitleCase(pledge.firstName),
+        last: this.toTitleCase(pledge.lastName),
         email: pledge.email.toLowerCase(),
         brand: abbreviateBrandName(pledge.brand),
         company: pledge.company,
         state: abbreviateState(pledge.state),
-        course: this.toSentenceCase(pledge.courseCompleted),
+        course: this.toTitleCase(pledge.courseCompleted),
         date: `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`,
       }
     })
@@ -346,12 +346,12 @@ export class Dashboard {
   /**
    * Convert string of text to Title Case.
    *
-   * @since unreleased
+   * @since 2.4.2
    *
    * @param  {string} string The string of text.
    * @return {string}        The string of text in Title Case.
    */
-  toSentenceCase(string) {
+  toTitleCase(string) {
     return string
       .toLowerCase()
       .replace(
@@ -375,7 +375,7 @@ export class Dashboard {
     const formatted = array.map(object => {
       const format = {}
       Object.entries(object).forEach(entry => {
-        const key = this.toSentenceCase(
+        const key = this.toTitleCase(
           entry[0]
             .split('-')
             .join(' ')
