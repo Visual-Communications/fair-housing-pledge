@@ -54,7 +54,7 @@
 
 .printWarningBanner {
   animation-name: printableWarning;
-  animation-duration: 5s;
+  animation-duration: 10s;
   animation-fill-mode: forward;
   width: 70%;
   padding: 20px;
