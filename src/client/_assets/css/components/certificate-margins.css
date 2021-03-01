@@ -7,10 +7,9 @@
     max-width: 400px;
     width: auto;
   }
-  /* delete caption color */
   .caption {
     font-size: 10px;
-    margin-left: 0.7em;
+    margin-left: 1mm;
     max-width: 60ch;
   }
 }
@@ -26,7 +25,7 @@
   }
   /* delete caption color */
   .caption {
-    margin-left: 2.3em;
+    margin-left: 9mm;
     max-width: 70ch;
     font-size: 15px;
   }
