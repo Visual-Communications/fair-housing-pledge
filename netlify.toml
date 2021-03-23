@@ -86,6 +86,11 @@
   status = 200
   
 [[redirects]]
+  from = "/courses/nahrep"
+  to = "/courses/era/story.html"
+  status = 200
+
+[[redirects]]
   from = "/courses/realogy"
   to = "/courses/realogy/story.html"
   status = 200
