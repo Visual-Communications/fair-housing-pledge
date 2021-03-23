@@ -84,11 +84,6 @@
   from = "/courses/era"
   to = "/courses/era/story.html"
   status = 200
-  
-[[redirects]]
-  from = "/courses/nahrep"
-  to = "/courses/era/story.html"
-  status = 200
 
 [[redirects]]
   from = "/courses/realogy"
@@ -104,6 +99,11 @@
   from = "/*"
   to = "/404?search=:splat"
   status = 404
+
+[[redirects]]
+  from = "/courses/2021/nahrep"
+  to = "/courses/2021/nahrep/story.html"
+  status = 200
 
 # ---------------
 # Headers
