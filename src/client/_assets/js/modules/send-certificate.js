@@ -24,8 +24,8 @@ function init() {
   const brand = pledge.brand
 
   console.log("Brand is: " + brand)
-var headerImage = document.getElementById('brandHeaderID')
-var footerImage = document.getElementById('brandFooterID')
+  var headerImage = document.getElementById('brandHeaderID')
+  var footerImage = document.getElementById('brandFooterID')
   switch(brand) {
     case "Better Homes and Gardens Real Estate" : {
       console.log("brand: " + brand);
@@ -43,7 +43,7 @@ var footerImage = document.getElementById('brandFooterID')
       footerImage.src = "/img/certificate/C21-Footer.jpg"
       break;
     }
-    case "Coldwell Banker – Company Owned (previously NRT)" : {
+    case "Coldwell Banker - Company Owned (previously NRT)" : {
       console.log("brand: " + brand);
       headerImage.src = "/img/certificate/FH Pledge_CB_H.jpg"
       footerImage.src = "/img/certificate/FH Pledge_CB_F.jpg"
