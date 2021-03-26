@@ -29,15 +29,18 @@ var footerImage = document.getElementById('brandFooterID')
   switch(brand) {
     case "Better Homes and Gardens Real Estate" : {
       console.log("brand: " + brand);
-      headerImage.src = "https://i.ibb.co/LS9ry52/FH-Pledge-BHG-H.jpg"
-      footerImage.src = "https://i.ibb.co/vxVfLsZ/FH-Pledge-BHG-F.jpg"
+      //headerImage.src = "https://i.ibb.co/LS9ry52/FH-Pledge-BHG-H.jpg"
+      //footerImage.src = "https://i.ibb.co/vxVfLsZ/FH-Pledge-BHG-F.jpg"
+      headerImage.src = "/img/certificate/FH Pledge_BHG_H.jpg"
+      footerImage.src = "/img/certificate/FH Pledge_BHG_F.jpg"
       break;
     }
     case "Century 21 Real Estate" : {
       console.log("brand: " + brand);
       //headerImage.src = "https://i.ibb.co/pQJ0kcm/FH-Pledge-C21-H.jpg"
       headerImage.src = "/img/certificate/C21-Header.jpg"
-      footerImage.src = "https://i.ibb.co/KqGJxXR/C21-Footer.jpg"
+      //footerImage.src = "https://i.ibb.co/KqGJxXR/C21-Footer.jpg"
+      footerImage.src = "/img/certificate/C21-Footer.jpg"
       break;
     }
     case "Coldwell Banker – Company Owned (previously NRT)" : {
