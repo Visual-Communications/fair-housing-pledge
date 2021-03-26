@@ -41,15 +41,21 @@ var footerImage = document.getElementById('brandFooterID')
       break;
     }
     case "Coldwell Banker – Company Owned (previously NRT)" : {
-
+      console.log("brand: " + brand);
+      headerImage.src = "/img/certificate/FH Pledge_CB_H.jpg"
+      footerImage.src = "/img/certificate/FH Pledge_CB_F.jpg"
+      break;
     }
     case "Coldwell Banker – Affiliates" : {
-
+      console.log("brand: " + brand);
+      headerImage.src = "/img/certificate/FH Pledge_CB_H.jpg"
+      footerImage.src = "/img/certificate/FH Pledge_CB_F.jpg"
+      break;
     }
     case "Coldwell Banker Commercial" : {
       console.log("brand: " + brand);
-      headerImage.src = "https://i.ibb.co/fkGbTCK/FH-Pledge-CB-H.jpg"
-      footerImage.src = "https://i.ibb.co/k0mCHtK/FH-Pledge-CB-F.jpg"
+      headerImage.src = "/img/certificate/FH Pledge_CBC_H.jpg"
+      footerImage.src = "/img/certificate/FH Pledge_CBC_F.jpg"
       break;
     }
     case "Corcoran" : {
@@ -66,8 +72,8 @@ var footerImage = document.getElementById('brandFooterID')
     }
     case "Sotheby’s International Realty" : {
       console.log("brand: " + brand);
-      headerImage.src = "https://i.ibb.co/J7ftVMD/FH-Pledge-SIR-H.jpg"
-      footerImage.src = "https://i.ibb.co/TBDzTZj/FH-Pledge-SIR-F.jpg"
+      headerImage.src = "/img/certificate/FH Pledge_SIR_H.jpg"
+      footerImage.src = "/img/certificate/FH Pledge_SIR_F.jpg"
       break; 
     }    
 
