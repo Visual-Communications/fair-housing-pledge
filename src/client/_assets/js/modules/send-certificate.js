@@ -35,12 +35,17 @@ var footerImage = document.getElementById('brandFooterID')
     }
     case "Century 21 Real Estate" : {
       console.log("brand: " + brand);
-      headerImage.src = "https://i.ibb.co/pQJ0kcm/FH-Pledge-C21-H.jpg"
+      //headerImage.src = "https://i.ibb.co/pQJ0kcm/FH-Pledge-C21-H.jpg"
+      headerImage.src = "/img/certificate/C21-Header.jpg"
       footerImage.src = "https://i.ibb.co/KqGJxXR/C21-Footer.jpg"
       break;
     }
-    case "Coldwell Banker – Company Owned (previously NRT)" :
-    case "Coldwell Banker – Affiliates" :
+    case "Coldwell Banker – Company Owned (previously NRT)" : {
+
+    }
+    case "Coldwell Banker – Affiliates" : {
+
+    }
     case "Coldwell Banker Commercial" : {
       console.log("brand: " + brand);
       headerImage.src = "https://i.ibb.co/fkGbTCK/FH-Pledge-CB-H.jpg"
