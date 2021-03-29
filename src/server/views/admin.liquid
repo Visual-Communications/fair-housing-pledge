@@ -1,0 +1,27 @@
+{% layout "global.liquid" %}
+{% block masthead %}
+  <header class="admin__masthead" role="banner">
+    <div class="admin__masthead-layout">
+      <h1 class="admin__masthead-title">Fair Housing Pledge</h1>  
+      <nav class="admin__nav">
+        <ul class="admin__nav-list">
+          <li class="admin__nav-item" data-admin-nav="logout"><a class="admin__nav-link" href="/logout">Log Out</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+{% endblock %}
+{% block main %}
+<main id="content">
+  <div class="admin__main" data-admin="dashboard">
+    <div class="pad admin__message" data-admin="message" data-state="loading">
+      <p>Loading...</p>
+    </div>
+  </div>
+</main>
+{% if build.env == 'production' %}
+<script src="/js/admin/bundle.min.js"></script>
+{% else %}
+<script src="{{ site.url }}/js/admin/bundle.js"></script>
+{% endif %}
+{% endblock %}

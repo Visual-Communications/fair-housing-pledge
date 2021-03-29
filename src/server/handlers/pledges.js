@@ -1,3 +1,4 @@
+const config = require('config')
 const { log } = require('../modules/logger')
 const { Pledge, validate } = require('../models/pledge')
 const _ = require('lodash')
@@ -6,7 +7,7 @@ module.exports = {
   /**
    * Get pledges
    */
-  getPledges: async (req, res) => {
+  getPledges: async (req, res, options = {}) => {
     // Get pledges
     const pledges = await Pledge.find()
 
@@ -20,31 +21,8 @@ module.exports = {
     if (sortBy) pledges.sort((a, b) => (a[sortBy] > b[sortBy]) ? 1 : -1)
 
     // Return pledges to the client
-    res.send(pledges)
+    return options.dashboard ? pledges : res.send(pledges)
   },
-
-  /**
-   * Create a pledge
-   * TODO: Delete this method if we're not using it anymore
-   */
-  // createPledgeLegacy: async (req, res) => {
-  //   // Validate pledge
-  //   const { error } = validate.create(req.body)
-  //   if (error) return res.status(400).send(error.details[0].message)
-
-  //   // Create pledge
-  //   let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted']))
-
-  //   // TODO: Get and add ip, referrer, user_agent ?
-  //   // https://codeburst.io/how-to-get-users-ip-details-in-expressjs-ff5252728604
-
-  //   // Add pledge to the database
-  //   // pledge = await pledge.save()
-  //   log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
-
-  //   // Return pledge to the client
-  //   res.send(pledge)
-  // },
 
   /**
    * Create one or multiple pledges
@@ -72,9 +50,7 @@ module.exports = {
 
         if (!duplicate) {
           // Add pledge to array
-          Window.setTimeout(() => {
-                      this.push(_.pick(p, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted']))
-          }, 500);
+          this.push(_.pick(p, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted']))
         }
       }, pledges)
 
@@ -83,8 +59,7 @@ module.exports = {
       log.info(`${pledges.length} pledges created.`, _.pick(pledges, ['_doc', 'level', 'message', 'timestamp']))
 
       // Return redirect to the client
-         return res.redirect('https://fairhousingpledge.com/course-certificate/')
-      // return res.redirect('http://localhost:8082/course-certificate/')
+      return res.redirect(config.get('site.url') + '/course-certificate/')
 
     }
 
@@ -100,7 +75,6 @@ module.exports = {
       email: pledge.email
     })
 
-    //sleep so the database doesn't rapidly enter two entries
     if (!duplicate) {
       // Add pledge to the database
       pledge = await pledge.save()
@@ -109,7 +83,7 @@ module.exports = {
 
     // Return redirect to the client
     // return res.redirect('http://localhost:8082/course-certificate/')
-       return res.redirect('https://fairhousingpledge.com/course-certificate/')
+    return res.redirect('https://fairhousingpledge.com/course-certificate/')
 
   },
 
@@ -163,6 +137,29 @@ module.exports = {
   },
 
   /**
+   * Update multiple pledges
+   */
+  updatePledges: async (req, res) => {
+    // Validate request.
+    const { error } = validate.updateMany(req.body)
+    if (error) {
+      return res.status(400).send(error.details[0].message)
+    }
+
+    // Update pledges in the database and get updated pledges.
+    const pledges = await Pledge.updateMany(req.body.from, req.body.to)
+
+    // If no matches are found, return 404 error to the client.
+    if (0 === pledges.n) res.status(404).send('no matches found')
+
+    // Log message to the server.
+    log.info(`${pledges.nModified} pledges updated.`, _.pick(pledges, ['_doc', 'level', 'message', 'timestamp']))
+
+    // Return message to the client.
+    res.send(`${pledges.nModified} pledges updated.`)
+  },
+
+  /**
    * Delete a pledge
    */
   deletePledge: async (req, res) => {
@@ -176,5 +173,28 @@ module.exports = {
 
     // Return deleted pledge to client
     res.send(pledge)
+  },
+
+  /**
+   * Delete pledges.
+   *
+   * @since 1.3.0
+   */
+  deletePledges: async (req, res) => {
+    // If no pledges requested, return 404 error to the client
+    if (!req.body.pledges) res.status(404).send('"pledges" was not found')
+
+    // Validate pledges
+    const { error } = validate.delete(req.body)
+    if (error) return res.status(400).send(error.details[0].message)
+
+    // Remove pledges from database if they exist
+    const pledges = await Pledge.deleteMany({ _id: { $in: req.body.pledges } })
+
+    // If all pledges do not exist in the database, return 404 error to the client
+    if (0 === pledges.deletedCount) res.status(404).send('"ids" were not found')
+
+    // Return number of deleted pledge to client
+    res.send(pledges.deletedCount)
   }
 }

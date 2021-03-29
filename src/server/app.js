@@ -9,6 +9,7 @@ const app = express()
 const config = require('config')
 const compression = require('compression')
 const helmet = require('helmet')
+const featurePolicy = require('feature-policy')
 const { Liquid } = require('liquidjs')
 const engine = new Liquid()
 const path = require('path')
@@ -25,7 +26,6 @@ const debug = {
   startup: require('debug')('api:startup'),
   database: require('debug')('api:database')
 }
-const cron = require('./modules/cron')
 
 const isProduction = app.get('env') === 'production'
 
@@ -37,7 +37,7 @@ if(!config.get('jwtPrivateKey')) {
 }
 
 /**
- * Setup HTTP headers
+ * Set HTTP headers.
  */
 
 // CORS
@@ -47,32 +47,37 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-// Helmet
+// Set HTTP headers with Helmet.
+const thisOrigin = isProduction ? "'self'" : `'self' ${config.get('site.url')}`
 const helmetHeaders = {
   contentSecurityPolicy: {
     directives: {
       defaultSrc: [
-        "'self'"
-        ],
+        "'none'",
+      ],
+      scriptSrc: [
+        thisOrigin,
+        "'unsafe-inline'"
+      ],
+      styleSrc: [
+        thisOrigin,
+      ],
+      imgSrc: [
+        thisOrigin,
+      ],
+      fontSrc: [
+        thisOrigin,
+        'https://fonts.gstatic.com'
+      ],
+      baseUri: [
+        thisOrigin,
+      ],
+      formAction: [
+        thisOrigin,
+      ],
       upgradeInsecureRequests: true
-    }
-  },
-  featurePolicy: {
-    features: {
-      geolocation: ["'none'"],
-      midi: ["'none'"],
-      notifications: ["'none'"],
-      push: ["'none'"],
-      syncXhr: ["'self'"],
-      microphone: ["'none'"],
-      camera: ["'none'"],
-      magnetometer: ["'none'"],
-      gyroscope: ["'none'"],
-      speaker: ["'none'"],
-      vibrate: ["'none'"],
-      fullscreen: ["'none'"],
-      payment: ["'none'"]
-    }
+    },
+    reportOnly: true
   },
   frameguard: {
     action: 'deny'
@@ -86,7 +91,30 @@ const helmetHeaders = {
     policy: 'strict-origin-when-cross-origin'
   }
 }
-app.use(helmet(helmetHeaders)) // Set HTTP headers
+app.use(helmet(helmetHeaders))
+
+/**
+ * Set Feature Policy HTTP header.
+ *
+ * @since 1.3.1
+ */
+app.use(featurePolicy({
+  features: {
+    geolocation: ["'none'"],
+    midi: ["'none'"],
+    notifications: ["'none'"],
+    push: ["'none'"],
+    syncXhr: ["'self'"],
+    microphone: ["'none'"],
+    camera: ["'none'"],
+    magnetometer: ["'none'"],
+    gyroscope: ["'none'"],
+    speaker: ["'none'"],
+    vibrate: ["'none'"],
+    fullscreen: ["'none'"],
+    payment: ["'none'"]
+  }
+}))
 
 /**
  * Setup gzip compression
@@ -133,7 +161,7 @@ app.set('view engine', 'liquid')
 app.use(express.json()) // Return JSON
 app.use(express.urlencoded({ extended: false })) // Allow query strings
 app.use(cookieParser()) // Parse cookies
-// app.use(express.static(path.join(__dirname, '../../build/client'))) // Uncomment this to serve static content
+app.use(express.static(path.join(__dirname, 'public'))) // Serve static content
 
 /**
  * Import routes
@@ -143,6 +171,9 @@ const api = require('./routes/api')
 const pledges = require('./routes/pledges')
 const users = require('./routes/users')
 const auth = require('./routes/auth')
+const admin = require('./routes/admin')
+const login = require('./routes/login')
+const logout = require('./routes/logout')
 
 /**
  * Setup routes
@@ -152,6 +183,9 @@ app.use('/api', api)
 app.use('/api/pledges', pledges)
 app.use('/api/users', users)
 app.use('/api/auth', auth)
+app.use('/admin', admin)
+app.use('/login', login)
+app.use('/logout', logout)
 
 /**
  * Catch 404 and forward to error handler
@@ -160,7 +194,5 @@ app.use(function(req, res, next) {
   next(createError(404))
 })
 app.use(error)
-cron()
-
 
 module.exports = app

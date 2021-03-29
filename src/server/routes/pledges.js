@@ -16,8 +16,8 @@ const strictLimiter = rateLimit({
 
 router.get('/', [auth, admin, limiter], handlers.getPledges)
 router.post('/', [strictLimiter], handlers.createPledge)
-//thats when they get the email!  include middleware
-//strictlimiter is the middkewat
+router.put('/', [auth, admin, limiter], handlers.updatePledges)
+router.delete('/', [auth, admin, limiter], handlers.deletePledges)
 
 router.get('/:id', [auth, admin, limiter], handlers.getPledge)
 router.put('/:id', [auth, admin, strictLimiter], handlers.updatePledge)

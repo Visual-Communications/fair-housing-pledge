@@ -7,12 +7,13 @@ module.exports = function (req, res, next) {
   // Check headers
   const origin = req.header('origin')
   const referrer = req.header('referrer')
-  const url = config.get('site.url')
+  const apiUrl = config.get('api.url')
+  const siteUrl = config.get('site.url')
 
   // If origin or referrer doesn't match, deny access
   if (
-    (origin && !origin.includes(url)) ||
-    (referrer && !referrer.includes(url))
+    (origin && !origin.includes(apiUrl) && !origin.includes(siteUrl)) ||
+    (referrer && !referrer.includes(apiUrl) && !referrer.includes(siteUrl))
   ) {
     log.error('Access denied. Seems like a CSRF attack.', { status: 400 })
     return res
@@ -23,12 +24,10 @@ module.exports = function (req, res, next) {
   // Check cookie
   const token = req.cookies['x-auth-token']
 
-  // If no token, deny access
+  // If no token, deny access and redirect to login page.
   if (!token) {
     log.error('Access denied. No token provided.', { status: 401 })
-    return res
-      .status(401)
-      .send('Access denied. No token provided.')
+    return res.redirect('/login')
   }
 
   try {

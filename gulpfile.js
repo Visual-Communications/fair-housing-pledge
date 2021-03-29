@@ -19,7 +19,7 @@ const beautify = require('gulp-beautify')
 const uglify = require('gulp-uglify')
 const svgmin = require('gulp-svgmin')
 const rename = require('gulp-rename')
-const connect = require('gulp-connect')
+const browserSync = require('browser-sync').create()
 const pledgeResults = require('./src/server/modules/pledge-results.js')
 
 const isProduction = config.get('eleventy.environment') === 'production'
@@ -96,7 +96,16 @@ const paths = {
       index: `./${SRC}/_assets/js/index.js`
     },
     dest: `./${BUILD}/js`,
-    output: `./${BUILD}/js/**.js`
+    output: `./${BUILD}/js/*/**.js`,
+    admin: {
+      src: ['./src/server/admin/js/**/*.js'],
+      entry: {
+        all: `./src/server/admin/js/*.js`,
+        index: `./src/server/admin/js/index.js`
+      },
+      dest: `./${BUILD}/js/admin`,
+      output: `./${BUILD}/js/admin/**.js`
+    }
   },
   fonts: {
     src: `./${SRC}/_assets/fonts/**/*`,
@@ -137,7 +146,6 @@ async function html () {
     // https://github.com/addyosmani/critical-path-css-demo/blob/dca7ec42c6b9d7bb2d8425c4055aabc753c1a6ac/gulpfile.js#L100-L111
     //
     .pipe(gulp.dest(paths.html.dest))
-    .pipe(connect.reload())
 
   return html
 }
@@ -157,7 +165,6 @@ async function watchHtml () {
     // https://github.com/addyosmani/critical-path-css-demo/blob/dca7ec42c6b9d7bb2d8425c4055aabc753c1a6ac/gulpfile.js#L100-L111
     //
     .pipe(gulp.dest(paths.html.dest))
-    .pipe(connect.reload())
 
   return html
 }
@@ -189,14 +196,21 @@ function lint () {
       ]
     }))
 
-  const js = gulp.src(paths.js.src)
+  const clientJs = gulp.src(paths.js.src)
     .pipe(standard({ // Standard
       fix: true,
       envs: ['browser'] // https://eslint.org/docs/user-guide/configuring#specifying-environments
     }))
     .pipe(standard.reporter('default'))
 
-  const merged = merge(css, js)
+  const adminJs = gulp.src(paths.js.admin.src)
+    .pipe(standard({ // Standard
+      fix: true,
+      envs: ['browser'] // https://eslint.org/docs/user-guide/configuring#specifying-environments
+    }))
+    .pipe(standard.reporter('default'))
+
+  const merged = merge(css, clientJs, adminJs)
   return merged.isEmpty() ? null : merged
 }
 
@@ -215,11 +229,10 @@ function css () {
     .pipe(beautify.css({ indent_size: 2 })) // Beautify
     .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
     .pipe(gulp.dest(paths.css.dest))
-    .pipe(connect.reload())
 }
 
 function js () {
-  return gulp.src(paths.js.entry.all)
+  const clientJs = gulp.src(paths.js.entry.all)
     .pipe(sourcemaps.init())
     .pipe(webpack({ // Bundle modules with Webpack
       mode: isProduction ? 'production' : 'development',
@@ -252,8 +265,45 @@ function js () {
     .pipe(beautify({ indent_size: 2 })) // Beautify
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.js.dest))
-    .pipe(connect.reload())
+
+  const adminJs = gulp.src(paths.js.admin.entry.all)
+    .pipe(sourcemaps.init())
+    .pipe(webpack({ // Bundle modules with Webpack
+      mode: isProduction ? 'production' : 'development',
+      entry: {
+        bundle: paths.js.admin.entry.index
+      },
+      output: {
+        path: path.resolve(__dirname, 'build/js/admin'),
+        publicPath: '/js/admin/',
+        filename: '[name].js'
+      },
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /(node_modules)/,
+            use: {
+              loader: 'babel-loader', // Transpile JS with Babel
+              options: {
+                presets: ['@babel/preset-env']
+              }
+            }
+          }
+        ]
+      },
+      devtool: 'source-map'
+    }, compiler, err => {
+      if (err) { throw new Error(err) }
+    }))
+    .pipe(beautify({ indent_size: 2 })) // Beautify
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.js.admin.dest))
+
+  const merged = merge(clientJs, adminJs)
+  return merged.isEmpty() ? null : merged
 }
+exports.js = js
 
 function minifyHtml () {
   return gulp.src(paths.html.output)
@@ -278,7 +328,6 @@ function minifyHtml () {
       useShortDoctype: true
     }))
     .pipe(gulp.dest(paths.html.dest))
-    .pipe(connect.reload())
 }
 
 function minifyCss () {
@@ -288,24 +337,38 @@ function minifyCss () {
     .pipe(rename({ suffix: '.min' })) // Rename
     .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
     .pipe(gulp.dest(paths.css.dest))
-    .pipe(connect.reload())
 }
 
 function minifyJs () {
-  return gulp.src(paths.js.output)
-    .pipe(sourcemaps.init())
-    .pipe(uglify()) // Minify
-    .pipe(rename({ suffix: '.min' })) // Rename
-    .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
-    .pipe(gulp.dest(paths.js.dest))
-    .pipe(connect.reload())
+
+  const merged = merge(
+    // Website client JS.
+    gulp.src([
+      `./${BUILD}/js/**.js`,
+    ])
+      .pipe(sourcemaps.init())
+      .pipe(uglify()) // Minify
+      .pipe(rename({ suffix: '.min' })) // Rename
+      .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
+      .pipe(gulp.dest(paths.js.dest)),
+
+    // Admin client JS.
+    gulp.src([paths.js.admin.output])
+      .pipe(sourcemaps.init())
+      .pipe(uglify()) // Minify
+      .pipe(rename({ suffix: '.min' })) // Rename
+      .pipe(sourcemaps.write('.')) // Maintain Sourcemaps
+      .pipe(gulp.dest(paths.js.admin.dest))
+  )
+
+  return merged.isEmpty() ? null : merged
 }
+exports.minifyJs = minifyJs
 
 function minifySvg () {
   return gulp.src(paths.svg.output)
     .pipe(svgmin()) // Optimize and minify
     .pipe(gulp.dest(paths.svg.dest))
-    .pipe(connect.reload())
 }
 
 function postMinify (cb) {
@@ -325,16 +388,13 @@ function assets () {
   const fonts = gulp.src(paths.fonts.src)
     // TODO: Optimize fonts
     .pipe(gulp.dest(paths.fonts.dest))
-    .pipe(connect.reload())
 
   const images = gulp.src(paths.images.src)
     // TODO: Optimize images
     .pipe(gulp.dest(paths.images.dest))
-    .pipe(connect.reload())
 
   const courses = gulp.src(paths.courses.src)
     .pipe(gulp.dest(paths.courses.dest))
-    .pipe(connect.reload())
 
   const merged = merge(fonts, images, courses)
   return merged.isEmpty() ? null : merged
@@ -351,7 +411,7 @@ function validate () {
 function watch (cb) {
   gulp.watch(paths.html.src, gulp.series(watchHtml/*, validate*/)) // TODO: Uncomment validate
   gulp.watch([paths.css.all], css)
-  gulp.watch(paths.js.src, js)
+  gulp.watch([...paths.js.src, ...paths.js.admin.src], js)
   gulp.watch([
     paths.fonts.src,
     paths.images.src,
@@ -371,12 +431,25 @@ function watchMinify (cb) {
 }
 
 function serve (cb) {
-  connect.server({
-    root: paths.html.dest,
-    livereload: true,
-    name: 'Fair Housing Pledge',
+  browserSync.init({
+    server: paths.html.dest,
+    cors: true,
     port: 8082
   })
+
+  return cb()
+}
+
+/**
+ * Move all unreleased changes to a new version in CHANGELOG.md.
+ *
+ * @since 2.2.0
+ *
+ * @param  {Function} cb Callback function.
+ */
+function changelog (cb) {
+  const { init } = require('./modules/version/changelog')
+  init()
 
   return cb()
 }
@@ -395,7 +468,7 @@ exports.develop = gulp.series(
 exports.serve = gulp.series(
   gulp.parallel(clean, lint),
   gulp.parallel(html, css, js, assets),
-  // validate, // TODO: Uncomment validate
+  // @todo: validate
   watch,
   serve
 )
@@ -422,5 +495,7 @@ exports.production = gulp.series(
   gulp.parallel(watch, watchMinify),
   serve
 )
+
+exports.changelog = changelog
 
 exports.default = exports.build

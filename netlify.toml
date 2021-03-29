@@ -22,6 +22,27 @@
   headers = {X-From = "Netlify"}
 
 [[redirects]]
+  from = "/admin/*"
+  to = "https://fair-housing-pledge-production.herokuapp.com/admin/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/login"
+  to = "https://fair-housing-pledge-production.herokuapp.com/login"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/logout"
+  to = "https://fair-housing-pledge-production.herokuapp.com/logout"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
   from = "/github/*"
   to = "https://github.com/Visual-Communications/fair-housing-pledge"
   status = 200
@@ -63,7 +84,7 @@
   from = "/courses/era"
   to = "/courses/era/story.html"
   status = 200
-  
+
 [[redirects]]
   from = "/courses/realogy"
   to = "/courses/realogy/story.html"
@@ -79,6 +100,11 @@
   to = "/404?search=:splat"
   status = 404
 
+[[redirects]]
+  from = "/courses/2021/nahrep"
+  to = "/courses/2021/nahrep/story.html"
+  status = 200
+
 # ---------------
 # Headers
 # ---------------
@@ -88,13 +114,15 @@
 
   [headers.values]
     Access-Control-Allow-Origin = 'https://fairhousingpledge.com'
-    # Content-Security-Policy = '''
-    #   default-src 'self';
-    #   script-src 'self' https://*.cloudfront.net https://polyfill.io https://www.google-analytics.com;
-    #   style-src 'self' https://*.cloudfront.net;
-    #   img-src 'self' https://*.cloudfront.net;
-    #   font-src 'self' https://*.cloudfront.net;
-    #   upgrade-insecure-requests;'''
+    Content-Security-Policy-Report-Only = '''
+      default-src 'none';
+      script-src 'self' https://*.cloudfront.net https://cdnjs.cloudflare.com https://polyfill.io https://www.google-analytics.com https://www.googletagmanager.com;
+      style-src 'self' https://*.cloudfront.net;
+      img-src 'self' https://*.cloudfront.net;
+      font-src 'self' https://*.cloudfront.net https://fonts.gstatic.com;
+      base-uri 'self';
+      form-action 'self';
+      upgrade-insecure-requests;'''
     Feature-Policy = '''
       geolocation 'none';
       midi 'none';

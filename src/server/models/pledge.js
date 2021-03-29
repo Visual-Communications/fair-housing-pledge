@@ -70,6 +70,30 @@ const validate = {
     }).or('firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted', 'ip', 'user_agent', 'referrer', 'created_at')
 
     return schema.validate(pledge)
+  },
+  /**
+   * Validate a request to update pledges
+   */
+  updateMany: function (request) {
+    const schema = Joi.object({
+      to: Joi.object().required(),
+      from: Joi.object().required()
+    })
+
+    return schema.validate(request)
+  },
+  /**
+   * Validate pledge IDs for deleting
+   */
+  delete: function (pledges) {
+    const schema = Joi.object({
+      pledges: Joi.alternatives().try(
+        Joi.array().items(Joi.string().trim().max(255)),
+        Joi.string().trim().max(255),
+      ).required()
+    })
+
+    return schema.validate(pledges)
   }
 }
 

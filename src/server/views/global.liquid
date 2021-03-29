@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="en-US">
 <head>
-  <title>{{ title }}</title>
-  <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Fair Housing Pledge | {{ title }}</title>
+  <link rel="shortcut icon" href="/img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon/favicon.ico" type="image/x-icon">
+  {% if build.env == 'production' %}
+  <link rel="stylesheet" href="{{ site.url }}/css/bundle.min.css">
+  {% else %}
+  <link rel="stylesheet" href="{{ site.url }}/css/bundle.css">
+  {% endif %}
 </head>
-<body>
-  {% block content %}{% endblock %}
+<body class="admin">
+  {% block masthead %}{% endblock %}
+  {% block main %}{% endblock %}
 </body>
 </html>

@@ -101,7 +101,8 @@ const validate = {
   auth: function (user) {
     const schema = Joi.object({
       email: Joi.string().trim().min(5).max(255).required().email(),
-      password: Joi.string().min(12).max(255).required().valid(validate.password(user).value)
+      password: Joi.string().min(12).max(255).required().valid(validate.password(user).value),
+      admin: Joi.string().valid('')
     })
 
     return schema.validate(user)
