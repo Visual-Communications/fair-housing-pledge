@@ -1,0 +1,1 @@
+window.globalProvideData('caption', '{"data":"WEBVTT%0D%0AKind:%20captions%0D%0ASource:%20Articulate%20Closed%20Captions%20Editor%0D%0ASource%20Version:%206.49.24347.0%0D%0A%0D%0A00:00:00.224%20--%3E%2000:00:02.272%0D%0AFord%20is%20better%20that%20Chevy%0D%0A%0D%0A00:00:02.533%20--%3E%2000:00:04.676%0D%0AChevy%20is%20better%20than%20Ford%20%0D%0A%0D%0A"}')
