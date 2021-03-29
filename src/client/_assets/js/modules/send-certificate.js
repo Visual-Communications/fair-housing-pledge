@@ -49,7 +49,7 @@ function init() {
       footerImage.src = "/img/certificate/FH Pledge_CB_F.jpg"
       break;
     }
-    case "Coldwell Banker – Affiliates" : {
+    case "Coldwell Banker - Affiliates" : {
       console.log("brand: " + brand);
       headerImage.src = "/img/certificate/FH Pledge_CB_H.jpg"
       footerImage.src = "/img/certificate/FH Pledge_CB_F.jpg"
@@ -73,7 +73,7 @@ function init() {
       footerImage.src = "https://i.ibb.co/b1kdzZX/FH-Pledge-ERA-F.jpg"
       break; 
     }
-    case "Sotheby’s International Realty" : {
+    case "Sotheby's International Realty" : {
       console.log("brand: " + brand);
       headerImage.src = "/img/certificate/FH Pledge_SIR_H.jpg"
       footerImage.src = "/img/certificate/FH Pledge_SIR_F.jpg"
