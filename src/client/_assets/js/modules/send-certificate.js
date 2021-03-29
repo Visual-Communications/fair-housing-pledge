@@ -39,8 +39,8 @@ var footerImage = document.getElementById('brandFooterID')
       footerImage.src = "https://i.ibb.co/KqGJxXR/C21-Footer.jpg"
       break;
     }
-    case "Coldwell Banker – Company Owned (previously NRT)" :
-    case "Coldwell Banker – Affiliates" :
+    case "Coldwell Banker - Company Owned (previously NRT)" :
+    case "Coldwell Banker - Affiliates" :
     case "Coldwell Banker Commercial" : {
       console.log("brand: " + brand);
       headerImage.src = "https://i.ibb.co/fkGbTCK/FH-Pledge-CB-H.jpg"
@@ -59,7 +59,7 @@ var footerImage = document.getElementById('brandFooterID')
       footerImage.src = "https://i.ibb.co/b1kdzZX/FH-Pledge-ERA-F.jpg"
       break; 
     }
-    case "Sotheby’s International Realty" : {
+    case "Sotheby's International Realty" : {
       console.log("brand: " + brand);
       headerImage.src = "https://i.ibb.co/J7ftVMD/FH-Pledge-SIR-H.jpg"
       footerImage.src = "https://i.ibb.co/TBDzTZj/FH-Pledge-SIR-F.jpg"
