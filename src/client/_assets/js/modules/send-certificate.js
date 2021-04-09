@@ -64,7 +64,37 @@ var footerImage = document.getElementById('brandFooterID')
       headerImage.src = "https://i.ibb.co/J7ftVMD/FH-Pledge-SIR-H.jpg"
       footerImage.src = "https://i.ibb.co/TBDzTZj/FH-Pledge-SIR-F.jpg"
       break; 
-    }    
+    }
+    case "AREAA" : {
+      console.log("brand: " + brand);
+      headerImage.src = "https://ibb.co/82zzh29"
+      footerImage.src = "https://i.ibb.co/w7W4N04/AREAA-Footer.jpg"
+      break; 
+    }
+    case "LGBTQ+ Real Estate Alliance" : {
+      console.log("brand: " + brand);
+      headerImage.src = "https://i.ibb.co/0QdMzvK/Alliance-Header.jpg"
+      footerImage.src = "https://ibb.co/M5VXBgX"
+      break; 
+    }
+    case "NAHREP" : {
+      console.log("brand: " + brand);
+      headerImage.src = "https://ibb.co/TBYKqc3"
+      footerImage.src = "https://i.ibb.co/nRFNcch/NAHREP-Footer.jpg"
+      break; 
+    }
+    case "NAREB" : { //NAREB OR NAHREB????
+      console.log("brand: " + brand);
+      headerImage.src = "https://ibb.co/82zzh29"
+      footerImage.src = "https://i.ibb.co/gWMLsVK/NAREB-Footer.jpg"
+      break; 
+    }
+    case "NAMMBA" : { //NAREB OR NAHREB????
+      console.log("brand: " + brand);
+      headerImage.src = "https://ibb.co/MfMmxzR"
+      footerImage.src = "https://i.ibb.co/pWqW9VM/NAMMBA-Footer.jpg"
+      break; 
+    }                        
 
     default : {
       headerImage.src = "https://i.ibb.co/nBS6HJv/FH-Pledge-Generic-H.jpg";
