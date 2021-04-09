@@ -81,31 +81,31 @@ function init() {
     }
     case "AREAA" : {
       console.log("brand: " + brand);
-      headerImage.src = "https://ibb.co/82zzh29"
+      headerImage.src = "https://i.ibb.co/3WffJWc/AREAA-Header.jpg"
       footerImage.src = "https://i.ibb.co/w7W4N04/AREAA-Footer.jpg"
       break; 
     }
     case "LGBTQ+ Real Estate Alliance" : {
       console.log("brand: " + brand);
       headerImage.src = "https://i.ibb.co/0QdMzvK/Alliance-Header.jpg"
-      footerImage.src = "https://ibb.co/M5VXBgX"
+      footerImage.src = "https://i.ibb.co/n8cWPwW/Alliance-Footer.jpg"
       break; 
     }
     case "NAHREP" : {
       console.log("brand: " + brand);
-      headerImage.src = "https://ibb.co/TBYKqc3"
+      headerImage.src = "https://i.ibb.co/MDZ85n0/NAHREP-Header.jpg"
       footerImage.src = "https://i.ibb.co/nRFNcch/NAHREP-Footer.jpg"
       break; 
     }
-    case "NAREB" : { //NAREB OR NAHREB????
+    case "NAREB" : { 
       console.log("brand: " + brand);
-      headerImage.src = "https://ibb.co/82zzh29"
+      headerImage.src = "https://i.ibb.co/ryK3sCL/NAREB-Header.gif"
       footerImage.src = "https://i.ibb.co/gWMLsVK/NAREB-Footer.jpg"
       break; 
     }
-    case "NAMMBA" : { //NAREB OR NAHREB????
+    case "NAMMBA" : {
       console.log("brand: " + brand);
-      headerImage.src = "https://ibb.co/MfMmxzR"
+      headerImage.src = "https://i.ibb.co/BGq95hg/NAMMBA-Header.jpg"
       footerImage.src = "https://i.ibb.co/pWqW9VM/NAMMBA-Footer.jpg"
       break; 
     }                        
