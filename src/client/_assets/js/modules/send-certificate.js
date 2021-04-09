@@ -89,7 +89,7 @@ var footerImage = document.getElementById('brandFooterID')
       footerImage.src = "https://i.ibb.co/gWMLsVK/NAREB-Footer.jpg"
       break; 
     }
-    case "NAMMBA" : { //NAREB OR NAHREB????
+    case "NAMMBA" : {
       console.log("brand: " + brand);
       headerImage.src = "https://i.ibb.co/BGq95hg/NAMMBA-Header.jpg"
       footerImage.src = "https://i.ibb.co/pWqW9VM/NAMMBA-Footer.jpg"
