@@ -83,7 +83,7 @@ var footerImage = document.getElementById('brandFooterID')
       footerImage.src = "https://i.ibb.co/nRFNcch/NAHREP-Footer.jpg"
       break; 
     }
-    case "NAREB" : { //NAREB OR NAHREB????
+    case "NAREB" : { 
       console.log("brand: " + brand);
       headerImage.src = "https://i.ibb.co/ryK3sCL/NAREB-Header.gif"
       footerImage.src = "https://i.ibb.co/gWMLsVK/NAREB-Footer.jpg"
