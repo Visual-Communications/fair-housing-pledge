@@ -9,9 +9,19 @@ and this project adheres to [Semantic Versioning](semver).
 ### Added
 
 ### Changed
-- If multiple emails are sent, check for any of them.
 
 ### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [2.4.2] - 2021-01-13
+
+### Changed
+- If multiple emails are sent, check for any of them.
 
 ### Removed
 - Remove HTML validator.
@@ -19,8 +29,6 @@ and this project adheres to [Semantic Versioning](semver).
 ### Fixed
 - Handle missing pledge brand.
 - Handle missing function parameters.
-
-### Security
 
 ## [2.4.2] - 2021-01-13
 
