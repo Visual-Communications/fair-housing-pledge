@@ -85,16 +85,26 @@ export class Dashboard {
   getPledgesData () {
     return this.pledges.raw.map(pledge => {
       const date = new Date(pledge.created_at)
-      return {
-        first: this.toTitleCase(pledge.firstName),
-        last: this.toTitleCase(pledge.lastName),
-        email: pledge.email.toLowerCase(),
-        brand: abbreviateBrandName(pledge.brand),
-        company: pledge.company,
-        state: abbreviateState(pledge.state),
-        course: this.toTitleCase(pledge.courseCompleted),
+      // Set defaults.
+      const pledgeObject = {
+        first: '',
+        last: '',
         date: `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`,
+        email: '',
+        brand: '',
+        company: '',
+        state: '',
+        course: false,
       }
+      // Assign properties if they exist.
+      if (pledge.firstName) pledgeObject.first = this.toTitleCase(pledge.firstName)
+      if (pledge.lastName) pledgeObject.last = this.toTitleCase(pledge.lastName)
+      if (pledge.email) pledgeObject.email = pledge.email.toLowerCase()
+      if (pledge.brand) pledgeObject.brand = abbreviateBrandName(pledge.brand)
+      if (pledge.company) pledgeObject.company = pledge.company
+      if (pledge.state) pledgeObject.state = abbreviateState(pledge.state)
+      if (pledge.courseCompleted) pledgeObject.course = this.toTitleCase(pledge.courseCompleted)
+      return pledgeObject
     })
   }
 
@@ -107,7 +117,7 @@ export class Dashboard {
    * @return {array}           Filtered array of pledge objects.
    */
   getPledgesBrand (string) {
-    return this.pledges.raw.filter(pledge => pledge.brand.includes(string))
+    return this.pledges.raw.filter(pledge => pledge.brand?.includes(string))
   }
 
   /**
