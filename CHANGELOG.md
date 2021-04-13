@@ -20,6 +20,18 @@ and this project adheres to [Semantic Versioning](semver).
 
 ## [2.4.2] - 2021-01-13
 
+### Changed
+- If multiple emails are sent, check for any of them.
+
+### Removed
+- Remove HTML validator.
+
+### Fixed
+- Handle missing pledge brand.
+- Handle missing function parameters.
+
+## [2.4.2] - 2021-01-13
+
 ### Fixed
 - Remove emoji from dashboard pledges Course column. [#138]
 

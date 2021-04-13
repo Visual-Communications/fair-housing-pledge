@@ -146,6 +146,15 @@ module.exports = {
       return res.status(400).send(error.details[0].message)
     }
 
+    // If multiple emails are sent, check for any of them.
+    if (req.body.from.emails) {
+      req.body.from = {
+        $or: req.body.from.emails.map(email => {
+          return { email: email }
+        })
+      }
+    }
+
     // Update pledges in the database and get updated pledges.
     const pledges = await Pledge.updateMany(req.body.from, req.body.to)
 
