@@ -98,7 +98,6 @@
     "gulp-cached": "^1.1.1",
     "gulp-cli": "^2.3.0",
     "gulp-concat": "^2.6.1",
-    "gulp-html": "^3.1.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^2.0.0",

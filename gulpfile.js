@@ -5,7 +5,6 @@ const del = require('del')
 const Eleventy = require('@11ty/eleventy')
 const ssg = new Eleventy()
 const htmlmin = require('gulp-htmlmin')
-const validator = require('gulp-html')
 const gulpStylelint = require('gulp-stylelint')
 const sourcemaps = require('gulp-sourcemaps')
 const postcss = require('gulp-postcss')
@@ -400,16 +399,8 @@ function assets () {
   return merged.isEmpty() ? null : merged
 }
 
-function validate () {
-  return gulp.src(paths.html.output)
-    .pipe(validator({
-      'errors-only': true
-    })) // Validate HTML
-    .pipe(gulp.dest(paths.html.dest))
-}
-
 function watch (cb) {
-  gulp.watch(paths.html.src, gulp.series(watchHtml/*, validate*/)) // TODO: Uncomment validate
+  gulp.watch(paths.html.src, watchHtml)
   gulp.watch([paths.css.all], css)
   gulp.watch([...paths.js.src, ...paths.js.admin.src], js)
   gulp.watch([
@@ -461,14 +452,12 @@ exports.pledgeResults = gulp.series(pledgeResults)
 
 exports.develop = gulp.series(
   gulp.parallel(clean, lint),
-  gulp.parallel(html, css, js, assets),
-  validate
+  gulp.parallel(html, css, js, assets)
 )
 
 exports.serve = gulp.series(
   gulp.parallel(clean, lint),
   gulp.parallel(html, css, js, assets),
-  // @todo: validate
   watch,
   serve
 )
@@ -476,7 +465,6 @@ exports.serve = gulp.series(
 exports.watch = gulp.series(
   gulp.parallel(clean, lint),
   gulp.parallel(html, css, js, assets),
-  validate,
   watch
 )
 
