@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Removed
 
 ### Fixed
+- Add Google Analytics tracking and script bundle to 2021 courses.
 
 ### Security
 
