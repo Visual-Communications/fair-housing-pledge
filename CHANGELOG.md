@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](semver).
 ## [Unreleased]
 
 ### Added
+- Add Cartus and other organizations to dashboard.
 
 ### Changed
 
@@ -15,6 +16,8 @@ and this project adheres to [Semantic Versioning](semver).
 ### Removed
 
 ### Fixed
+- Don't pre-fill brand field since query param does not match select values.
+- Show Realogy certificate if brand is unrecognized.
 
 ### Security
 

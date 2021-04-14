@@ -131,11 +131,17 @@ export class Dashboard {
     try {
       // Build brands pledges data and store in localStorage.
       const brands = {
+        areaa: { pledgesData: this.getPledgesBrand('AREAA') },
         bhgre: { pledgesData: this.getPledgesBrand('Better Homes') },
+        cartus: { pledgesData: this.getPledgesBrand('Cartus') },
         c21: { pledgesData: this.getPledgesBrand('Century') },
         cb: { pledgesData: this.getPledgesBrand('Coldwell Banker') },
         corcoran: { pledgesData: this.getPledgesBrand('Corcoran') },
         era: { pledgesData: this.getPledgesBrand('ERA') },
+        lgbtq: { pledgesData: this.getPledgesBrand('LGBTQ') },
+        nahrep: { pledgesData: this.getPledgesBrand('NAHREP') },
+        nammba: { pledgesData: this.getPledgesBrand('NAMMBA') },
+        nareb: { pledgesData: this.getPledgesBrand('NAREB') },
         other: { pledgesData: this.getPledgesBrand('Other') },
         realogy: { pledgesData: this.getPledgesBrand('Realogy Corporate') },
         rtg: { pledgesData: this.getPledgesBrand('Realogy Title Group') },
@@ -144,7 +150,9 @@ export class Dashboard {
       }
 
       Object.keys(brands).forEach(brand => {
-        brands[brand].brand = brands[brand].pledgesData[0].brand
+        brands[brand].brand = brands[brand].pledgesData.length
+          ? brands[brand].pledgesData[0]?.brand
+          : brand
         brands[brand].pledges = brands[brand].pledgesData.length
         brands[brand].course = brands[brand].pledgesData
           .filter(pledge => pledge.courseCompleted === 'true')
@@ -154,11 +162,12 @@ export class Dashboard {
         delete brands[brand].pledgesData
       })
 
-      // Update brand brands.
+      // Shorten long brand names for the dashboard.
       brands.bhgre.brand = 'BHGRE'
       brands.c21.brand = 'Century 21'
       brands.cb.brand = 'Coldwell Banker'
       brands.era.brand = 'ERA'
+      brands.lgbtq.brand = 'LGBTQ+'
       brands.sir.brand = 'Sotheby\'s'
       brands.total.brand = 'Total'
 
