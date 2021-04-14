@@ -15,11 +15,15 @@ and this project adheres to [Semantic Versioning](semver).
 ### Removed
 
 ### Fixed
-- Add Google Analytics tracking and script bundle to 2021 courses.
 
 ### Security
 
-## [2.4.2] - 2021-01-13
+## [2.4.4] - 2021-01-14
+
+### Fixed
+- Add Google Analytics tracking and script bundle to 2021 courses.
+
+## [2.4.3] - 2021-01-13
 
 ### Changed
 - If multiple emails are sent, check for any of them.
