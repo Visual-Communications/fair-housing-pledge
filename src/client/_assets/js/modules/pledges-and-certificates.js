@@ -270,10 +270,6 @@ function handleLoad () {
   // If there is no brand, we're done
   if (!storage.brand) return false
   
-  // Pre-fill Brand field
-  const brandInput = document.querySelector('#brand')
-  if (brandInput) brandInput.value = storage.brand
-
   // If the pledge hasn't been filled out yet, we're done
   if (!storage.pledge) return false
 
@@ -388,8 +384,11 @@ function loadCertificate (brand, pledge) {
     }
   }
 
+  // In case of unrecognized brand, use Realogy.
+  const certificateBrand = brands.hasOwnProperty(brand) ? brand : 'Realogy'
+
   // Add brand certificate class
-  body.classList.add(`certificate_${brands[brand].class}`)
+  body.classList.add(`certificate_${brands[certificateBrand].class}`)
 
   // Get today's date and setup month names
   const date = new Date()
@@ -406,14 +405,14 @@ function loadCertificate (brand, pledge) {
     <p>to certify that they have completed to<br />
     satisfaction the Fair Housing Course.</p>
     <p>Granted ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}</p>
-    <img class="certificate__signature" src="${brands[brand].executive.signature}" alt="${brands[brand].executive.name}">
-    <p>${brands[brand].executive.name}<br />
-    ${brands[brand].executive.title}<br />
-    ${brands[brand].executive.company}</p>
-    <img class="certificate__logo" src="${brands[brand].logo}" alt="${brand}">
+    <img class="certificate__signature" src="${brands[certificateBrand].executive.signature}" alt="${brands[certificateBrand].executive.name}">
+    <p>${brands[certificateBrand].executive.name}<br />
+    ${brands[certificateBrand].executive.title}<br />
+    ${brands[certificateBrand].executive.company}</p>
+    <img class="certificate__logo" src="${brands[certificateBrand].logo}" alt="${certificateBrand}">
   </main>
   <footer class="certificate__footer pad">
-    <p class="certificate__disclaimer">${brands[brand].disclaimer}</p>
+    <p class="certificate__disclaimer">${brands[certificateBrand].disclaimer}</p>
   </footer>`
 }
 
