@@ -67,18 +67,26 @@ module.exports = {
     const { error } = validate.create(req.body)
     if (error) return res.status(400).send(error.details[0].message)
 
-    // Create pledge
-    let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted']))
+    try {
+      // Create pledge
+      let pledge = new Pledge(_.pick(req.body, ['firstName', 'lastName', 'email', 'state', 'brand', 'company', 'event', 'agreeToTerms', 'courseCompleted']))
 
-    // Don't save duplicate emails
-    const duplicate = await Pledge.findOne({
-      email: pledge.email
-    })
+      // Don't save duplicate emails
+      const duplicate = await Pledge.findOne({
+        email: pledge.email
+      })
 
-    if (!duplicate) {
-      // Add pledge to the database
-      pledge = await pledge.save()
-      log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
+      if (!duplicate) {
+        // Add pledge to the database
+        pledge = await pledge.save()
+        log.info('Pledge created.', _.pick(pledge, ['_doc', 'level', 'message', 'timestamp']))
+      }
+    } catch (error) {
+      if (
+        error.name !== 'ValidationError' ||
+        error?.errors?.email?.kind !== 'unique'
+      ) throw new Error(error)
+      log.info('Duplicate pledge not created', req.body)
     }
 
     // Return redirect to the client

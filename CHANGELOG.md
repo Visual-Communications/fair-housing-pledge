@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](semver).
 ### Removed
 
 ### Fixed
+- Prevent duplicate emails from throwing an error.
 
 ### Security
 
