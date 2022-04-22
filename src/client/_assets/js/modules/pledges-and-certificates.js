@@ -385,7 +385,7 @@ function loadCertificate (brand, pledge) {
   }
 
   // In case of unrecognized brand, use Realogy.
-  // const certificateBrand = brands.hasOwnProperty(brand) ? brand : 'Realogy'
+  const certificateBrand = brands.hasOwnProperty(brand) ? brand : 'Realogy'
 
   // Add brand certificate class
   body.classList.add(`certificate_${brands[certificateBrand].class}`)
