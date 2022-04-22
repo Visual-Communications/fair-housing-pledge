@@ -385,7 +385,7 @@ function loadCertificate (brand, pledge) {
   }
 
   // In case of unrecognized brand, use Realogy.
-  const certificateBrand = brands.hasOwnProperty(brand) ? brand : 'Realogy'
+  // const certificateBrand = brands.hasOwnProperty(brand) ? brand : 'Realogy'
 
   // Add brand certificate class
   body.classList.add(`certificate_${brands[certificateBrand].class}`)
@@ -395,7 +395,6 @@ function loadCertificate (brand, pledge) {
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
   // Generate certificate markup and append to DOM
-  /*
   body.innerHTML = `<header class="certificate__header container pad">
     <img class="certificate__icon" src="/img/icons/house-and-hands.jpg" alt="House and hands">
   </header>
@@ -415,7 +414,6 @@ function loadCertificate (brand, pledge) {
   <footer class="certificate__footer pad">
     <p class="certificate__disclaimer">${brands[certificateBrand].disclaimer}</p>
   </footer>`
-  */
 }
 
 /**
