@@ -3,10 +3,8 @@
       <header>
         <h2>{{ resources.title }}</h2>
       </header>
-      <ul>
-        {%- for link in resources.links %}
-        <li><a href="{{ link.href }}">{{ link.title }}</a></li>
-        {%- endfor %}
-      </ul>
+      {%- for link in resources.links %}
+      <a href="{{ link.href }}">{{ link.title }}</a>
+      {%- endfor %}
     </section>
     {%- endif %}
