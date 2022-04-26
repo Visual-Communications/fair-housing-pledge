@@ -361,10 +361,10 @@ function loadCertificate (brand, pledge) {
     'Realogy': {
       logo: '/img/logos/logo-realogy.svg',
       executive: {
-        name: 'John Peyton',
-        title: 'President and Chief Executive Officer',
+        name: 'sue Yannaccone',
+        title: 'President & CEO',
         company: 'Realogy Franchise Group',
-        signature: '/img/signatures/john-peyton.jpg'
+        signature: '/img/signatures/sue-yannaccone.jpg'
       },
       icon: '/img/icons/fhp-icon-realogy.svg',
       class: 'realogy',
