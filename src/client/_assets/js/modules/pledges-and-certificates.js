@@ -361,7 +361,7 @@ function loadCertificate (brand, pledge) {
     'Realogy': {
       logo: '/img/logos/logo-realogy.svg',
       executive: {
-        name: 'sue Yannaccone',
+        name: 'Sue Yannaccone',
         title: 'President & CEO',
         company: 'Realogy Franchise Group',
         signature: '/img/signatures/sue-yannaccone.png'
