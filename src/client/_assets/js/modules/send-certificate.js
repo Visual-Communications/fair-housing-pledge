@@ -43,13 +43,7 @@ function init() {
       footerImage.src = "/img/certificate/C21-Footer.jpg"
       break;
     }
-    case "Coldwell Banker - Company Owned (previously NRT)" : {
-      console.log("brand: " + brand);
-      headerImage.src = "/img/certificate/FH Pledge_CB_H.jpg"
-      footerImage.src = "/img/certificate/FH Pledge_CB_F.jpg"
-      break;
-    }
-    case "Coldwell Banker - Affiliates" : {
+    case "Coldwell Banker" : {
       console.log("brand: " + brand);
       headerImage.src = "/img/certificate/FH Pledge_CB_H.jpg"
       footerImage.src = "/img/certificate/FH Pledge_CB_F.jpg"
