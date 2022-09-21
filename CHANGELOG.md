@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](semver).
 
 ### Fixed
 - Don't pre-fill brand field since query param does not match select values.
-- Show Realogy certificate if brand is unrecognized.
+- Show Anywhere certificate if brand is unrecognized.
 
 ## [2.4.4] - 2021-01-14
 

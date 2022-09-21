@@ -1,7 +1,7 @@
 const site = {
   title: 'Fair Housing Pledge',
   description: 'Take the pledge to stand up for fair housing.',
-  company: 'Realogy Holdings Corp',
+  company: 'Anywhere Real Estate Inc',
   lang: 'en-US',
   year: new Date().getFullYear(),
   timestamp: new Date(),

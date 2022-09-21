@@ -15,8 +15,8 @@ export function abbreviateBrandName (brand) {
       .replace('Coldwell Banker - Affiliates', 'CB/Aff')
       .replace('Corcoran', 'COR')
       .replace('ERA Real Estate', 'ERA')
-      .replace('Realogy Corporate', 'RLG')
-      .replace('Realogy Title Group', 'RTG')
+      .replace('Anywhere Real Estate Inc', 'ARE')
+      .replace('Anywhere Integrated Services', 'AIS')
       .replace('Sotheby\'s International Realty', 'SIR')
     : ''
 }

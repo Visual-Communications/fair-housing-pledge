@@ -143,8 +143,8 @@ export class Dashboard {
         nammba: { pledgesData: this.getPledgesBrand('NAMMBA') },
         nareb: { pledgesData: this.getPledgesBrand('NAREB') },
         other: { pledgesData: this.getPledgesBrand('Other') },
-        realogy: { pledgesData: this.getPledgesBrand('Realogy Corporate') },
-        rtg: { pledgesData: this.getPledgesBrand('Realogy Title Group') },
+        anywhere: { pledgesData: this.getPledgesBrand('Anywhere Real Estate Inc') },
+        rtg: { pledgesData: this.getPledgesBrand('Anywhere Integrated Services') },
         sir: { pledgesData: this.getPledgesBrand('Sotheby\'s') },
         total: { pledgesData: this.pledges.raw }
       }

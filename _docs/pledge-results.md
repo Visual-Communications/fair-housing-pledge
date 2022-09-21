@@ -16,21 +16,21 @@ The file will be saved to `./scratch/db/pledge-results.csv`.
 
 Every Monday morning, download the pledge results and email the total count and the CSV file as an attachment to this group of people (as of June 23, 2020):
 
-- Lovelace, Bonnie Sue <BonnieSue.Lovelace@realogy.com>
-- Goeman, Mary Teresa <Mary.Goeman@realogy.com>
-- Gruca, Ken <Ken.Gruca@realogy.com>
-- Kroplewski, Nicole <Nicole.Kroplewski@cbhomeoffice.com>
-- Rosario, Elizabeth <Elizabeth.Rosario@cbhomeoffice.com>
-- Montiel, Christian <Christian.Montiel@cbhomeoffice.com>
-- Perry, Dawn <dawn.perry@realogy.com>
-- Riveiro, Jason <Jason.Riveiro@realogy.com>
-- Anzel, Bill <bill.anzel@realogy.com>
-- O'connor, Cindy <cindy.oconnor@realogy.com>
-- Cao, Elizabeth <elizabeth.cao@cbhomeoffice.com>
-- Gladdis, Lynette <lynette.gladdis@realogy.com>
-- Stephen, Sanoj <sanoj.stephen@sothebyshomes.com>
+- Lovelace, Bonnie Sue <BonnieSue.Lovelace@anywhere.re>
+- Goeman, Mary Teresa <Mary.Goeman@anywhere.re>
+- Gruca, Ken <Ken.Gruca@anywhere.re>
+- Kroplewski, Nicole <Nicole.Kroplewski@cbhomanywhere.re>
+- Rosario, Elizabeth <Elizabeth.Rosario@cbhomanywhere.re>
+- Montiel, Christian <Christian.Montiel@cbhomanywhere.re>
+- Perry, Dawn <dawn.perry@anywhere.re>
+- Riveiro, Jason <Jason.Riveiro@anywhere.re>
+- Anzel, Bill <bill.anzel@anywhere.re>
+- O'connor, Cindy <cindy.oconnor@anywhere.re>
+- Cao, Elizabeth <elizabeth.cao@cbhomanywhere.re>
+- Gladdis, Lynette <lynette.gladdis@anywhere.re>
+- Stephen, Sanoj <sanoj.stephen@sothebanywhere.re>
 - Alter, Marc <marc.alter@corcoran.com>
-- Martin, Adnel <adnel.martin@realogy.com>
+- Martin, Adnel <adnel.martin@anywhere.re>
 
 ### TODO
 
