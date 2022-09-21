@@ -19,9 +19,9 @@ Every Monday morning, download the pledge results and email the total count and 
 - Lovelace, Bonnie Sue <BonnieSue.Lovelace@anywhere.re>
 - Goeman, Mary Teresa <Mary.Goeman@anywhere.re>
 - Gruca, Ken <Ken.Gruca@anywhere.re>
-- Kroplewski, Nicole <Nicole.Kroplewski@cbhomanywhere.re>
-- Rosario, Elizabeth <Elizabeth.Rosario@cbhomanywhere.re>
-- Montiel, Christian <Christian.Montiel@cbhomanywhere.re>
+- Kroplewski, Nicole <Nicole.Kroplewski@cbhomeoffice.com>
+- Rosario, Elizabeth <Elizabeth.Rosario@cbhomeoffice.com>
+- Montiel, Christian <Christian.Montiel@cbhomeoffice.com>
 - Perry, Dawn <dawn.perry@anywhere.re>
 - Riveiro, Jason <Jason.Riveiro@anywhere.re>
 - Anzel, Bill <bill.anzel@anywhere.re>
