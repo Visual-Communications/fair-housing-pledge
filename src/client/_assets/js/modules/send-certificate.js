@@ -105,8 +105,8 @@ function init() {
     }                        
 
     default : {
-      headerImage.src = "https://i.ibb.co/nBS6HJv/FH-Pledge-Generic-H.jpg";
-      footerImage.src = "https://i.ibb.co/d5p5Q1C/FH-Pledge-Generic-F.jpg";
+      headerImage.src = "https://i.ibb.co/nBS6HJv/FH Pledge_Generic_H.jpg";
+      footerImage.src = "https://i.ibb.co/d5p5Q1C/FH Pledge_Generic_F.jpg";
     }
 
   }
