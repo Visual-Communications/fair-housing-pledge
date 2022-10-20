@@ -61,7 +61,7 @@ function init() {
       console.log("brand: " + brand);
       headerImage.src = "/img/certificate/FH-Pledge-ERA-H.jpg"
       footerImage.src = "/img/certificate/FH-Pledge-ERA-F.jpg"
-      break; 
+      break;
     }
     case "Sotheby's International Realty" : {
       console.log("brand: " + brand);
@@ -98,7 +98,28 @@ function init() {
       headerImage.src = "https://i.ibb.co/BGq95hg/NAMMBA-Header.jpg"
       footerImage.src = "https://i.ibb.co/pWqW9VM/NAMMBA-Footer.jpg"
       break; 
-    }                        
+    }
+
+    case "Anywhere Real Estate Inc." : {
+      console.log("brand: " + brand);
+      headerImage.src = "/img/certificate/FH Pledge_Generic_H.jpg"
+      footerImage.src = "/img/certificate/FH Pledge_Generic_F.jpg"
+      break; 
+    }
+
+    case "Anywhere Integrated Services" : {
+      console.log("brand: " + brand);
+      headerImage.src = "/img/certificate/FH Pledge_Generic_H.jpg"
+      footerImage.src = "/img/certificate/FH Pledge_Generic_F.jpg"
+      break; 
+    }
+
+    case "Other" : {
+      console.log("brand: " + brand);
+      headerImage.src = "/img/certificate/FH Pledge_Generic_H.jpg"
+      footerImage.src = "/img/certificate/FH Pledge_Generic_F.jpg"
+      break; 
+    }
 
     default : {
       headerImage.src = "/img/certificate/FH Pledge_Generic_H.jpg";
