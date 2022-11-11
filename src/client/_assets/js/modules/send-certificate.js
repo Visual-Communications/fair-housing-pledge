@@ -29,17 +29,27 @@ function init() {
   switch(brand) {
     case "Better Homes and Gardens Real Estate" : {
       console.log("brand: " + brand);
+      //headerImage.src = "https://i.ibb.co/LS9ry52/FH-Pledge-BHG-H.jpg"
+      //footerImage.src = "https://i.ibb.co/vxVfLsZ/FH-Pledge-BHG-F.jpg"
       headerImage.src = "/img/certificate/FH Pledge_BHG_H.jpg"
       footerImage.src = "/img/certificate/FH Pledge_BHG_F.jpg"
       break;
     }
     case "Century 21 Real Estate" : {
       console.log("brand: " + brand);
+      //headerImage.src = "https://i.ibb.co/pQJ0kcm/FH-Pledge-C21-H.jpg"
       headerImage.src = "/img/certificate/C21-Header.jpg"
+      //footerImage.src = "https://i.ibb.co/KqGJxXR/C21-Footer.jpg"
       footerImage.src = "/img/certificate/C21-Footer.jpg"
       break;
     }
-    case "Coldwell Banker" : {
+    case "Coldwell Banker - Company Owned (previously NRT)" : {
+      console.log("brand: " + brand);
+      headerImage.src = "/img/certificate/FH Pledge_CB_H.jpg"
+      footerImage.src = "/img/certificate/FH Pledge_CB_F.jpg"
+      break;
+    }
+    case "Coldwell Banker - Affiliates" : {
       console.log("brand: " + brand);
       headerImage.src = "/img/certificate/FH Pledge_CB_H.jpg"
       footerImage.src = "/img/certificate/FH Pledge_CB_F.jpg"
@@ -53,15 +63,15 @@ function init() {
     }
     case "Corcoran" : {
       console.log("brand: " + brand);
-      headerImage.src = "/img/certificate/FH-Pledge-Corcoran-H.jpg"
-      footerImage.src = "/img/certificate/FH-Pledge-Corcoran-F.jpg"
+      headerImage.src = "https://i.ibb.co/XzRG9ym/FH-Pledge-Corcoran-H.jpg"
+      footerImage.src = "https://i.ibb.co/NxTRSN5/FH-Pledge-Corcoran-F.jpg"
       break;
     }
     case "ERA Real Estate" : {
       console.log("brand: " + brand);
-      headerImage.src = "/img/certificate/FH-Pledge-ERA-H.jpg"
-      footerImage.src = "/img/certificate/FH-Pledge-ERA-F.jpg"
-      break;
+      headerImage.src = "https://i.ibb.co/Jy4CP10/FH-Pledge-ERA-H.jpg"
+      footerImage.src = "https://i.ibb.co/b1kdzZX/FH-Pledge-ERA-F.jpg"
+      break; 
     }
     case "Sotheby's International Realty" : {
       console.log("brand: " + brand);
@@ -98,28 +108,7 @@ function init() {
       headerImage.src = "https://i.ibb.co/BGq95hg/NAMMBA-Header.jpg"
       footerImage.src = "https://i.ibb.co/pWqW9VM/NAMMBA-Footer.jpg"
       break; 
-    }
-
-    case "Anywhere Real Estate Inc." : {
-      console.log("brand: " + brand);
-      headerImage.src = "/img/certificate/FH Pledge_Generic_H.jpg"
-      footerImage.src = "/img/certificate/FH Pledge_Generic_F.jpg"
-      break; 
-    }
-
-    case "Anywhere Integrated Services" : {
-      console.log("brand: " + brand);
-      headerImage.src = "/img/certificate/FH Pledge_Generic_H.jpg"
-      footerImage.src = "/img/certificate/FH Pledge_Generic_F.jpg"
-      break; 
-    }
-
-    case "Other" : {
-      console.log("brand: " + brand);
-      headerImage.src = "/img/certificate/FH Pledge_Generic_H.jpg"
-      footerImage.src = "/img/certificate/FH Pledge_Generic_F.jpg"
-      break; 
-    }
+    }                        
 
     default : {
       headerImage.src = "/img/certificate/FH Pledge_Generic_H.jpg";
